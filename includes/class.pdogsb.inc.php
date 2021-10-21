@@ -135,7 +135,7 @@ class PdoGsb {
         $requestPrepare->execute();
     }
 
-    public function getCodeVisiteur($id) {
+    public function getCodeVisiteur($id) {    
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT code as codeAuth '
                 . 'FROM visiteur '
@@ -167,6 +167,7 @@ class PdoGsb {
         $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
         $requetePrepare->execute();
         return $requetePrepare->fetch()['mdp'];
+        
     }
 
     /**
