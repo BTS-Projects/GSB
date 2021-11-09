@@ -27,7 +27,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <a href=""
+                        <a href="index.php?uc=ValiderFrais&action=selectionnerMois"
                            class="btn btn-warning btn-lg" role="button">
                             <span class="glyphicon glyphicon-pencil"></span>
                             <br>Valider des fiches de frais</a>

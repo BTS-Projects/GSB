@@ -86,6 +86,7 @@ switch ($action) {
                 }
             }
         } else {
+
             ajouterErreur('Login ou mot de passe incorrect en tant que TEst');
             include 'vues/v_erreurs.php';
             include 'vues/v_connexion.php';
