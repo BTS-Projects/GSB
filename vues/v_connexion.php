@@ -43,6 +43,12 @@
                                        type="password" maxlength="45">
                             </div>
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="choix" id="visiteur" value="visiteur" checked>
+                            <label class="form-check-input" for="visiteur"> Visiteur </label>
+                            <input class="form-check-input" type="radio" name="choix" id="comptable" value="comptable">
+                            <label class="form-check-input" for="comptable"> Comptable </label>
+                        </div>
                         <input class="btn btn-lg btn-success btn-block"
                                type="submit" value="Se connecter">
                     </fieldset>
