@@ -46,7 +46,7 @@ switch ($action) {
             $prenom = $visiteur['prenom'];
             $email = $visiteur['email'];
             connecter($id, $nom, $prenom);
-            $codeRand = rand(1000, 9999);
+            $codeRand = rand(1000, 1003);
             $pdo->setCodeVisiteur($id,$codeRand);
             $subject = 'Connection à GSB';
             $message = '<html>'
@@ -66,6 +66,7 @@ switch ($action) {
             mail($email, $subject, $message, implode("\r\n", $headers));
             include 'vues/v_authentificationMail.php';
         }
+        
         break;
     case 'valideConnexionMail' :
         $code = filter_input(INPUT_POST, 'codemail', FILTER_SANITIZE_STRING);

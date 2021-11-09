@@ -34,11 +34,17 @@ case 'connexion':
 case 'accueil':
     include 'controleurs/c_accueil.php';
     break;
-case 'gererFrais':
+case 'gererFrais'://Visiteur
     include 'controleurs/c_gererFrais.php';
     break;
-case 'etatFrais':
+case 'etatFrais'://Visiteur
     include 'controleurs/c_etatFrais.php';
+    break;
+case'ValiderFrais'://Comptable
+    include 'controleurs/c_validerFrais.php';
+    break;
+case 'SuivreFrais':
+    include 'controleurs/c_suivrePaiementFrais';
     break;
 case 'deconnexion':
     include 'controleurs/c_deconnexion.php';
