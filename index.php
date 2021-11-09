@@ -43,7 +43,7 @@ case 'etatFrais'://Visiteur
 case'ValiderFrais'://Comptable
     include 'controleurs/c_validerFrais.php';
     break;
-case 'SuivreFrais':
+case 'SuivreFrais'://Comptable
     include 'controleurs/c_suivrePaiementFrais';
     break;
 case 'deconnexion':
