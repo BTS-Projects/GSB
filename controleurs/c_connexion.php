@@ -77,8 +77,27 @@ switch ($action) {
                     $id = $comptable['id'];
                     $nom = $comptable['nom'];
                     $prenom = $comptable['prenom'];
+                    $email = $comptable['email'];
                     connecterComptable($id, $nom, $prenom);
-                    header('Location: index.php');
+                    $codeRand = 1000;
+                    $pdo->setCodeComptable($id, $codeRand);
+                    $subject = 'Connection à GSB';
+                    $message = '<html>'
+                            . '<head>'
+                            . '<title> Connexion </title>'
+                            . '</head>'
+                            . '<body>'
+                            . '<h1>Voulez vous vous connecter ? </h1>'
+                            . 'Si oui voici votre code : ' . $codeRand
+                            . '</table>'
+                            . '</body>'
+                            . '</html>';
+                    $headers[] = 'MIME-Version: 1.0';
+                    $headers[] = 'Content-type: text/html; cherset=iso-8859-1';
+                    $headers[] = 'To:' . $nom . '<' . $email . '>';
+                    $headers[] = 'From: GSB <gsb-mail@example.com>';
+                    mail($email, $subject, $message, implode("\r\n", $headers));
+                    include 'vues/v_authentificationMail.php';
                 } else {
                     ajouterErreur('Login ou mot de passe incorrect en tant que Comptable');
                     include 'vues/v_erreurs.php';
