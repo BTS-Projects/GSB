@@ -7,7 +7,7 @@
 ?>
 <div class="row">    
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
-    <select id="lstemp" name="lstemp" class="form-control">
+    <select id="lstemp" name="lstemp" class="form-control" style="width: 150px">
         <?php
         foreach ($lesvisiteurs as $visiteurs) {
             $visiteur = visiteurs['visiteur'];
@@ -21,10 +21,10 @@
             }
             ?>
     </select>
-    <!-- liste des Mois par rapport au employées -->/
+    <!-- liste des Mois par rapport au employées -->
 
-    <label for="lstMois" accesskey="n">Mois : </label>
-    <select id="lstMois" name="lstMois" class="form-control">
+    <label for="lstMois" accesskey="n" style="margin-left:20px">Mois : </label>
+    <select id="lstMois" name="lstMois" class="form-control" style="width: 100px">
         <?php
         $numMois = $unMois['numMois'];
         foreach ($lesMois as $unMois) {
@@ -55,9 +55,30 @@
               role="form">
             <p style="margin-left: 10px">Forfait Etape</p>
             <input type="text" style="margin-left: 10px">
-            <p style="margin-left: 10px">
+            <p style="margin-left: 10px">Frais Kilometrique</p>
+            <input type="text" style="margin-left: 10px">
+            <p style="margin-left: 10px">Nuitée Hôtel</p>
+            <input type="text" style="margin-left: 10px">
+            <p style="margin-left: 10px">Repas Restaurant</p>
+            <input type="text" style="margin-left: 10px">
+            <br>
+            <button class="btn btn-success" type="submit" style="background-color: red;color:white;margin-top: 5px;margin-left: 10px">Corriger</button>
+            <button class="btn btn-danger" type="reset" style="background-color: green;color:white;margin-top: 5px">Réinitialiser</button>
             <fieldset>
-
+                <table style="border: 1px solid black ">
+                    <thead style="background-color:orange;border: 1px solid black">
+                        <tr>
+                            <th colspan="4" style="color:white;width:1000px">Descriptif des évenements hors forfait</th>
+                        </tr>
+                    </thead>
+                    <tr style="border: 1px solid black;width: 100%">
+                        <td style="width: 25%;border: 1px solid orange">Date</td>
+                        <td style="width: 25%;border: 1px solid orange">Libellé</td>
+                        <td style="width: 25%;border: 1px solid orange">Montant</td>
+                        <td style="width: 25%;border: 1px solid orange"></td>
+                    </tr>
+                </table>
+                    
                 <?php
                 foreach ($lesFraisForfait as $unFrais) {
                     $idFrais = $unFrais['idfrais'];
@@ -75,8 +96,8 @@
                                <?php
                            }
                            ?>
-                           <button class="btn btn-success" type="submit">Corriger</button>
-                    <button class="btn btn-danger" type="reset">Réinitialiser</button>
+                           <button class="btn btn-success" type="submit" style="background-color: red;color:white">Corriger</button>
+                    <button class="btn btn-danger" type="reset" style="background-color: green;color:white">Réinitialiser</button>
             </fieldset>
         </form>
     </div>
