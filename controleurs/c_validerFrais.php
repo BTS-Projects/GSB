@@ -7,10 +7,13 @@
  */
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-$idVisiteur = $_SESSION['idVisiteur'];
+$idComptable = $_SESSION['idComptable'];
 switch ($action) {
+    case 'valideFrais':
+        include 'vues/v_valideFrais.php';
+        break;
 case 'selectionnerMois':
-    $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+    $lesMois = $pdo->getLesMoisDisponibles($idComptable);
     // Afin de sélectionner par défaut le dernier mois dans la zone de liste
     // on demande toutes les clés, et on prend la première,
     // les mois étant triés décroissants
@@ -18,7 +21,7 @@ case 'selectionnerMois':
     $moisASelectionner = $lesCles[0];
     include 'vues/v_listeMois.php';
     break;
-//case 'voirEtatFrais':
+case 'voirEtatFrais':
     $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
     $moisASelectionner = $leMois;
@@ -32,5 +35,5 @@ case 'selectionnerMois':
     $montantValide = $lesInfosFicheFrais['montantValide'];
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
-    include 'vues/v_etatFrais.php';
+    include 'vues/v_valideFrais';
 }
