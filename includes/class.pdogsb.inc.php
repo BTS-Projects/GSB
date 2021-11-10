@@ -87,7 +87,7 @@ class PdoGsb {
      *
      * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
      */
-    /*     * public function getInfosVisiteur($login, $mdp)
+    /*     public function getInfosVisiteur($login, $mdp)
       {
       $requetePrepare = PdoGsb::$monPdo->prepare(
       'SELECT visiteur.id AS id, visiteur.nom AS nom, '
@@ -114,7 +114,14 @@ class PdoGsb {
 
         return $requetePrepare->fetch();
     }
-
+    
+    /**
+     * Retourne le mot de passe d'un visiteur
+     * 
+     * @param type $login Login du visiteur
+     * 
+     * @return le mot de passe du visiteur
+     */
     public function getMdpVisiteur($login) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT mdp '
@@ -125,7 +132,14 @@ class PdoGsb {
         $requetePrepare->execute();
         return $requetePrepare->fetch()['mdp'];
     }
-
+    
+    /**
+     * Met à jour le code d'authentification du visiteur
+     * 
+     * @param type $id  Id du visiteur
+     * 
+     * @param type $code Code à quatre chiffres du visiteur
+     */
     public function setCodeVisiteur($id,$code) {
         $requestPrepare = PdoGsb::$monPdo->prepare(
                 'UPDATE visiteur SET code = :code WHERE id = :id; '
@@ -134,7 +148,14 @@ class PdoGsb {
         $requestPrepare->bindParam(':code', $code, PDO::PARAM_STR);
         $requestPrepare->execute();
     }
-
+    
+    /**
+     * Retourne le code d'authentification du visiteur
+     * 
+     * @param type $id  Id du visiteur
+     * 
+     * @return le code à quatre chiffres du visiteur
+     */
     public function getCodeVisiteur($id) {    
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT code as codeAuth '
@@ -145,7 +166,14 @@ class PdoGsb {
         $requetePrepare->execute();
         return $requetePrepare->fetch()['codeAuth'];
     }
-
+    
+    /**
+     * Retourne les informations du comptable
+     * 
+     * @param type $login  Login du comptable
+     * 
+     * @return l'id, le nom et le prénom du comptable sous la forme d'un tableau associatif
+     */
     public function getInfosComptable($login) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT comptable.id AS id, comptable.nom AS nom, '
@@ -157,7 +185,14 @@ class PdoGsb {
         $requetePrepare->execute();
         return $requetePrepare->fetch();
     }
-
+    
+    /**
+     * Retourne le mot de passe du comptable
+     * 
+     * @param type $login Login du comptable
+     * 
+     * @return le mot de passe du comptable
+     */
     public function getMdpComptable($login) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT mdp '
