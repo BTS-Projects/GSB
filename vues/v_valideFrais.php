@@ -65,39 +65,45 @@
             <button class="btn btn-success" type="submit" style="background-color: red;color:white;margin-top: 5px;margin-left: 10px">Corriger</button>
             <button class="btn btn-danger" type="reset" style="background-color: green;color:white;margin-top: 5px">Réinitialiser</button>
             <fieldset>
-                <table style="border: 1px solid black ">
-                    <thead style="background-color:orange;border: 1px solid black">
+                <table style="border: 1px solid orange ">
+                    <thead style="background-color:orange;border: 1px solid orange">
                         <tr>
-                            <th colspan="4" style="color:white;width:1000px">Descriptif des évenements hors forfait</th>
+                            <th colspan="4" style="color:white;width:1000px;text-align: left">Descriptif des évenements hors forfait</th>
                         </tr>
                     </thead>
-                    <tr style="border: 1px solid black;width: 100%">
+                    <tr style="border: 1px solid black">
                         <td style="width: 25%;border: 1px solid orange">Date</td>
                         <td style="width: 25%;border: 1px solid orange">Libellé</td>
                         <td style="width: 25%;border: 1px solid orange">Montant</td>
                         <td style="width: 25%;border: 1px solid orange"></td>
                     </tr>
-                </table>
-                    
-                <?php
-                foreach ($lesFraisForfait as $unFrais) {
-                    $idFrais = $unFrais['idfrais'];
-                    $libelle = htmlspecialchars($unFrais['libelle']);
-                    $quantite = $unFrais['quantite'];
-                    ?>
-                    <div class="form-group">
+                    <?php
+                    foreach ($lesFraisForfait as $unFrais) {
+                        $idFrais = $unFrais['idfrais'];
+                        $libelle = htmlspecialchars($unFrais['libelle']);
+                        $quantite = $unFrais['quantite'];
+                        ?>
+                        <tr style="border: 1px solid orange">
+                            <td style="width: 25%;border: 1px solid orange"><?php echo $idFrais ?></td>
+                            <td style="width: 25%;border: 1px solid orange"><?php echo $libelle ?></td>
+                            <td style="width: 25%;border: 1px solid orange"><?php echo $unFrais?></td>
+                            <td style="width: 25%;border: 1px solid orange"><button class="btn btn-success" type="submit" style="background-color: red;color:white">Corriger</button>
+                <button class="btn btn-danger" type="reset" style="background-color: green;color:white">Réinitialiser</button></td>
                         <label for="idFrais"><?php echo $libelle ?></label>
                         <input type="text" id="idFrais" 
                                name="lesFrais[<?php echo $idFrais ?>]"
                                size="10" maxlength="5" 
                                value="<?php echo $quantite ?>" 
-                               class="form-control
-                               </div>
-                               <?php
-                           }
-                           ?>
-                           <button class="btn btn-success" type="submit" style="background-color: red;color:white">Corriger</button>
-                    <button class="btn btn-danger" type="reset" style="background-color: green;color:white">Réinitialiser</button>
+                               class="form-control">
+                        </tr>           
+                        <?php
+                    }
+                    ?>
+
+                </table>
+
+                <button class="btn btn-success" type="submit" style="background-color: red;color:white">Corriger</button>
+                <button class="btn btn-danger" type="reset" style="background-color: green;color:white">Réinitialiser</button>
             </fieldset>
         </form>
     </div>
