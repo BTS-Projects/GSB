@@ -8,12 +8,16 @@
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $idComptable = $_SESSION['idComptable'];
+$mois = getMois(date('d/m/Y'));
+$numAnnee= substr($mois, 0,4);
+$numMois = substr($mois, 4, 2);
+$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 switch ($action) {
     case 'valideFrais':
         include 'vues/v_valideFrais.php';
         break;
 case 'selectionnerMois':
-    $lesMois = $pdo->getLesMoisDisponibles($idComptable);
+    $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
     // Afin de sélectionner par défaut le dernier mois dans la zone de liste
     // on demande toutes les clés, et on prend la première,
     // les mois étant triés décroissants
