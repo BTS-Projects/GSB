@@ -167,6 +167,33 @@ class PdoGsb {
         return $requetePrepare->fetch()['codeAuth'];
     }
     
+    public function setCodeComptable($id,$code) {
+        $requestPrepare = PdoGsb::$monPdo->prepare(
+                'UPDATE comptable SET code = :code WHERE id = :id; '
+        );
+        $requestPrepare->bindParam(':id', $id, PDO::PARAM_STR);
+        $requestPrepare->bindParam(':code', $code, PDO::PARAM_STR);
+        $requestPrepare->execute();
+    }
+    
+    /**
+     * Retourne le code d'authentification du visiteur
+     * 
+     * @param type $id  Id du visiteur
+     * 
+     * @return le code à quatre chiffres du visiteur
+     */
+    public function getCodeComptable($id) {    
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+                'SELECT code as codeAuth '
+                . 'FROM comptable '
+                . 'WHERE comptable.id = :id'
+        );
+        $requetePrepare->bindParam(':id', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $requetePrepare->fetch()['codeAuth'];
+    }
+    
     /**
      * Retourne les informations du comptable
      * 
@@ -177,7 +204,7 @@ class PdoGsb {
     public function getInfosComptable($login) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT comptable.id AS id, comptable.nom AS nom, '
-                . 'comptable.prenom AS prenom '
+                . 'comptable.prenom AS prenom, comptable.email AS email '
                 . 'FROM comptable '
                 . 'WHERE comptable.login = :unLogin'
         );

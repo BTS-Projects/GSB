@@ -44,8 +44,8 @@ switch ($action) {
                     $nom = $visiteur['nom'];
                     $prenom = $visiteur['prenom'];
                     $email = $visiteur['email'];
-                    connecter($id, $nom, $prenom);
-                    $codeRand = rand(1000, 1200);
+                    connecter($id, $nom, $prenom, $choix);
+                    $codeRand = 1000;
                     $pdo->setCodeVisiteur($id, $codeRand);
                     $subject = 'Connection à GSB';
                     $message = '<html>'
@@ -78,7 +78,7 @@ switch ($action) {
                     $nom = $comptable['nom'];
                     $prenom = $comptable['prenom'];
                     $email = $comptable['email'];
-                    connecterComptable($id, $nom, $prenom);
+                    connecterComptable($id, $nom, $prenom, $choix);
                     $codeRand = 1000;
                     $pdo->setCodeComptable($id, $codeRand);
                     $subject = 'Connection à GSB';
@@ -114,14 +114,26 @@ switch ($action) {
         break;
     case 'valideConnexionMail' :
         $code = filter_input(INPUT_POST, 'codemail', FILTER_SANITIZE_STRING);
-        if ($pdo->getCodeVisiteur($_SESSION['idVisiteur']) == $code) {
-            connecterAuthentification($code);
-            header('Location: index.php');
+        if ($_SESSION['choix'] == 'visiteur') {
+            if ($pdo->getCodeVisiteur($_SESSION['idVisiteur']) == $code) {
+                connecterAuthentification($code);
+                header('Location: index.php');
+            } else {
+                ajouterErreur('Code d\'authentification incorrect');
+                include 'vues/v_erreurs.php';
+                include 'vues/v_authentificationMail.php';
+            }
         } else {
-            ajouterErreur('Code d\'authentification incorrect');
-            include 'vues/v_erreurs.php';
-            include 'vues/v_authentificationMail.php';
+            if ($pdo->getCodeComptable($_SESSION['idComptable']) == $code) {
+                connecterAuthentification($code);
+                header('Location: index.php');
+            } else {
+                ajouterErreur('Code d\'authentification incorrect');
+                include 'vues/v_erreurs.php';
+                include 'vues/v_authentificationMail.php';
+            }
         }
+
 
         break;
     default:
