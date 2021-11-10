@@ -204,7 +204,7 @@ class PdoGsb {
     public function getInfosComptable($login) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT comptable.id AS id, comptable.nom AS nom, '
-                . 'comptable.prenom AS prenom '
+                . 'comptable.prenom AS prenom, comptable.email AS email '
                 . 'FROM comptable '
                 . 'WHERE comptable.login = :unLogin'
         );

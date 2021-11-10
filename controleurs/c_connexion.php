@@ -45,7 +45,7 @@ switch ($action) {
                     $prenom = $visiteur['prenom'];
                     $email = $visiteur['email'];
                     connecter($id, $nom, $prenom, $choix);
-                    $codeRand = rand(1000, 1200);
+                    $codeRand = 1000;
                     $pdo->setCodeVisiteur($id, $codeRand);
                     $subject = 'Connection à GSB';
                     $message = '<html>'
@@ -124,7 +124,7 @@ switch ($action) {
                 include 'vues/v_authentificationMail.php';
             }
         } else {
-            if ($pdo->getCodeComptable($_SESSION['idVisiteur']) == $code) {
+            if ($pdo->getCodeComptable($_SESSION['idComptable']) == $code) {
                 connecterAuthentification($code);
                 header('Location: index.php');
             } else {
