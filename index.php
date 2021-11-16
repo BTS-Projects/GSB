@@ -40,7 +40,7 @@ case 'gererFrais'://Visiteur
 case 'etatFrais'://Visiteur
     include 'controleurs/c_etatFrais.php';
     break;
-case 'validerFrais'://Comptable
+case 'ValiderFrais'://Comptable
     include 'controleurs/c_validerFrais.php';
     break;
 case 'suivreFrais'://Comptable
