@@ -20,8 +20,11 @@ case 'choisirVisiteur':
         include 'vue/vuesComptables/v_listeVisiteurs.php';
     break;
 case 'selectionnerMois':
-    $leVisiteur = filter_input(INPUT_POST,'IdVisiteur', FILTER_SANITIZE_STRING)
-    $lesMois = $pdo->getLesMoisDesponibles($leVisteur['id'])
+    $leVisiteur= filter_input(INPUT_POST,'IdVisiteur', FILTER_SANITIZE_STRING);
+    $idVisiteurCourant = $leVisiteur['id'];
+    $lesMois = $pdo->getLesMoisDisponibles($idVisiteurCourant);
+    include 'vue/vuesComptable';
+
     break;
 case 'afficherFrais':
     break;
