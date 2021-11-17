@@ -106,7 +106,7 @@ class PdoGsb {
     public function getNomVisiteur(){
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'Select visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
-                . 'From visiteur '
+                . 'From visiteur ' 
         );
         $requetePrepare->execute();
        return $requetePrepare->fetchAll();

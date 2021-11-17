@@ -1,18 +1,12 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $idComptable = $_SESSION['idComptable'];
 $mois = getMois(date('d/m/Y'));
 $numAnnee= substr($mois, 0,4);
 $numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-$lesNomsvisiteurs = $pdo->getNomVisiteur();
+$lesNomsvisiteurs = $pdo->getLesIdsNomsPrenomsVisiteurs();
 switch ($action) {
     case 'valideFrais':
         include 'vues/v_valideFrais.php';
