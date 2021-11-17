@@ -11,24 +11,26 @@
         <h3>Sélectionner un visiteur : </h3>
     </div>
     <div class="col-md-4">
+        <form action="index.php?uc=suivrePaiementFrais&action=selectionnerMois" 
+              method="post" role="form">
             <div class="form-group">
                 <label for="lstMois" accesskey="n">Mois : </label>
                 <select id="lstMois" name="lstMois" class="form-control">
                     <?php
                     foreach ($lesVisiteurs as $unVisiteur) {
-                        $mois = $unMois['mois'];
-                        $numAnnee = $unMois['numAnnee'];
-                        $numMois = $unMois['numMois'];
-                        if ($mois == $moisASelectionner) {
+                        $id = $unVisiteur['id'];
+                        $nom = $unVisiteur['nom'];
+                        $prenom = $unVisiteur['prenom'];
+                        if ($id == $visiteurASelectionner['id']) {
                             ?>
-                            <option selected value="<?php echo $mois ?>">
-                                <?php echo $numMois . '/' . $numAnnee ?> </option>
-                                <?php
+                            <option selected value="<?php echo $id ?>">
+                                <?php echo $nom . ' ' . $prenom ?> </option>
+                            <?php
                         } else {
                             ?>
-                            <option value="<?php echo $mois ?>">
-                                <?php echo $numMois . '/' . $numAnnee ?> </option>
-                                <?php
+                            <option value="<?php echo $id ?>">
+                                <?php echo $nom . ' ' . $prenom ?> </option>
+                            <?php
                         }
                     }
                     ?>    

@@ -19,6 +19,8 @@ case 'choisirVisiteur':
         $visiteurASelectionner = $lesCles[0];     
         include 'vue/vuesComptables/v_listeVisiteurs.php';
     break;
+case 'selectionnerMois':
+    break;
 case 'afficherFrais':
     break;
 case 'changerEtat':
