@@ -9,13 +9,12 @@
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
     <select id="lstemp" name="lstemp" class="form-control" style="width: 150px">
         <?php
-        foreach ($lesvisiteurs as $visiteurs) {
-            $visiteur = visiteurs['visiteur'];
-            $prenom = $visiteurs['nom'];
-            $nom = $visiteurs['prenom'];
+        foreach ($lesNomsvisiteurs as $visiteurs) {
+            $visiteur = $visiteurs['nom']
+            
             ?>
 
-            <option selected value= "<?php echo $visiteur ?>">
+            <option selected value= "<?php echo $visiteur  ?>">
 
                 <?php
             }
@@ -54,13 +53,13 @@
               action="index.php?uc=gererFrais&action=validerMajFraisForfait" 
               role="form">
             <p style="margin-left: 10px">Forfait Etape</p>
-            <input type="text" style="margin-left: 10px">
+            <input type="text" style="margin-left: 10px;border-radius: 5px">
             <p style="margin-left: 10px">Frais Kilometrique</p>
-            <input type="text" style="margin-left: 10px">
+            <input type="text" style="margin-left: 10px;border-radius: 5px">
             <p style="margin-left: 10px">Nuitée Hôtel</p>
-            <input type="text" style="margin-left: 10px">
+            <input type="text" style="margin-left: 10px;border-radius: 5px">
             <p style="margin-left: 10px">Repas Restaurant</p>
-            <input type="text" style="margin-left: 10px">
+            <input type="text" style="margin-left: 10px;border-radius: 5px">
             <br>
             <button class="btn btn-success" type="submit" style="background-color: red;color:white;margin-top: 5px;margin-left: 10px">Corriger</button>
             <button class="btn btn-danger" type="reset" style="background-color: green;color:white;margin-top: 5px">Réinitialiser</button>
@@ -72,39 +71,45 @@
                         </tr>
                     </thead>
                     <tr style="border: 1px solid black">
-                        <td style="width: 25%;border: 1px solid orange">Date</td>
-                        <td style="width: 25%;border: 1px solid orange">Libellé</td>
-                        <td style="width: 25%;border: 1px solid orange">Montant</td>
-                        <td style="width: 25%;border: 1px solid orange"></td>
+                        <td style="width: 28%;border: 1px solid orange">Date</td>
+                        <td style="width: 28%;border: 1px solid orange">Libellé</td>
+                        <td style="width: 28%;border: 1px solid orange">Montant</td>
+                        <td style="width: 15%;border: 1px solid orange"></td>
                     </tr>
                     <?php
+                    //on recupere les frais hors forfait pour pouvoir les mettre dans un tableaux
                     foreach ($lesFraisForfait as $unFrais) {
-                        $idFrais = $unFrais['idfrais'];
+                        $Mois = $unFrais['mois'];
                         $libelle = htmlspecialchars($unFrais['libelle']);
                         $quantite = $unFrais['quantite'];
                         ?>
+                        <!-- les lignes d'instrucitions suivante servent à créer les lignes pour chaque frais-->
                         <tr style="border: 1px solid orange">
-                            <td style="width: 25%;border: 1px solid orange"><?php echo $idFrais ?></td>
+                            <td style="width: 25%;border: 1px solid orange"><input type="text" style="border-radius: 5px" value="<?php echo $idFrais ?>"></td>
                             <td style="width: 25%;border: 1px solid orange"><?php echo $libelle ?></td>
-                            <td style="width: 25%;border: 1px solid orange"><?php echo $unFrais?></td>
-                            <td style="width: 25%;border: 1px solid orange"><button class="btn btn-success" type="submit" style="background-color: red;color:white">Corriger</button>
-                <button class="btn btn-danger" type="reset" style="background-color: green;color:white">Réinitialiser</button></td>
-                        <label for="idFrais"><?php echo $libelle ?></label>
+                            <td style="width: 25%;border: 1px solid orange"><?php echo $unFrais ?></td>
+                            <td style="width: 25%;border: 1px solid orange"><button class="btn btn-success" type="submit" style="background-color: red;color:white;border-radius: 5px">Corriger</button>
+                                <button class="btn btn-danger" type="reset" style="background-color: green;color:white;border-radius: 5px">Réinitialiser</button></td>
+                        </tr>
+    <!--                        <label for="idFrais"><?php echo $libelle ?></label>
                         <input type="text" id="idFrais" 
                                name="lesFrais[<?php echo $idFrais ?>]"
                                size="10" maxlength="5" 
                                value="<?php echo $quantite ?>" 
-                               class="form-control">
-                        </tr>           
+                               class="form-control">-->
+
                         <?php
                     }
                     ?>
 
                 </table>
 
+
                 <button class="btn btn-success" type="submit" style="background-color: red;color:white">Corriger</button>
                 <button class="btn btn-danger" type="reset" style="background-color: green;color:white">Réinitialiser</button>
             </fieldset>
+            <label for="nbjustificatif">Nombre de Justificatifs: </label>
+            <input type="text" style="margin-left:5px;width: 30px;border-radius: 5px">    
         </form>
     </div>
 </div>
