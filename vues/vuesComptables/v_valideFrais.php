@@ -9,12 +9,13 @@
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
     <select id="lstemp" name="lstemp" class="form-control" style="width: 200px">
         <?php
+        //on recuperer les visiteurs pour les pouvoir les afficher
         foreach ($lesNomsvisiteurs as $visiteurs) {
             $nom = $visiteurs['nom'];
             $prenom = $visiteurs['prenom'];
             $id = $visiteurs['id'];
-            
                     ?>
+        <!--on utilise l'id des visiteurs pour pouvoir en suite les afficher avec leur nom/prenom -->
         <option value= "<?php echo $id?>" href="index.php?uc=validerfrais&action=selectionnerMois">
         
             <?php echo $nom . " ". $prenom?> </option>
@@ -54,7 +55,7 @@
     <h3>Eléments forfaitisés</h3>
     <div class="col-md-4">
         <form method="post" 
-              action="index.php?uc=gererFrais&action=validerMajFraisForfait" 
+              action="index.php?uc=gererFrais&action=recupererfraisforfait" 
               role="form">
             <p style="margin-left: 10px">Forfait Etape</p>
             <input type="text" style="margin-left: 10px;border-radius: 5px">
@@ -65,8 +66,8 @@
             <p style="margin-left: 10px">Repas Restaurant</p>
             <input type="text" style="margin-left: 10px;border-radius: 5px">
             <br>
-            <button class="btn btn-success" type="submit" style="background-color: red;color:white;margin-top: 5px;margin-left: 10px">Corriger</button>
-            <button class="btn btn-danger" type="reset" style="background-color: green;color:white;margin-top: 5px">Réinitialiser</button>
+            <button class="btn btn-success" type="submit" style="background-color: green;color:white;margin-top: 5px;margin-left: 10px">Corriger</button>
+            <button class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</button>
             <fieldset>
                 <table style="border: 1px solid orange ">
                     <thead style="background-color:orange;border: 1px solid orange">
@@ -109,8 +110,8 @@
                 </table>
 
 
-                <button class="btn btn-success" type="submit" style="background-color: red;color:white">Corriger</button>
-                <button class="btn btn-danger" type="reset" style="background-color: green;color:white">Réinitialiser</button>
+                <button class="btn btn-success" type="submit" style="background-color: green;color:white;border-radius: 5px">Valider</button>
+                <button class="btn btn-danger" type="reset" style="background-color: red;color:white;border-radius: 5px">Réinitialiser</button>
             </fieldset>
             <label for="nbjustificatif">Nombre de Justificatifs: </label>
             <input type="text" style="margin-left:5px;width: 30px;border-radius: 5px">    

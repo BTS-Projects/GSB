@@ -40,5 +40,5 @@ case 'voirEtatFrais':
     $montantValide = $lesInfosFicheFrais['montantValide'];
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
-    include 'vues/v_etatFrais.php';
+    include 'vues/vuesVisiteurs/v_etatFrais.php';
 }
