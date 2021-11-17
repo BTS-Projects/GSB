@@ -9,7 +9,7 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $lesNomsvisiteurs = $pdo->getLesIdsNomsPrenomsVisiteurs();
 switch ($action) {
     case 'valideFrais':
-        include 'vues/v_valideFrais.php';
+        include 'vues/vuesComptables/v_valideFrais.php';
         break;
 case 'selectionnerMois':
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
@@ -36,5 +36,5 @@ case 'voirEtatFrais':
     $montantValide = $lesInfosFicheFrais['montantValide'];
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
-    include 'vues/v_valideFrais';
+    include 'vues/vuesComptables/v_valideFrais';
 }

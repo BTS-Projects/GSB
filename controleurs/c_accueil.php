@@ -15,7 +15,7 @@
  */
 
 if ($estConnecte) {
-    include 'vues/v_accueil.php';
+    include 'vues/vuesVisiteurs/v_accueil.php';
 } elseif ($estConnecteComptable) {
     include'vues/vuesComptables/v_accueil_comptable.php';
 } else {
