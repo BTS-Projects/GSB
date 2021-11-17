@@ -12,53 +12,51 @@ function Header()
     // Line break
     $this->Ln(50);
 }
-function LoadData($file)
-{
-    // Read file lines
-    $lines = file($file);
-    $data = array();
-    foreach($lines as $line)
-        $data[] = explode(';',trim($line));
-    return $data;
-}
 
-function BasicTable($header, $data)
+function GrandTableau($header)
 {
-    // Header
-    foreach($header as $col)
-        $this->SetX(-190);
-        $this->Cell(171,6,$col,1,0,'C');
-        $this->SetFont('times','B',14);
-        $this->SetTextColor(220,50,50);
+    //Header
+    $this->SetTextColor(25,65,115);
+    $this->SetFont('times','B',13);
+    $this->SetX(-190);
+    $this->Cell(171,6,"REMBOURSEMENT DE FRAIS ENGAGES",1,0,'C');
     $this->Ln();
+    
     // Data
-    foreach($data as $row)
-    {
-        $this->SetX(-190);
-        foreach($row as $col)
-            $this->Cell(171,134,$col,1);
-        $this->Ln();
-    }
-}
-
-// Page footer
-function Footer()
-{
-    // Position at 1.5 cm from bottom
-    $this->SetY(-15);
-    // Arial italic 8
-    $this->SetFont('Arial','I',8);
+    $this->SetTextColor(50,50,50);
+    
+    $this->Rect(20, 66, 171, 134);
+    $this->SetDrawColor(228,228,228);
+    $this->Line(20,69,191,69);
+    $this->SetDrawColor(0,0,0);
     
 }
-}
 
+
+public function ContenuTablo($header){
+    //Header
+    $this->SetFont('times','',12);
+        $this->SetY(75);
+        $this->SetX(-190);
+        $this->Cell(0,0,"",0,0,'C');
+    
+    // Data
+    $this->SetTextColor(50,50,50);
+    $this->SetX(-180);
+    $this->SetDrawColor(0,0,0);
+    $this->Cell(25,10,"",0,0);
+    }
+}
 // Instanciation of inherited class
 $pdf = new PDF();
 $pdf->AddPage();
-$header = array(' REMBOURSEMENT DE FRAIS ENGAGES');
 
-$data = $pdf->LoadData('E:\BTS SIO 2\AP\CONTEXTE1\GSB_AppliMVC\tests\pdf\test.txt');
-$pdf->BasicTable($header,$data);
+$headerGrdTablo = array(' REMBOURSEMENT DE FRAIS ENGAGES');
+$headerContenuTablo = array('');
+
+$pdf->GrandTableau($headerGrdTablo);
+$pdf->ContenuTablo($headerContenuTablo);
+
 
 $pdf->Output();
 ?>
