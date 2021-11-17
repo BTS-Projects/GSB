@@ -3,23 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/vues/v_listeMois.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_accueil.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/vues/v_valideFrais.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_etatFrais.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_suivrePaiementFrais.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/tests/pdf/fpdf.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_connexion.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_deconnexion.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/includes/class.pdogsb.inc.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_validerFrais.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/index.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_gererFrais.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/tests/pdf/fpdf.css</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/vues/v_choixVisiteurMois.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/includes/fct.inc.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/vues/v_listeFraisForfait.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/tests/pdf/testPdf.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_connexion.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/index.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_etatFraisComptable.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_accueil_comptable.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/v_authentificationMail.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/v_listeMois.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_etatFrais.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/v_entete.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/includes/fct.inc.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_suivrePaiementFrais.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_validerFrais.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesVisiteurs/v_etatFrais.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/includes/class.pdogsb.inc.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_listeVisiteurs.php</file>
         </group>
     </open-files>
 </project-private>
