@@ -8,8 +8,6 @@ function Header()
 {
     // Logo
     $this->Image('logo.png',90,30,30);
-    // Arial bold 15
-    $this->SetFont('Arial','B',15);
     
     // Line break
     $this->Ln(50);
@@ -28,15 +26,17 @@ function BasicTable($header, $data)
 {
     // Header
     foreach($header as $col)
-        $this->SetX(-180);
-        $this->Cell(150,7,$col,1,0,'C');
+        $this->SetX(-190);
+        $this->Cell(171,6,$col,1,0,'C');
+        $this->SetFont('times','B',14);
+        $this->SetTextColor(220,50,50);
     $this->Ln();
     // Data
     foreach($data as $row)
     {
-        $this->SetX(-180);
+        $this->SetX(-190);
         foreach($row as $col)
-            $this->Cell(40,6,$col,1);
+            $this->Cell(171,134,$col,1);
         $this->Ln();
     }
 }
@@ -56,7 +56,7 @@ function Footer()
 $pdf = new PDF();
 $pdf->AddPage();
 $header = array(' REMBOURSEMENT DE FRAIS ENGAGES');
-$pdf->SetFont('times','',14);
+
 $data = $pdf->LoadData('E:\BTS SIO 2\AP\CONTEXTE1\GSB_AppliMVC\tests\pdf\test.txt');
 $pdf->BasicTable($header,$data);
 
