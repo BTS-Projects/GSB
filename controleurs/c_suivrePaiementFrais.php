@@ -19,5 +19,6 @@ case 'afficherFrais':
 case 'changerEtat':
     
     break;
-case
+case "":
+    break;
 }
