@@ -93,12 +93,12 @@
                                 </a>
                             </li>
                             <li <?php if ($uc == 'validerFrais') { ?>class="active"<?php } ?>>
-                                <a href="index.php?uc=validerFrais&action=selectionnerMois" style = "color : #ff9933">
+                                <a href="index.php?uc=validerFrais&action=valideFrais" style = "color : #ff9933">
                                     <span class="glyphicon glyphicon-pencil"  style = "color : #ff9933" ></span>
                                     Valider les fiches de frais
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'suivrePaiementFrais') { ?>class="active"<?php } ?>>
+                            <li <?php if ($uc == 'suivreFrais') { ?>class="active"<?php } ?>>
                                 <a href="index.php?uc=suivrePaiementFrais&action=choisirVisiteur" style = "color : #ff9933">
                                     <span class="glyphicon glyphicon-list-alt" style = "color : #ff9933"></span>
                                     Suivre les paiements de fiche de frais

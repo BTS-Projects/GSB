@@ -1,23 +1,19 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $idComptable = $_SESSION['idComptable'];
 $mois = getMois(date('d/m/Y'));
 $numAnnee= substr($mois, 0,4);
 $numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-$lesNomsvisiteurs = $pdo->getNomVisiteur();
+$lesNomsvisiteurs = $pdo->getTableauVisiteur();
 switch ($action) {
     case 'valideFrais':
-        include 'vues/v_valideFrais.php';
+        include 'vues/vuesComptables/v_valideFrais.php';
         break;
 case 'selectionnerMois':
+    
+    $idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
     // Afin de sélectionner par défaut le dernier mois dans la zone de liste
     // on demande toutes les clés, et on prend la première,
@@ -26,7 +22,6 @@ case 'selectionnerMois':
     $moisASelectionner = $lesCles[0];
     include 'vues/v_listeMois.php';
     break;
-
 
 case 'voirEtatFrais':
     $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
@@ -42,5 +37,5 @@ case 'voirEtatFrais':
     $montantValide = $lesInfosFicheFrais['montantValide'];
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
-    include 'vues/v_valideFrais';
+    include 'vues/vuesComptables/v_valideFrais';
 }
