@@ -142,6 +142,15 @@ class PdoGsb {
         return $requetePrepare->fetch()['mdp'];
     }
     
+    public function getLesIdsNomsPrenomsVisiteurs() {
+        $requestPrepare = PdoGsb::$monPdo->prepare (
+                'SELECT visiteur.id as is, visiteur.nom as nom, visiteur.prenom as prenom'
+                . 'FROM visiteur'
+        );
+        $requestPrepare->execute();
+        return $requestPrepare->fetch();
+    }
+    
     /**
      * Met à jour le code d'authentification du visiteur
      * 
