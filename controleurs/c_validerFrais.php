@@ -7,6 +7,7 @@ $numAnnee= substr($mois, 0,4);
 $numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $lesNomsvisiteurs = $pdo->getTableauVisiteur();
+//$lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
 switch ($action) {
     case 'valideFrais':
         include 'vues/vuesComptables/v_valideFrais.php';
@@ -20,7 +21,6 @@ case 'selectionnerMois':
     $moisASelectionner = $lesCles[0];
     include 'vues/v_listeMois.php';
     break;
-
 
 case 'voirEtatFrais':
     $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
