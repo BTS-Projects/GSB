@@ -5,7 +5,6 @@
  * and open the template in the editor.
  */
 ?>
-<div>    
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
     <select id="lstemp" name="lstemp" class="form-control" style="width: 200px" onclick="clickSelectionnerMois()">
         <?php
@@ -117,4 +116,3 @@
             <input type="text" style="margin-left:5px;width: 30px;border-radius: 5px">    
         </form>
     </div>
-</div>
