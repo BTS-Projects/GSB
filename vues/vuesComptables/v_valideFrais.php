@@ -6,7 +6,7 @@
  */
 ?>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
-    <select id="lstemp" name="lstemp" class="form-control" style="width: 200px" onclick="clickSelectionnerMois()">
+    <select id="lstemp" name="lstemp" class="form-control" style="width: 200px" onchange="clickSelectionnerMois()">
         <?php
         //on recuperer les visiteurs pour les pouvoir les afficher
         foreach ($lesNomsvisiteurs as $visiteurs) {
