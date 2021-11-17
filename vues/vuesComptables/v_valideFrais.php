@@ -5,9 +5,9 @@
  * and open the template in the editor.
  */
 ?>
-<div class="row">    
+<div>    
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
-    <select id="lstemp" name="lstemp" class="form-control" style="width: 200px" href="index.php?uc=validerFrais&action=selectionnerMois">
+    <select id="lstemp" name="lstemp" class="form-control" style="width: 200px" onclick="clickSelectionnerMois()">
         <?php
         //on recuperer les visiteurs pour les pouvoir les afficher
         foreach ($lesNomsvisiteurs as $visiteurs) {
