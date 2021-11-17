@@ -103,7 +103,7 @@ class PdoGsb {
 
       }* */
     /* Fonction permettant d'avoir tous les noms de visiteurs*/
-    public function getNomVisiteur(){
+    public function getTableauVisiteur(){
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'Select visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
                 . 'From visiteur ' 
@@ -148,7 +148,7 @@ class PdoGsb {
                 . 'FROM visiteur'
         );
         $requestPrepare->execute();
-        return $requestPrepare->fetch();
+        return $requestPrepare->fetchAll();
     }
     
     /**

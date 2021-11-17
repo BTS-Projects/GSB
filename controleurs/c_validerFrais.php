@@ -6,7 +6,7 @@ $mois = getMois(date('d/m/Y'));
 $numAnnee= substr($mois, 0,4);
 $numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-$lesNomsvisiteurs = $pdo->getLesIdsNomsPrenomsVisiteurs();
+$lesNomsvisiteurs = $pdo->getTableauVisiteur();
 switch ($action) {
     case 'valideFrais':
         include 'vues/vuesComptables/v_valideFrais.php';
