@@ -7,12 +7,13 @@ $numAnnee= substr($mois, 0,4);
 $numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $lesNomsvisiteurs = $pdo->getTableauVisiteur();
-//$lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
 switch ($action) {
     case 'valideFrais':
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
 case 'selectionnerMois':
+    
+    $idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
     // Afin de sélectionner par défaut le dernier mois dans la zone de liste
     // on demande toutes les clés, et on prend la première,
