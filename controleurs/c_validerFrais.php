@@ -12,6 +12,8 @@ switch ($action) {
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
 case 'selectionnerMois':
+    
+    $idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
     // Afin de sélectionner par défaut le dernier mois dans la zone de liste
     // on demande toutes les clés, et on prend la première,
@@ -20,7 +22,6 @@ case 'selectionnerMois':
     $moisASelectionner = $lesCles[0];
     include 'vues/v_listeMois.php';
     break;
-
 
 case 'voirEtatFrais':
     $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
