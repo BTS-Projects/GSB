@@ -7,7 +7,7 @@
 ?>
 <div class="row">    
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
-    <select id="lstemp" name="lstemp" class="form-control" style="width: 150px">
+    <select id="lstemp" name="lstemp" class="form-control" style="width: 200px">
         <?php
         foreach ($lesNomsvisiteurs as $visiteurs) {
             $nom = $visiteurs['nom'];
@@ -15,11 +15,12 @@
             $id = $visiteurs['id'];
             
                     ?>
-            <option selected="id" value= "<?php echo $nom . " ". $prenom ?>" href="index.php?uc=validerfrais&action=selectionnerMois">
+        <option value= "<?php echo $id?>" href="index.php?uc=validerfrais&action=selectionnerMois">
+        
+            <?php echo $nom . " ". $prenom?> </option>
 
                 <?php
-            
-            
+
             }
             ?>
     </select>
