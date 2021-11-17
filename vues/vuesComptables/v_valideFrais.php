@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 ?>
+<script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
     <select id="lstemp" name="lstemp" class="form-control" style="width: 200px" change="clickSelectionnerMois()">
         <?php
