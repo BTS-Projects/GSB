@@ -10,13 +10,16 @@
     <select id="lstemp" name="lstemp" class="form-control" style="width: 150px">
         <?php
         foreach ($lesNomsvisiteurs as $visiteurs) {
-            $visiteur = $visiteurs['nom']
+            $nom = $visiteurs['nom'];
+            $prenom = $visiteurs['prenom'];
+            $id = $visiteurs['id'];
             
-            ?>
-
-            <option selected value= "<?php echo $visiteur  ?>">
+                    ?>
+            <option selected="id" value= "<?php echo $nom . " ". $prenom ?>" href="index.php?uc=validerfrais&action=selectionnerMois">
 
                 <?php
+            
+            
             }
             ?>
     </select>
