@@ -67,7 +67,7 @@
                 <label for="txtMontantHF">Montant : </label>
                 <div class="input-group">
                     <span class="input-group-addon">€</span>
-                    <input type="text" id="txtMontantHF" name="montant" 
+                    <input type="number" min="0" id="txtMontantHF" name="montant" 
                            class="form-control" value="">
                 </div>
             </div>
