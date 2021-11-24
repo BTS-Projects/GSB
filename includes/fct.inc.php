@@ -112,6 +112,20 @@ function getMois($date)
     return $annee . $mois;
 }
 
+function getMoisPrecedent($date) {
+    @list($jour, $mois, $annee) = explode('/', $data);
+    unset($jour);
+    $mois = strval(intval($mois)-1);
+    if (strlen($mois) == 0) {
+        $mois = '12';
+        $annee = strval(intval($annee) -1);
+    }
+    if (strlen($mois) == 1) {
+        $mois = '0' . $mois;
+    }
+    return $annee . $mois;
+}
+
 /* gestion des erreurs */
 
 /**
