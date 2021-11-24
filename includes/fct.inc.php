@@ -247,7 +247,7 @@ function valideInfosFrais($dateFrais, $libelle, $montant)
     } elseif (!is_numeric($montant)) {
         ajouterErreur('Le champ montant doit être numérique');
     } elseif ( $montant <= 0 ){
-        ajouteErreur('Le champ montant ne peut pas être nul ou inférieur à zéro');
+        ajouterErreur('Le champ montant ne peut pas être nul ou inférieur à zéro');
     }
 }
 
