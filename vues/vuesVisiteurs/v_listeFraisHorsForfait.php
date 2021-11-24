@@ -55,7 +55,7 @@
               method="post" role="form">
             <div class="form-group">
                 <label for="txtDateHF">Date (jj/mm/aaaa): </label>
-                <input type="text" id="txtDateHF" name="dateFrais" 
+                <input type="date" id="txtDateHF" name="dateFrais" 
                        class="form-control" id="text">
             </div>
             <div class="form-group">
