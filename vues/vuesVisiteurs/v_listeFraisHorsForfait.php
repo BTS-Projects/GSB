@@ -56,12 +56,12 @@
             <div class="form-group">
                 <label for="txtDateHF">Date (jj/mm/aaaa): </label>
                 <input type="date" id="txtDateHF" name="dateFrais" 
-                       class="form-control" id="text">
+                       class="form-control">
             </div>
             <div class="form-group">
                 <label for="txtLibelleHF">Libellé</label>             
                 <input type="text" id="txtLibelleHF" name="libelle" 
-                       class="form-control" id="text">
+                       class="form-control">
             </div> 
             <div class="form-group">
                 <label for="txtMontantHF">Montant : </label>
