@@ -54,13 +54,13 @@
           role="form">
         <!--les variables sont encore à ajouter pour pouvoir les remplir automatiquement -->
         <p style="margin-left: 10px">Forfait Etape</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px">
+        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
         <p style="margin-left: 10px">Frais Kilometrique</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px">
+        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
         <p style="margin-left: 10px">Nuitée Hôtel</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px">
+        <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
         <p style="margin-left: 10px">Repas Restaurant</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px">
+        <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
         <br>
         <button class="btn btn-success" type="submit" style="background-color: green;color:white;margin-top: 5px;margin-left: 10px">Corriger</button>
         <button class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</button>
@@ -87,7 +87,7 @@
                     ?>
                     <!-- les lignes d'instrucitions suivante servent à créer les lignes pour chaque frais-->
                     <tr style="border: 1px solid orange">
-                        <td style="width: 25%;border: 1px solid orange"><input type="text" style="border-radius: 5px" value="<?php echo $idFrais ?>"></td>
+                        <td style="width: 25%;border: 1px solid orange"><input type="decimal" style="border-radius: 5px" maxlength="5,2" value="<?php echo $idFrais ?>"></td>
                         <td style="width: 25%;border: 1px solid orange"><?php echo $libelle ?></td>
                         <td style="width: 25%;border: 1px solid orange"><?php echo $unFrais ?></td>
                         <td style="width: 25%;border: 1px solid orange"><button class="btn btn-success" type="submit" style="background-color: red;color:white;border-radius: 5px">Corriger</button>
