@@ -26,22 +26,15 @@
 <label for="lstMois" accesskey="n" style="margin-left:20px">Mois : </label>
 <select id="lstMois" name="lstMois" class="form-control" style="width: 100px">
     <?php
-    $numMois = $unMois['numMois'];
     foreach ($lesMois as $unMois) {
-        $mois = $unMois['mois'];
+        $numMois = $unMois['numMois'];
         $numAnnee = $unMois['numAnnee'];
-        if ($mois == $moisASelectionner) {
-            ?>
-            <option selected value="<?php echo $mois ?>">
-                <?php echo $numMois . '/' . $numAnnee ?> </option>
-            <?php
-        } else {
+        if($id == $unMois['idvisiteur'])
             ?>
             <option value="<?php echo $mois ?>">
                 <?php echo $numMois . '/' . $numAnnee ?> </option>
             <?php
         }
-    }
     ?>    
 </select>   
 <h2>Valider la fiche de frais
