@@ -597,10 +597,27 @@ class PdoGsb {
         return $laLigne;
     }
     
-    public function getLesInfosFicheFraisParEtat($mois,$etat) {
-        
+    public function getLesInfosFicheFraisPaiement($idVisiteur, $mois) {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+                'SELECT fichefrais.idetat as idEtat, '
+                . 'fichefrais.datemodif as dateModif,'
+                . 'fichefrais.nbjustificatifs as nbJustificatifs, '
+                . 'fichefrais.montantvalide as montantValide, '
+                . 'fichefrais.idetat as idEtat, '
+                . 'etat.libelle as libEtat '
+                . 'FROM fichefrais '
+                . 'INNER JOIN etat ON fichefrais.idetat = etat.id '
+                . 'WHERE fichefrais.idvisiteur = :unIdVisiteur '
+                . 'AND fichefrais.mois = :unMois '
+                . 'AND fichefrais.idetat IN ("VA","RB","MP")'
+        );
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $laLigne = $requetePrepare->fetch();
+        return $laLigne;
     }
-
+    
     /**
      * Modifie l'état et la date de modification d'une fiche de frais.
      * Modifie le champ idEtat et met la date de modif à aujourd'hui.
