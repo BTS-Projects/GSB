@@ -5,7 +5,6 @@
  * and open the template in the editor.
  */
 ?>
-
 <form role="form" method="post">
     <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
