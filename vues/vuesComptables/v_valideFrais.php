@@ -5,38 +5,50 @@
  * and open the template in the editor.
  */
 ?>
-<script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
-<label for="lstemp" accesskey="l">choisir le visiteur :</label>
-<select id="lstemp" name="lstemp" class="form-control" style="width: 200px" onchange="clickSelectionnerMois()">
-    <?php
-    //on recuperer les visiteurs pour les pouvoir les afficher
-    foreach ($lesNomsvisiteurs as $visiteurs) {
-        $nom = $visiteurs['nom'];
-        $prenom = $visiteurs['prenom'];
-        $id = $visiteurs['id'];
-        ?>
-        <!--on utilise l'id des visiteurs pour pouvoir en suite les afficher avec leur nom/prenom -->
-        <option value= "<?php echo $id ?>" >
-            <?php echo $nom . " " . $prenom ?> </option>
+<form role="form" method="post" action="index.php?uc=validerFrais&action=selectionnerMois">
+    <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
+    <label for="lstemp" accesskey="l">choisir le visiteur :</label>
+    <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" onchange="submit()">
         <?php
-    }
-    ?>
-</select>
-<!-- liste des Mois par rapport au employées -->
-<label for="lstMois" accesskey="n" style="margin-left:20px">Mois : </label>
-<select id="lstMois" name="lstMois" class="form-control" style="width: 100px">
-    <?php
-    foreach ($lesMois as $unMois) {
-        $numMois = $unMois['numMois'];
-        $numAnnee = $unMois['numAnnee'];
-        if($id == $unMois['idvisiteur'])
+        //on recuperer les visiteurs pour les pouvoir les afficher
+        foreach ($lesNomsvisiteurs as $visiteurs) {
+            $nom = $visiteurs['nom'];
+            $prenom = $visiteurs['prenom'];
+            $id = $visiteurs['id'];
             ?>
-            <option value="<?php echo $mois ?>">
-                <?php echo $numMois . '/' . $numAnnee ?> </option>
+            <!--on utilise l'id des visiteurs pour pouvoir en suite les afficher avec leur nom/prenom -->
+            <option value= "<?php echo $id ?>" >
+                <?php echo $nom . " " . $prenom ?> </option>
             <?php
         }
-    ?>    
-</select>   
+        ?>
+    </select>
+    <!-- liste des Mois par rapport au employées -->
+
+    <div class="form-group">
+        <label for="lstMois" accesskey="n">Mois : </label>
+        <select id="lstMois" name="lstMois" class="form-control" style="width:100px">
+            <?php
+            foreach ($mois as $unMois) {
+                $numAnnee = $unMois['numAnnee'];
+                $numMois = $unMois['numMois'];
+                if ($mois == $moisASelectionner) {
+                    ?>
+                    <option selected value="<?php echo $mois ?>">
+                        <?php echo $numMois . '/' . $numAnnee ?> </option>
+                    <?php
+                } else {
+                    ?>
+                    <option value="<?php echo $mois ?>">
+                        <?php echo $numMois . '/' . $numAnnee ?> </option>
+                    <?php
+                }
+            }
+            ?>    
+
+        </select>
+    </div>
+</form>
 <h2>Valider la fiche de frais
     <?php echo $numMois . '-' . $numAnnee ?>
 </h2>
