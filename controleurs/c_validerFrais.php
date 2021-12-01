@@ -22,7 +22,7 @@ case 'selectionnerMois':
     // les mois étant triés décroissants
     $lesCles = array_keys($lesMois);
     $moisASelectionner = $lesCles[0];
-    include 'vues/v_listeMois.php';
+    include 'vues/v_valideFrais.php';
     break;
 
 case 'voirEtatFrais':
