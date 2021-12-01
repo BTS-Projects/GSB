@@ -7,7 +7,7 @@
 ?>
 <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
 <label for="lstemp" accesskey="l">choisir le visiteur :</label>
-<select id="lstemp" name="lstemp" class="form-control" style="width: 200px" onchange="clickSelectionnerMois()">
+    <select id="lstemp" name="lstemp" class="form-control" style="width: 200px" onchange="index.php?uc=validerFrais&action=selectionnerMois">
     <?php
     //on recuperer les visiteurs pour les pouvoir les afficher
     foreach ($lesNomsvisiteurs as $visiteurs) {
@@ -23,20 +23,30 @@
     ?>
 </select>
 <!-- liste des Mois par rapport au employées -->
-<label for="lstMois" accesskey="n" style="margin-left:20px">Mois : </label>
-<select id="lstMois" name="lstMois" class="form-control" style="width: 100px">
-    <?php
-    foreach ($lesMois as $unMois) {
-        $numMois = $unMois['numMois'];
-        $numAnnee = $unMois['numAnnee'];
-        if($id == $unMois['idvisiteur'])
-            ?>
-            <option value="<?php echo $mois ?>">
-                <?php echo $numMois . '/' . $numAnnee ?> </option>
-            <?php
-        }
-    ?>    
-</select>   
+<div class="form-group">
+                <label for="lstMois" accesskey="n">Mois : </label>
+                <select id="lstMois" name="lstMois" class="form-control" style="width:100px">
+                    <?php
+                    foreach ($lesMois as $unMois) {
+                        $mois = $unMois['mois'];
+                        $numAnnee = $unMois['numAnnee'];
+                        $numMois = $unMois['numMois'];
+                        if ($mois == $moisASelectionner) {
+                            ?>
+                            <option selected value="<?php echo $mois ?>">
+                                <?php echo $numMois . '/' . $numAnnee ?> </option>
+                            <?php
+                        } else {
+                            ?>
+                            <option value="<?php echo $mois ?>">
+                                <?php echo $numMois . '/' . $numAnnee ?> </option>
+                            <?php
+                        }
+                    }
+                    ?>    
+
+                </select>
+            </div>  
 <h2>Valider la fiche de frais
     <?php echo $numMois . '-' . $numAnnee ?>
 </h2>
