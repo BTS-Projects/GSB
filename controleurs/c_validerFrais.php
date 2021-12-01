@@ -14,7 +14,8 @@ switch ($action) {
         break;
     
 case 'selectionnerMois':
-    $idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
+    //$idVisiteur = filter_input(INPUT_POST, 'lstemp', FILTER_SANITIZE_STRING);
+    $idVisiteur = $_POST['lstemp'];
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
     // Afin de sélectionner par défaut le dernier mois dans la zone de liste
     // on demande toutes les clés, et on prend la première,
