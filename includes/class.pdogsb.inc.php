@@ -144,7 +144,7 @@ class PdoGsb {
     
     public function getLesIdsNomsPrenomsVisiteurs() {
         $requestPrepare = PdoGsb::$monPdo->prepare (
-                'SELECT visiteur.id as is, visiteur.nom as nom, visiteur.prenom as prenom'
+                'SELECT visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom'
                 . 'FROM visiteur'
         );
         $requestPrepare->execute();

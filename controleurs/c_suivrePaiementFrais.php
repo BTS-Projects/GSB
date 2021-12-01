@@ -7,17 +7,22 @@
  */
 
 $idComptable = $_SESSION['idComptable'];
-$mois = getMois(date('d/m/Y'));
-$numAnnee = substr($mois, 0, 4);
-$numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 switch($action) {
 case 'afficherFichesFrais':
-    $date=new DateTime();
-        $lesFichesVA = $pdo->getLesInfosFicheFraisParEtat();
-        $lesCles = array_keys($lesVisiteurs);
-        $visiteurASelectionner = $lesCles[0];     
-        include 'vue/vuesComptables/v_listeVisiteurs.php';
+    $lesVisiteurs = $pdo->getTableauVisiteur();
+    foreach ($lesVisiteurs as $unVisiteur) {
+        $lesMois = $pdo->getLesMoisDisponibles($unVisiteur['id']);
+        foreach ($lesMois as $unMois) {
+            $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($unVisiteur, $unMois);
+            $numAnnee = substr($mois, 0, 4);
+            $numMois = substr($mois, 4, 2);
+            $libEtat = $lesInfosFicheFrais['libEtat'];
+            $montantValide = $lesInfosFicheFrais['montantValide'];
+            $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
+            include 'vues/vuesComptables/v_etatFraisComptable.php';
+        }
+    }
     break;
 case 'selectionnerMois':
     $leVisiteur= filter_input(INPUT_POST,'IdVisiteur', FILTER_SANITIZE_STRING);
