@@ -5,10 +5,10 @@
  * and open the template in the editor.
  */
 ?>
-<form role="form" method="post">
+<form role="form" method="post" action="index.php?uc=validerFrais&action=selectionnerMois">
     <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
-    <select id="lstemp" name="lstemp" class="form-control" style="width: 200px" onchange=window.location.href="index.php?uc=validerFrais&action=selectionnerMois">
+    <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" onchange="submit()">
         <?php
         //on recuperer les visiteurs pour les pouvoir les afficher
         foreach ($lesNomsvisiteurs as $visiteurs) {
