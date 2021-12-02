@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 ?>
-<form role="form" method="post" action="index.php?uc=validerFrais&action=selectionnerMois">
+<form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo">
     <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
     <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" onchange="submit()">

@@ -1,5 +1,8 @@
-<?php
 
+<?php
+if(!$idVisiteur = $_POST['visiteur']){
+$idVisiteur = $_POST['visiteur'];
+$lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $idComptable = $_SESSION['idComptable'];
 $mois = getMois(date('d/m/Y'));
@@ -13,7 +16,12 @@ switch ($action) {
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
     
-case 'selectionnerMois':
+    case 'MoisDispo':
+        $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+        $lesCles = array_keys($lesMois);
+        $moisASelectionner = $lesCles[0];
+        break;
+    case 'selectionnerMois':
     //$idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
     $idVisiteur = $_POST['visiteur'];
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
