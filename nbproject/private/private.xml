@@ -3,20 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/index.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_etatFraisComptable.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_accueil_comptable.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesVisiteurs/v_accueil.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_accueil.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/v_listeMois.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_etatFrais.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/includes/fct.inc.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_suivrePaiementFrais.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesVisiteurs/v_etatFrais.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/includes/class.pdogsb.inc.php</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/styles/style.css</file>
-            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_filtreFicheFrais.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/controleurs/c_validerFrais.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/vues/vuesComptables/v_valideFrais.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/includes/class.pdogsb.inc.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/index.php</file>
         </group>
     </open-files>
 </project-private>

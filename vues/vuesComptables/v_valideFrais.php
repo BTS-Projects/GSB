@@ -23,13 +23,14 @@
         }
         ?>
     </select>
+    
     <!-- liste des Mois par rapport au employées -->
 
     <div class="form-group">
         <label for="lstMois" accesskey="n">Mois : </label>
         <select id="lstMois" name="lstMois" class="form-control" style="width:100px">
             <?php
-            foreach ($mois as $unMois) {
+            foreach ($lesMois as $unMois) {
                 $numAnnee = $unMois['numAnnee'];
                 $numMois = $unMois['numMois'];
                 if ($mois == $moisASelectionner) {
