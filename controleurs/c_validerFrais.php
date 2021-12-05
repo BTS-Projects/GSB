@@ -11,22 +11,22 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
 switch ($action) {
     case 'valideFrais':
-        $idVisiteur=$lesNomsvisiteurs[0]['id'];
+        $idVisiteur=$lesNomsvisiteurs[0];
+        $idVisiteurSelectionner=$idVisiteur;
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
 
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
     
     case 'MoisDispo':
-        
-        $idVisiteur = $_POST['visiteur'];
-        echo $idVisiteur;
-        $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+        $idVisiteurSelectionner = $_POST['visiteur'];
+        $nomVisiteur=$lesNomsvisiteurs;
+        $lesMois = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
         $lesCles = array_keys($lesMois);
         $moisASelectionner = $lesCles[0];
         include 'vues/vuesComptables/v_valideFrais.php';
-
         break;
+    
     case 'selectionnerMois':
     //$idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
     $idVisiteur = $_POST['visiteur'];

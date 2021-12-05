@@ -8,7 +8,7 @@
 <form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo">
     <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
-    <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" onchange="submit()">
+    <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" onchange="submit()" >
         <?php
         //on recuperer les visiteurs pour les pouvoir les afficher
         foreach ($lesNomsvisiteurs as $visiteurs) {
@@ -17,13 +17,13 @@
             $id = $visiteurs['id'];
             ?>
             <!--on utilise l'id des visiteurs pour pouvoir en suite les afficher avec leur nom/prenom -->
-            <option value= "<?php echo $id ?>" >
+            <option id="<?php echo $id ?>" value= "<?php echo $id ?>"  >
                 <?php echo $nom . " " . $prenom ?> </option>
             <?php
         }
         ?>
     </select>
-    
+    <p>Le visiteur actuellement sélectionner est <?php echo $nom. " ". $prenom?></p>
     <!-- liste des Mois par rapport au employées -->
 
     <div class="form-group">
