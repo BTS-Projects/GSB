@@ -11,7 +11,7 @@
         <h3>Filtrer la recherche : </h3>
     </div>
     <div class="col-md-4">
-        <form action="index.php?uc=suivrePaiementFrais&action=choixVisiteur" 
+        <form action="index.php?uc=suivrePaiementFrais&action=choixFiltre" 
               method="post" role="form">
             <div class="form-group">
                 <label for="lstVisiteurs" accesskey="n">Visiteurs : </label>
