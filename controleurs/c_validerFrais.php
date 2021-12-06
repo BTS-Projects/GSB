@@ -11,17 +11,18 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
 switch ($action) {
     case 'valideFrais':
-        $idVisiteurSelectionner="";
         $idVisiteur=$lesNomsvisiteurs[0]['id'];
-        $leVisiteur=$lesNomsvisiteurs[0];
         $idVisiteurSelectionner=$idVisiteur;
-        $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
-
+        $lesMoisVisiteur = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
+        $moisASelectionner = $lesMoisVisiteur[0];
+        $leVisiteur=$lesNomsvisiteurs[0];
+        $lesMois = $lesMoisVisiteur;
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
     
     case 'MoisDispo':
         $idVisiteurSelectionner = $_POST['visiteur'];
+        $moisASelectionner = $_POST['lstMois'];
         $nomVisiteur=$lesNomsvisiteurs;
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
         $lesCles = array_keys($lesMois);
@@ -61,4 +62,10 @@ case 'voirEtatFrais':
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
     include 'vues/vuesComptables/v_valideFrais';
+    
+    case 'elementForfaitise':
 }
+
+   
+        
+        

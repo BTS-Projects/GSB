@@ -5,23 +5,29 @@
  * and open the template in the editor.
  */
 ?>
-<form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo" >
+<form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo" onchange="submit()">
     <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
     <div class="form-inline">
-    <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" onchange="submit()">
+    <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" >
         <?php
         //on recuperer les visiteurs pour les pouvoir les afficher
-        
         foreach ($lesNomsvisiteurs as $visiteurs) {
-            $nom = $visiteurs['nom'];
-            $prenom = $visiteurs['prenom'];
-            $id = $visiteurs['id'];
-            ?>
-            <!--on utilise l'id des visiteurs pour pouvoir en suite les afficher avec leur nom/prenom -->
-            <option id="<?php echo $id ?>" value= "<?php echo $id ?>"  >
-                <?php echo $nom . " " . $prenom ?> </option>
-            <?php
+                $nom = $visiteurs['nom'];
+                $prenom = $visiteurs['prenom'];
+                $id = $visiteurs['id'];
+                if ($id == $idVisiteurSelectionner) {
+                            ?>
+                            <option selected value="<?php echo $id ?>">
+                                <?php echo $nom . ' ' . $prenom ?> </option>
+                            <?php
+                        } else {
+                            ?>
+                    <!--on utilise l'id des visiteurs pour pouvoir en suite les afficher avec leur nom/prenom -->
+                            <option value="<?php echo $id ?>" >
+                                <?php echo $nom . ' ' . $prenom ?> </option>
+                            <?php
+                        }
         }
         ?>
     </select>
@@ -31,7 +37,7 @@
             foreach ($lesMois as $unMois) {
                 $numAnnee = $unMois['numAnnee'];
                 $numMois = $unMois['numMois'];
-                if ($mois == $moisASelectionner) {
+                if ($unMois == $moisASelectionner) {
                     ?>
                     <option selected value="<?php echo $mois ?>">
                         <?php echo $numMois . '/' . $numAnnee ?> </option>
@@ -54,12 +60,10 @@
 </h2>
 <h3>Eléments forfaitisés</h3>
 <div class="col-md-4">
-    <form method="post" 
-          action="index.php?uc=gererFrais&action=recupererfraisforfait" 
-          role="form">
+    <form method="post" action="index.php?uc=validerFrais&action=elementForfaitise" role="form">
         <!--les variables sont encore à ajouter pour pouvoir les remplir automatiquement -->
         <p style="margin-left: 10px">Forfait Etape</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
+        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="">
         <p style="margin-left: 10px">Frais Kilometrique</p>
         <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
         <p style="margin-left: 10px">Nuitée Hôtel</p>
