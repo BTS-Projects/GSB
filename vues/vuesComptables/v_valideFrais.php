@@ -37,7 +37,7 @@
             foreach ($lesMois as $unMois) {
                 $numAnnee = $unMois['numAnnee'];
                 $numMois = $unMois['numMois'];
-                if ($unMois == $moisASelectionner) {
+                if ($unMois['mois'] == $moisASelectionner) {
                     ?>
                     <option selected value="<?php echo $mois ?>">
                         <?php echo $numMois . '/' . $numAnnee ?> </option>
