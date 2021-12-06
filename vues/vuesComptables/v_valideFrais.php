@@ -5,12 +5,14 @@
  * and open the template in the editor.
  */
 ?>
-<form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo">
+<form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo" >
     <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
-    <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" onchange="submit()" >
+    <div class="form-inline">
+    <select id="lstemp" name="visiteur" class="form-control" style="width: 200px" onchange="submit()">
         <?php
         //on recuperer les visiteurs pour les pouvoir les afficher
+        
         foreach ($lesNomsvisiteurs as $visiteurs) {
             $nom = $visiteurs['nom'];
             $prenom = $visiteurs['prenom'];
@@ -23,10 +25,6 @@
         }
         ?>
     </select>
-    <p>Le visiteur actuellement sélectionner est <?php echo $nom. " ". $prenom?></p>
-    <!-- liste des Mois par rapport au employées -->
-
-    <div class="form-group">
         <label for="lstMois" accesskey="n">Mois : </label>
         <select id="lstMois" name="lstMois" class="form-control" style="width:100px">
             <?php
@@ -46,9 +44,10 @@
                 }
             }
             ?>    
-
         </select>
     </div>
+    <br>
+    <p>Le visiteur actuellement sélectionner est <strong><?php echo $leVisiteur['nom']. " " . $leVisiteur['prenom']?></strong></p>
 </form>
 <h2>Valider la fiche de frais
     <?php echo $numMois . '-' . $numAnnee ?>

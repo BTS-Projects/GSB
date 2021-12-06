@@ -11,7 +11,9 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
 switch ($action) {
     case 'valideFrais':
-        $idVisiteur=$lesNomsvisiteurs[0];
+        $idVisiteurSelectionner="";
+        $idVisiteur=$lesNomsvisiteurs[0]['id'];
+        $leVisiteur=$lesNomsvisiteurs[0];
         $idVisiteurSelectionner=$idVisiteur;
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
 
@@ -24,6 +26,11 @@ switch ($action) {
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
         $lesCles = array_keys($lesMois);
         $moisASelectionner = $lesCles[0];
+        foreach ($lesNomsvisiteurs as $visiteurs){
+        if($visiteurs['id']==$idVisiteurSelectionner){
+            $leVisiteur = $visiteurs;
+        }
+        }
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
     
