@@ -14,6 +14,9 @@ case 'afficherFichesFrais':
     $lesVisiteurs = $pdo->getTableauVisiteur();
     $lesCles = array_keys($lesVisiteurs);
     $visiteurASelectionner = $lesCles[0];
+    $lesEtats = $pdo->getTableauEtat();
+    $lesClesEtat = array_keys($lesEtats);
+    $etatASelectionner = $lesClesEtat[0];
     include 'vues/vuesComptables/v_filtreFicheFrais.php';
     foreach ($lesVisiteurs as $unVisiteur) {
         $idVisiteur = $unVisiteur['id'];
@@ -44,11 +47,15 @@ case 'afficherFichesFrais':
         }
     }
     break;
-case 'choixVisiteur':
+case 'choixFiltre':
     $idVisiteurCourant= filter_input(INPUT_POST,'lstVisiteurs', FILTER_SANITIZE_STRING);
+    $idEtatCourant= filter_input(INPUT_POST,'lstEtats', FILTER_SANITIZE_STRING);
     $lesVisiteurs = $pdo->getTableauVisiteur();
     $leVisiteur = $pdo->getVisiteurById($idVisiteurCourant);
     $visiteurASelectionner = $leVisiteur;
+    $lesEtats = $pdo->getTableauEtat();
+    $leEtat = $pdo->getEtatById($idEtatCourant);;
+    $etatASelectionner = $leEtat;
     include 'vues/vuesComptables/v_filtreFicheFrais.php';
     $visiteur = $leVisiteur['nom'] . " " . $leVisiteur['prenom'];
     $lesMoisDuVisiteur = $pdo->getLesMoisDisponibles($idVisiteurCourant);
@@ -70,8 +77,8 @@ case 'choixVisiteur':
                     $changementEtat = "Remboursée";
                     $succes = "succes";
                 }
-                $montantValide = $lesInfosFicheFrais['montantValide'];
-                $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
+                $montantValide = $lesInfosFicheFraisDuVisiteur['montantValide'];
+                $dateModif = dateAnglaisVersFrancais($lesInfosFicheFraisDuVisiteur['dateModif']);
                 include 'vues/vuesComptables/v_etatFraisComptable.php';
             }
         }

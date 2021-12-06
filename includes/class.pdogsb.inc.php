@@ -102,11 +102,20 @@ class PdoGsb {
       return $requetePrepare->fetch();
 
       }* */
+    
+    public function getTableauEtat(){
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+                'SELECT * FROM etat WHERE id IN ("VA","MP","RB")'
+        );
+        $requetePrepare->execute();
+       return $requetePrepare->fetchAll();
+    }
+    
     /* Fonction permettant d'avoir tous les noms de visiteurs*/
     public function getTableauVisiteur(){
         $requetePrepare = PdoGsb::$monPdo->prepare(
-                'Select visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
-                . 'From visiteur ' 
+                'SELECT visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
+                . 'FROM visiteur ' 
         );
         $requetePrepare->execute();
        return $requetePrepare->fetchAll();

@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h3>Sélectionner un visiteur : </h3>
+        <h3>Filtrer la recherche : </h3>
     </div>
     <div class="col-md-4">
         <form action="index.php?uc=suivrePaiementFrais&action=choixVisiteur" 
@@ -30,6 +30,26 @@
                             ?>
                             <option value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
+                            <?php
+                        }
+                    }
+                    ?>    
+                </select>
+                <label for="lstEtats" accesskey="n">Etats : </label>
+                <select id="lstEtats" name="lstEtats" class="form-control">
+                    <?php
+                    foreach ($lesEtats as $unEtat) {
+                        $idEtat = $unEtat['id'];
+                        $libelleEtat = $unEtat['libelle'];
+                        if ($idEtat == $etatASelectionner['id']) {
+                            ?>
+                            <option selected value="<?php echo $idEtat ?>">
+                                <?php echo $libelleEtat ?> </option>
+                            <?php
+                        } else {
+                            ?>
+                            <option value="<?php echo $idEtat ?>">
+                                <?php echo $libelleEtat ?> </option>
                             <?php
                         }
                     }
