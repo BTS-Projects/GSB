@@ -111,6 +111,16 @@ class PdoGsb {
         $requetePrepare->execute();
        return $requetePrepare->fetchAll();
     }
+    public function getVisiteurById($id){
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+                'SELECT visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
+                . 'FROM visiteur '
+                . 'WHERE visiteur.id = :id' 
+        );
+        $requetePrepare->bindParam(':id', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+       return $requetePrepare->fetch();
+    }
     public function getInfosVisiteur($login) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT visiteur.id AS id, visiteur.nom AS nom, '
