@@ -22,6 +22,7 @@ switch ($action) {
     
     case 'MoisDispo':
         $idVisiteurSelectionner = $_POST['visiteur'];
+        $MoiSelectionner = $_POST['lstMois'];
         $nomVisiteur=$lesNomsvisiteurs;
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
         $lesCles = array_keys($lesMois);
@@ -33,7 +34,11 @@ switch ($action) {
         }
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
-    
+        
+    case 'afficherElement':
+        echo "salut";
+        break;
+        
     case 'selectionnerMois':
     //$idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
     $idVisiteur = $_POST['visiteur'];
@@ -62,7 +67,6 @@ case 'voirEtatFrais':
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
     include 'vues/vuesComptables/v_valideFrais';
     
-    case 'elementForfaitise':
 }
 
    

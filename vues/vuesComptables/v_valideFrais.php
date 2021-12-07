@@ -32,7 +32,7 @@
         ?>
     </select>
         <label for="lstMois" accesskey="n">Mois : </label>
-        <select id="lstMois" name="lstMois" class="form-control" style="width:100px" >
+        <select id="lstMois" name="lstMois" class="form-control" style="width:100px" action="index.php?uc=validerFrais&action=afficherElement">
             <?php
             foreach ($lesMois as $unMois) {
                 $numAnnee = $unMois['numAnnee'];
