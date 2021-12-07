@@ -18,16 +18,15 @@ function GrandTableau($header)
     //Header
     $this->SetTextColor(25,65,115);
     $this->SetFont('times','B',14);
-    $this->SetX(-190);
-    $this->Cell(171,6,"REMBOURSEMENT DE FRAIS ENGAGES",1,0,'C');
-    $this->Ln();
+    $this->Cell(0,6,"REMBOURSEMENT DE FRAIS ENGAGES",1,1,'C');
     
     // Data
     $this->SetTextColor(50,50,50);
     
-    $this->Rect(20, 66, 171, 134);
+    // Créer le cadre
+    $this->Rect(10, 66, 190, 134);
     $this->SetDrawColor(228,228,228);
-    $this->Line(20,69,191,69);
+    $this->Line(10,69,200,69);
     $this->SetDrawColor(0,0,0);
     
 }
@@ -37,27 +36,23 @@ public function ContenuTablo($header){
     //Header
     $this->SetFont('times','',12);
         $this->SetY(75);
-        $this->SetX(-190);
-        $this->Cell(0,0,"",0,0,'C');
     
     // Data
     $this->SetTextColor(50,50,50);
-    $this->SetX(-180);
     $this->SetDrawColor(0,0,0);
-    $this->Cell(25,10,"Visiteur",0,0);
+    //Ligne Visiteur
+    $this->Cell(10, 20, '', 'L');
+    $this->Cell(50,20,"Visiteur");
     // Placeholder id visiteur
-    $this->SetX(-130);
-    $this->Cell(25,10,"NRD/A-131",0,0);
+    $this->Cell(50,20,"NRD/A-131");
     // Placeholder PrenomNOM visiteur
-    $this->SetX(-95);
-    $this->Cell(25,10,"LouisVILLECHALANE",0,0);
+    $this->Cell(25,20,"LouisVILLECHALANE",0,1);
     
-    $this->Ln();
-    $this->SetX(-180);
-    $this->Cell(25,10,"Mois",0,0);
+    //Ligne Mois
+    $this->Cell(10, 20, '', 'L');
+    $this->Cell(50,20,"Mois",0,0);
     // Placeholder Date
-    $this->SetX(-130);
-    $this->Cell(25,10,"Juillet2021",0,0);
+    $this->Cell(50,20,"Juillet2021",0,0);
     
     }
     public function FraisTablo($header){
@@ -65,17 +60,14 @@ public function ContenuTablo($header){
     $this->SetFont('times','I',12);
     $this->SetTextColor(25,65,115);
         $this->SetY(108);
-        $this->SetX(42);
         $this->Cell(0,0,"Frais Forfaitaires",0,0,'L');
     $this->SetFont('times','I',12);
     $this->SetTextColor(25,65,115);
         $this->SetY(108);
-        $this->SetX(92);
         $this->Cell(0,0,utf8_decode("Quantité"),0,0,'L');
     
     // Data
     $this->SetTextColor(50,50,50);
-    $this->SetX(-180);
     $this->SetDrawColor(0,0,0);
     $this->Cell(25,10,"",0,0);
     

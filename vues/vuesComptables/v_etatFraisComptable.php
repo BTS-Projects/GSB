@@ -12,6 +12,8 @@
  * @license   Réseau CERTA
  * @version   GIT: <0>
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
+ * 
+ * index.php?uc=suivrePaiementFrais&action=changerEtat
  */
 ?>
 
@@ -23,8 +25,8 @@
             <strong><u> Visiteur :</u></strong> <?php echo $visiteur ?> <br>
             <strong><u>Etat :</u></strong> <?php echo $libEtat ?>
             depuis le <?php echo $dateModif ?> <br> 
-            <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
+            <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?> €
         </div>
-        <a class="btn btn-danger" href="#" role="button" hidden="hidden"><strong><?php echo $changementEtat ?></strong></a>
+        <a class="<?php echo $btn ?>" href="#" role="button" value=""><strong><?php echo $changementEtat ?></strong></a>
     </div>
 </div>

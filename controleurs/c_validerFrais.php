@@ -1,19 +1,41 @@
-<?php
 
+<?php
+$lesNomsvisiteurs = $pdo->getTableauVisiteur();
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $idComptable = $_SESSION['idComptable'];
 $mois = getMois(date('d/m/Y'));
 $numAnnee= substr($mois, 0,4);
 $numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-$lesNomsvisiteurs = $pdo->getTableauVisiteur();
+
 
 switch ($action) {
     case 'valideFrais':
+        $idVisiteur=$lesNomsvisiteurs[0]['id'];
+        $idVisiteurSelectionner=$idVisiteur;
+        $lesMoisVisiteur = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
+        $moisASelectionner = $lesMoisVisiteur[0];
+        $leVisiteur=$lesNomsvisiteurs[0];
+        $lesMois = $lesMoisVisiteur;
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
     
-case 'selectionnerMois':
+    case 'MoisDispo':
+        $idVisiteurSelectionner = $_POST['visiteur'];
+        $moisASelectionner = $_POST['lstMois'];
+        $nomVisiteur=$lesNomsvisiteurs;
+        $lesMois = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
+        $lesCles = array_keys($lesMois);
+        $moisASelectionner = $lesCles[0];
+        foreach ($lesNomsvisiteurs as $visiteurs){
+        if($visiteurs['id']==$idVisiteurSelectionner){
+            $leVisiteur = $visiteurs;
+        }
+        }
+        include 'vues/vuesComptables/v_valideFrais.php';
+        break;
+    
+    case 'selectionnerMois':
     //$idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
     $idVisiteur = $_POST['visiteur'];
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
@@ -40,4 +62,10 @@ case 'voirEtatFrais':
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
     include 'vues/vuesComptables/v_valideFrais';
+    
+    case 'elementForfaitise':
 }
+
+   
+        
+        
