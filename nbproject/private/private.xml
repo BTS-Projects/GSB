@@ -11,6 +11,16 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/includes/fct.inc.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/v_erreurs.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/index.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_connexion.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_suivrePaiementFrais.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_etatFraisComptable.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/includes/class.pdogsb.inc.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/v_succes.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_filtreFicheFrais.php</file>
+        </group>
     </open-files>
 </project-private>
