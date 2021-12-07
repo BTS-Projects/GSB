@@ -96,6 +96,69 @@ function dateAnglaisVersFrancais($maDate)
 }
 
 /**
+ * Transforme une date au format aaaamm au format mois année 
+ * 
+ * @param String $maDate format aaaamm
+ * @return String format mois année
+ * @return false si la date n'est pas valide
+ */
+function dateAnneeMoisVersMoisAnneeEcrit($maDate)
+{
+    $mois = substr($maDate, 4);
+     switch ($mois){
+        case '01':
+            $nomMois = 'Janvier';
+            break;
+        case '02':
+            $nomMois = 'Février';
+            break;
+        case '03':
+            $nomMois = 'Mars';
+            break;
+        case '04':
+            $nomMois = 'Avril';
+            break;
+        case '05':
+            $nomMois = 'Mai';
+            break;
+        case '06':
+            $nomMois = 'Juin';
+            break;
+        case '07':
+            $nomMois = 'Juillet';
+            break;
+        case '08':
+            $nomMois = 'Août';
+            break;
+        case '09':
+            $nomMois = 'Septembre';
+            break;
+        case '10':
+            $nomMois = 'Octobre';
+            break;
+        case '11':
+            $nomMois = 'Novembre';
+            break;
+        case '12':
+            $nomMois = 'Décembre';
+            break;
+        default :
+            return false;
+    }
+    return $nomMois . ' ' . substr($maDate, 0, 4);
+}
+
+/**
+ * Transforme une date au format aaaamm vers le format mm/aaaa
+ * 
+ * @param String $maDate format aaaamm
+ * @return Date format mm/aaaa
+ */
+function dateAnglaisVersFrançaisMoisAnnee($maDate){
+    return substr($maDate, 4) . "/" . substr($maDate, 0, 4);
+}
+
+/**
  * Retourne le mois au format aaaamm selon le jour dans le mois
  *
  * @param String $date au format  jj/mm/aaaa

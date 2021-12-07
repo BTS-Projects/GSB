@@ -64,7 +64,7 @@ class PdoGsb {
      */
     public function __destruct() {
         PdoGsb::$monPdo = null;
-    }
+     }
 
     /**
      * Fonction statique qui crée l'unique instance de la classe
@@ -102,14 +102,44 @@ class PdoGsb {
       return $requetePrepare->fetch();
 
       }* */
-    /* Fonction permettant d'avoir tous les noms de visiteurs*/
-    public function getTableauVisiteur(){
+    
+    public function getTableauEtat(){
         $requetePrepare = PdoGsb::$monPdo->prepare(
-                'Select visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
-                . 'From visiteur ' 
+                'SELECT * FROM etat WHERE id IN ("VA","MP","RB")'
         );
         $requetePrepare->execute();
        return $requetePrepare->fetchAll();
+    }
+    
+    public function getEtatById($id) {
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+                'SELECT *'
+                . 'FROM etat '
+                . 'WHERE etat.id = :id' 
+        );
+        $requetePrepare->bindParam(':id', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+       return $requetePrepare->fetch();
+    }
+    
+    /* Fonction permettant d'avoir tous les noms de visiteurs*/
+    public function getTableauVisiteur(){
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+                'SELECT visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
+                . 'FROM visiteur ' 
+        );
+        $requetePrepare->execute();
+       return $requetePrepare->fetchAll();
+    }
+    public function getVisiteurById($id){
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+                'SELECT visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
+                . 'FROM visiteur '
+                . 'WHERE visiteur.id = :id' 
+        );
+        $requetePrepare->bindParam(':id', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+       return $requetePrepare->fetch();
     }
     public function getInfosVisiteur($login) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
@@ -597,10 +627,48 @@ class PdoGsb {
         return $laLigne;
     }
     
-    public function getLesInfosFicheFraisParEtat($mois,$etat) {
-        
+    public function getLesInfosFicheFraisPaiement($idVisiteur, $mois) {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+                'SELECT fichefrais.idetat as idEtat, '
+                . 'fichefrais.datemodif as dateModif,'
+                . 'fichefrais.nbjustificatifs as nbJustificatifs, '
+                . 'fichefrais.montantvalide as montantValide, '
+                . 'fichefrais.idetat as idEtat, '
+                . 'etat.libelle as libEtat '
+                . 'FROM fichefrais '
+                . 'INNER JOIN etat ON fichefrais.idetat = etat.id '
+                . 'WHERE fichefrais.idvisiteur = :unIdVisiteur '
+                . 'AND fichefrais.mois = :unMois '
+                . 'AND fichefrais.idetat IN ("VA","RB","MP")'
+        );
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $laLigne = $requetePrepare->fetch();
+        return $laLigne;
     }
-
+    
+    public function getLesInfosFicheFraisParEtat($idVisiteur, $mois, $etat) {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+                'SELECT fichefrais.idetat as idEtat, '
+                . 'fichefrais.datemodif as dateModif,'
+                . 'fichefrais.nbjustificatifs as nbJustificatifs, '
+                . 'fichefrais.montantvalide as montantValide, '
+                . 'etat.libelle as libEtat '
+                . 'FROM fichefrais '
+                . 'INNER JOIN etat ON fichefrais.idetat = etat.id '
+                . 'WHERE fichefrais.idvisiteur = :unIdVisiteur '
+                . 'AND fichefrais.mois = :unMois '
+                . 'AND fichefrais.idetat = :etat '
+        );
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':etat', $etat, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $laLigne = $requetePrepare->fetch();
+        return $laLigne;
+    }
+    
     /**
      * Modifie l'état et la date de modification d'une fiche de frais.
      * Modifie le champ idEtat et met la date de modif à aujourd'hui.
