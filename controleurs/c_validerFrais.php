@@ -22,7 +22,6 @@ switch ($action) {
     
     case 'MoisDispo':
         $idVisiteurSelectionner = $_POST['visiteur'];
-        $moisASelectionner = $_POST['lstMois'];
         $nomVisiteur=$lesNomsvisiteurs;
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
         $lesCles = array_keys($lesMois);

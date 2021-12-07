@@ -32,19 +32,20 @@
         ?>
     </select>
         <label for="lstMois" accesskey="n">Mois : </label>
-        <select id="lstMois" name="lstMois" class="form-control" style="width:100px">
+        <select id="lstMois" name="lstMois" class="form-control" style="width:100px" >
             <?php
             foreach ($lesMois as $unMois) {
                 $numAnnee = $unMois['numAnnee'];
                 $numMois = $unMois['numMois'];
-                if ($unMois['mois'] == $moisASelectionner) {
+                $Date=$numMois.$numAnnee;
+                if ($Date == $_POST['lstMois']) {
                     ?>
-                    <option selected value="<?php echo $mois ?>">
+                    <option selected value="<?php echo $numMois.$numAnnee ?>">
                         <?php echo $numMois . '/' . $numAnnee ?> </option>
                     <?php
                 } else {
                     ?>
-                    <option value="<?php echo $mois ?>">
+                    <option value="<?php echo $numMois.$numAnnee ?>">
                         <?php echo $numMois . '/' . $numAnnee ?> </option>
                     <?php
                 }
