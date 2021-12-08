@@ -29,14 +29,12 @@ case 'afficherFichesFrais':
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
         foreach ($lesMois as $unMois) {
             $mois = $unMois['mois'];
-            traitementVisiteurComptable("null", $mois, $etat);
             $lesInfosFicheFrais = $pdo->getLesInfosFicheFraisPaiement($idVisiteur, $mois);
             if($lesInfosFicheFrais) {
                 $numAnnee = $unMois['numAnnee'];
                 $numMois = $unMois['numMois'];
                 $libEtat = $lesInfosFicheFrais['libEtat'];
                 $idEtat = $lesInfosFicheFrais['idEtat'];
-                traitementVisiteurComptable($idVisiteur, $mois, $idEtat);
                 $btn = "btn btn-danger";
                 if($idEtat == "VA") {
                     $changementEtat = "Mettre la fiche de frais en Paiement";
@@ -69,7 +67,6 @@ case 'choixFiltre':
     $cpt = 0;
     foreach ($lesMoisDuVisiteur as $unMois) {
             $mois = $unMois['mois'];
-            traitementVisiteurComptable($idVisiteur, $mois, $idEtatCourant);
             $lesInfosFicheFraisDuVisiteur = $pdo->getLesInfosFicheFraisParEtat($idVisiteur, $mois, $idEtatCourant);
             if($lesInfosFicheFraisDuVisiteur) {
                 $cpt++;
@@ -99,41 +96,41 @@ case 'choixFiltre':
 
     break;
 case 'changerEtat':
-    $idVisiteur = $_SESSION['idVisiteurCourant'];
-    $mois = $_SESSION['moisCourant'];
-    $idEtat = $_SESSION['etatCourant'];
+    $idVisiteur = filter_input(INPUT_GET,'id', FILTER_SANITIZE_STRING);
+    $mois = filter_input(INPUT_GET,'mois', FILTER_SANITIZE_STRING);
+    $idEtat = filter_input(INPUT_GET,'etat', FILTER_SANITIZE_STRING);
     $lesVisiteurs = $pdo->getTableauVisiteur();
     $leVisiteur = $pdo->getVisiteurById($idVisiteur);
     $visiteurASelectionner = $leVisiteur;
     $lesEtats = $pdo->getTableauEtat();
     $leEtat = $pdo->getEtatById($idEtat);;
     $etatASelectionner = $leEtat;
-    include 'vues/vuesComptables/v_filtreFicheFrais.php';
-    
     $success = false;
     if ($idEtat == "VA"){
         $idEtat = "MP";
         $pdo->majEtatFicheFrais($idVisiteur, $mois, $idEtat);
-        $sucess = true;
+        $success = true;
         
     } elseif ($idEtat == "MP") {
-        $idEtat = "MP";
+        $idEtat = "RB";
         $pdo->majEtatFicheFrais($idVisiteur, $mois, $idEtat);
-        $sucess = true;
+        $success = true;
     } else {
+        $succes = false;
         if($idEtat == "RB"){
             ajouterErreur('Fiche de frais déjà Remboursée, plus de traitement possible');
         } else {
             ajouterErreur('Traitement impossible, etat non conforme');
         }
+        include 'vues/vuesComptables/v_filtreFicheFrais.php';
         include 'vues/v_erreurs.php';
     }
     
     if($success) {
         ajouterSucces("Changement efectué !");
+        include 'vues/vuesComptables/v_filtreFicheFrais.php';
         include 'vues/v_succes.php';
-    }
-    
+    } 
     break;
 case "":
     break;
