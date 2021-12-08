@@ -56,6 +56,12 @@ function connecterComptable($idComptable, $nom, $prenom, $choix)
     $_SESSION['prenom'] = $prenom;
     $_SESSION['choix'] = $choix;
 }
+
+function traitementVisiteurComptable($idVisiteur, $mois, $etat) {
+    $_SESSION['idVisiteurCourant'] = $idVisiteur;
+    $_SESSION['moisCourant'] = $mois;
+    $_SESSION['etatCourant'] = $etat;
+}
 /**
  * Détruit la session active
  *
@@ -327,6 +333,14 @@ function ajouterErreur($msg)
         $_REQUEST['erreurs'] = array();
     }
     $_REQUEST['erreurs'][] = $msg;
+}
+
+function ajouterSucces($msg)
+{
+    if (!isset($_REQUEST['succes'])) {
+        $_REQUEST['succes'] = array();
+    }
+    $_REQUEST['succes'][] = $msg;
 }
 
 /**

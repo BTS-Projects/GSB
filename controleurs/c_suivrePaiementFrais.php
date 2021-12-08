@@ -12,8 +12,13 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 switch($action) {
 case 'afficherFichesFrais':
     $lesVisiteurs = $pdo->getTableauVisiteur();
+    array_push($lesVisiteurs, array(
+                                        "nom" => "Tout",
+                                        "prenom" => "Sélectionner",
+                                        "id" => "null"
+                                    ));
     $lesCles = array_keys($lesVisiteurs);
-    $visiteurASelectionner = $lesCles[0];
+    $visiteurASelectionner = $lesCles[count($lesVisiteurs)-1];
     $lesEtats = $pdo->getTableauEtat();
     $lesClesEtat = array_keys($lesEtats);
     $etatASelectionner = $lesClesEtat[0];
@@ -91,7 +96,41 @@ case 'choixFiltre':
 
     break;
 case 'changerEtat':
-    $pdo->majEtatFicheFrais($idVisiteur, $mois, $idEtat);
+    $idVisiteur = filter_input(INPUT_GET,'id', FILTER_SANITIZE_STRING);
+    $mois = filter_input(INPUT_GET,'mois', FILTER_SANITIZE_STRING);
+    $idEtat = filter_input(INPUT_GET,'etat', FILTER_SANITIZE_STRING);
+    $lesVisiteurs = $pdo->getTableauVisiteur();
+    $leVisiteur = $pdo->getVisiteurById($idVisiteur);
+    $visiteurASelectionner = $leVisiteur;
+    $lesEtats = $pdo->getTableauEtat();
+    $leEtat = $pdo->getEtatById($idEtat);;
+    $etatASelectionner = $leEtat;
+    $success = false;
+    if ($idEtat == "VA"){
+        $idEtat = "MP";
+        $pdo->majEtatFicheFrais($idVisiteur, $mois, $idEtat);
+        $success = true;
+        
+    } elseif ($idEtat == "MP") {
+        $idEtat = "RB";
+        $pdo->majEtatFicheFrais($idVisiteur, $mois, $idEtat);
+        $success = true;
+    } else {
+        $succes = false;
+        if($idEtat == "RB"){
+            ajouterErreur('Fiche de frais déjà Remboursée, plus de traitement possible');
+        } else {
+            ajouterErreur('Traitement impossible, etat non conforme');
+        }
+        include 'vues/vuesComptables/v_filtreFicheFrais.php';
+        include 'vues/v_erreurs.php';
+    }
+    
+    if($success) {
+        ajouterSucces("Changement efectué !");
+        include 'vues/vuesComptables/v_filtreFicheFrais.php';
+        include 'vues/v_succes.php';
+    } 
     break;
 case "":
     break;
