@@ -39,7 +39,7 @@
                     <td> <?php echo $libelle ?></td>
                     <td><?php echo $montant ?></td>
                     <td><a href="index.php?uc=gererFrais&action=supprimerFrais&idFrais=<?php echo $id ?>" 
-                           onclick="return confirm('Voulez-vous vraiment supprimer ce frais?');">Supprimer ce frais</a></td>
+                           onclick="return confirm('Voulez-vous vraiment supprimer ce frais?');" name="btnSupprimerFrais">Supprimer ce frais</a></td>
                 </tr>
                 <?php
             }
@@ -71,8 +71,8 @@
                            class="form-control" value="">
                 </div>
             </div>
-            <button class="btn btn-success" type="submit">Ajouter</button>
-            <button class="btn btn-danger" type="reset">Effacer</button>
+            <button class="btn btn-success" type="submit" name="btnAjouterFrais">Ajouter</button>
+            <button class="btn btn-danger" type="reset" name="btnEffacerFrais">Effacer</button>
         </form>
     </div>
 </div>
