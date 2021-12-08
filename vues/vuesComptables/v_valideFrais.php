@@ -54,7 +54,6 @@
         </select>
     </div>
     <br>
-    <p>Le visiteur actuellement sélectionner est <strong><?php echo $leVisiteur['nom']. " " . $leVisiteur['prenom']?></strong></p>
 </form>
 <h2>Valider la fiche de frais
     <?php echo $numMois . '-' . $numAnnee ?>
@@ -63,6 +62,18 @@
 <div class="col-md-4">
     <form method="post" action="index.php?uc=validerFrais&action=elementForfaitise" role="form">
         <!--les variables sont encore à ajouter pour pouvoir les remplir automatiquement -->
+        <?php 
+        if($LesFrais == null){
+            ?>
+        <h2 style="color: red">Le visiteur <strong><?php echo $leVisiteur['nom']. " " . $leVisiteur['prenom']?></strong> ne possède pas de fiche de frais ce mois là</h2>
+        <?php 
+        }
+        else{
+            $ETP=$LesFrais[0]['quantite'];
+            $KM = $LesFrais[1]['quantite'];
+            $NUI = $LesFrais[2]['quantite'];
+            $REP = $LesFrais[3]['quantite'];
+        ?>
         <p style="margin-left: 10px">Forfait Etape</p>
         <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $ETP?>">
         <p style="margin-left: 10px">Frais Kilometrique</p>
@@ -72,8 +83,13 @@
         <p style="margin-left: 10px">Repas Restaurant</p>
         <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $REP?>">
         <br>
-        <button class="btn btn-success" type="submit" style="background-color: green;color:white;margin-top: 5px;margin-left: 10px">Corriger</button>
-        <button class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</button>
+        <!-- style="background-color: green;color:white;margin-top: 5px;margin-left: 10px" -->
+        <a class="btn btn-info" href="index.php?uc=validerFrais&action=corrigerElement&ETP=<?= $ETP?>&KM=<?= $KM?>&NUI=<?= $NUI?>&REP=<?= $REP?>
+           &id=<?=$idVisiteur?>&mois=<?=$Date?>" type="button" >Corriger</a>
+        <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</a>
+        <?php }
+        unset($ETP,$KM,$NUI,$REP);
+        ?>
         <fieldset>
             <table style="border: 1px solid orange ">
                 <thead style="background-color:orange;border: 1px solid orange">
