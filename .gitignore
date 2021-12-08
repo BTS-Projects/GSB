@@ -1,3 +1,6 @@
 /nbproject/private/
 nbproject/private/private.properties
 nbproject/private/private.xml
+/tests/phpDoc/phpDocumentor.phar
+/tests/phpDoc/doc/
+/tests/phpDoc/.phpdoc/
