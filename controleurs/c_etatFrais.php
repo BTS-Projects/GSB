@@ -41,4 +41,6 @@ case 'voirEtatFrais':
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
     include 'vues/vuesVisiteurs/v_etatFrais.php';
+case 'afficherPdf':
+    $leMois = filter_input(INPUT_GET, "mois", FILTER_SANITIZE_STRING);
 }

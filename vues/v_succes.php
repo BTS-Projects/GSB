@@ -14,7 +14,7 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-success" role="alert">
     <?php
     foreach ($_REQUEST['succes'] as $unSucces) {
         echo '<p>' . htmlspecialchars($unSucces) . '</p>';

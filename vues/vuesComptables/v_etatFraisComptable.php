@@ -27,6 +27,6 @@
             depuis le <?php echo $dateModif ?> <br> 
             <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?> €
         </div>
-        <a class="<?php echo $btn ?>" href="index.php?uc=suivrePaiementFrais&action=changerEtat" role="button"><strong><?php echo $changementEtat ?></strong></a>
+        <a class="<?php echo $btn ?>" href="index.php?uc=suivrePaiementFrais&action=changerEtat&id=<?= $idVisiteur ?>&etat=<?= $idEtat?>&mois=<?=$mois?>" role="button"><strong><?php echo $changementEtat ?></strong></a>
     </div>
 </div>

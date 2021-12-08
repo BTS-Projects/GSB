@@ -15,13 +15,13 @@ function Header()
 
 function GrandTableau($header)
 {
-    //Header
+    //Titre
     $this->SetTextColor(25,65,115);
-    $this->SetFont('times','B',14);
+    $this->SetFont('times','B',13,5);
     $this->Cell(0,6,"REMBOURSEMENT DE FRAIS ENGAGES",1,1,'C');
     
-    // Data
-    $this->SetTextColor(50,50,50);
+    // couleur noir
+    $this->SetTextColor(0,0,0);
     
     // Créer le cadre
     $this->Rect(10, 66, 190, 134);
@@ -29,12 +29,8 @@ function GrandTableau($header)
     $this->Line(10,69,200,69);
     $this->SetDrawColor(0,0,0);
     
-}
-
-
-public function ContenuTablo($header){
-    //Header
-    $this->SetFont('times','',12);
+    //Taille et police des lignes visiteur et mois
+    $this->SetFont('times','',11);
         $this->SetY(75);
     
     // Data
@@ -42,35 +38,61 @@ public function ContenuTablo($header){
     $this->SetDrawColor(0,0,0);
     //Ligne Visiteur
     $this->Cell(10, 20, '', 'L');
-    $this->Cell(50,20,"Visiteur");
+    $this->Cell(65,20,"Visiteur");
     // Placeholder id visiteur
     $this->Cell(50,20,"NRD/A-131");
     // Placeholder PrenomNOM visiteur
-    $this->Cell(25,20,"LouisVILLECHALANE",0,1);
+    $this->Cell(27,20,"LouisVILLECHALANE",0,0, 'R');
+    
+    $this->Ln(10);
     
     //Ligne Mois
     $this->Cell(10, 20, '', 'L');
-    $this->Cell(50,20,"Mois",0,0);
+    $this->Cell(65,20,"Mois",0,0);
     // Placeholder Date
     $this->Cell(50,20,"Juillet2021",0,0);
     
-    }
-    public function FraisTablo($header){
-    //Header
-    $this->SetFont('times','I',12);
-    $this->SetTextColor(25,65,115);
-        $this->SetY(108);
-        $this->Cell(0,0,"Frais Forfaitaires",0,0,'L');
-    $this->SetFont('times','I',12);
-    $this->SetTextColor(25,65,115);
-        $this->SetY(108);
-        $this->Cell(0,0,utf8_decode("Quantité"),0,0,'L');
     
-    // Data
-    $this->SetTextColor(50,50,50);
-    $this->SetDrawColor(0,0,0);
-    $this->Cell(25,10,"",0,0);
+    //Couleur tableau frais forfaitaires
+    $this->SetFont('times','BI',11);
+    $this->SetTextColor(25,65,115);
     
+    // Noms des colonnes du tableau frais forfaitaires
+    $this->SetY(110);
+    $this->Cell(10, 20, '', 'L');
+    $this->Cell(67,5,"Frais Forfaitaires","LTRB",0, 'C');
+    $this->Cell(37,5,utf8_decode("Quantité"),"LTRB",0,'C');
+    $this->Cell(35,5,utf8_decode("Montant unitaire"),"LTRB",0,'C');
+    $this->Cell(30,5,utf8_decode("Total"),"LTRB",0,'C');
+    
+    $this->Ln(5);
+    
+    //
+    // Boucle for each à faire pour parcourir les différents frais
+    //
+    $this->Cell(10, 20, '', 'L');
+    $this->Cell(169, 35, 'Autres frais','LTRB', 0, 'C');
+    // Noms des colonnes du tableau frais forfaitaires
+    $this->SetY(150);
+    $this->Cell(10, 20, '', 'L');
+    $this->Cell(67,5,"Date","LTRB",0, 'C');
+    $this->Cell(72,5,utf8_decode("Libellé"),"LTRB",0,'C');
+    $this->Cell(30,5,utf8_decode("Montant"),"LTRB",0,'C');
+    
+    $this->Ln(25);
+    
+    
+    
+    //Petit tableau total
+    // Couleur Noir et aucun gras/italique
+    $this->SetTextColor(0,0,0);
+    $this->SetFont('times','',11);
+    $this->Cell(113, 0, '');
+    // Placeholder Case total date
+    $this->Cell(36,5,utf8_decode("TOTAL 07/2021"),"LTRB",0,'C');
+    //Placeholder montant total
+    $this->Cell(30,5,utf8_decode("1756.80"),"LTRB",0,'C');
+    $this->Ln(5);
     }
 }
 // Instanciation of inherited class
@@ -78,12 +100,7 @@ $pdf = new PDF();
 $pdf->AddPage();
 
 $headerGrdTablo = array('');
-$headerContenuTablo = array('');
-$headerFraisTablo = array('');
-
 $pdf->GrandTableau($headerGrdTablo);
-$pdf->ContenuTablo($headerContenuTablo);
-$pdf->FraisTablo($headerFraisTablo);
 
 
 $pdf->Output();
