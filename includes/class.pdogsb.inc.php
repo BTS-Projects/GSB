@@ -9,6 +9,8 @@
  * @package   GSB
  * @author    Cheri Bibi - Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL - CNED <jgil@ac-nice.fr>
+ * @author    Valentine SCHALCKENS <v.schalckens@gmail.com>
+ * @author     Valentine <v.schalckens@gmail.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -37,12 +39,20 @@
  * @link      http://www.php.net/manual/fr/book.pdo.php PHP Data Objects sur php.net
  */
 class PdoGsb {
-
+    /*
+     * Paramètres pour la base de données
+     */
     private static $serveur = 'mysql:host=localhost';
     private static $bdd = 'dbname=gsb_frais';
     private static $user = 'userGsb';
     private static $mdp = 'secret';
+    /*
+     * Instance de PDO
+     */
     private static $monPdo;
+    /*
+     * Instance unique de PDO
+     */
     private static $monPdoGsb = null;
 
     /**
@@ -80,6 +90,7 @@ class PdoGsb {
     }
 
     /**
+     * Fonction retirée car plus d'utilité.
      * Retourne les informations d'un visiteur
      *
      * @param String $login Login du visiteur
@@ -103,6 +114,12 @@ class PdoGsb {
 
       }* */
     
+    /*
+     * Retoutne sous forme de tableau une partie des états possibles pour une fiche de frais correspondant
+     * aux critères suivant : Validée, Mise en Paiement ou Remboursée.
+     * 
+     * return l'id et le libellé de l'état de la fiche de frais.
+     */
     public function getTableauEtat(){
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT * FROM etat WHERE id IN ("VA","MP","RB")'
