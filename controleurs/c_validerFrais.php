@@ -16,6 +16,11 @@ switch ($action) {
         $lesMoisVisiteur = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
         $moisASelectionner = $lesMoisVisiteur[0];
         $leVisiteur=$lesNomsvisiteurs[0];
+        $LesFrais=$pdo->getLesFraisForfait($idVisiteurSelectionner,$moisASelectionner['mois']);
+        $ETP=$LesFrais[0]['quantite'];
+        $KM = $LesFrais[1]['quantite'];
+        $NUI = $LesFrais[2]['quantite'];
+        $REP = $LesFrais[3]['quantite'];
         $lesMois = $lesMoisVisiteur;
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
@@ -32,12 +37,18 @@ switch ($action) {
             $leVisiteur = $visiteurs;
         }
         }
+        $dateMois= substr($MoiSelectionner, 0,2);
+        $dateAnne=substr($MoiSelectionner,2);
+        $MoisPDO=$dateAnne.$dateMois;
+        $LesFrais=$pdo->getLesFraisForfait($idVisiteurSelectionner,$MoisPDO);
+        $ETP=$LesFrais[0]['quantite'];
+        $KM = $LesFrais[1]['quantite'];
+        $NUI = $LesFrais[2]['quantite'];
+        $REP = $LesFrais[3]['quantite'];
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
         
-    case 'afficherElement':
-        echo "salut";
-        break;
+
         
     case 'selectionnerMois':
     //$idVisiteur = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
