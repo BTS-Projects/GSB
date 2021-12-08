@@ -17,21 +17,19 @@ function GrandTableau($header)
 {
     //Titre
     $this->SetTextColor(25,65,115);
-    $this->SetFont('times','B',13);
+    $this->SetFont('times','B',13,5);
     $this->Cell(0,6,"REMBOURSEMENT DE FRAIS ENGAGES",1,1,'C');
     
-    // Data
-    $this->SetTextColor(50,50,50);
+    // couleur noir
+    $this->SetTextColor(0,0,0);
     
     // Créer le cadre
     $this->Rect(10, 66, 190, 134);
     $this->SetDrawColor(228,228,228);
     $this->Line(10,69,200,69);
     $this->SetDrawColor(0,0,0);
-}
-
-public function ContenuTablo($header){
-    //Header
+    
+    //Taille et police des lignes visiteur et mois
     $this->SetFont('times','',11);
         $this->SetY(75);
     
@@ -54,10 +52,9 @@ public function ContenuTablo($header){
     // Placeholder Date
     $this->Cell(50,20,"Juillet2021",0,0);
     
-    }
-    public function FraisTablo($header){
+    
     //Couleur tableau frais forfaitaires
-    $this->SetFont('times','I',11);
+    $this->SetFont('times','BI',11);
     $this->SetTextColor(25,65,115);
     
     // Noms des colonnes du tableau frais forfaitaires
@@ -70,8 +67,32 @@ public function ContenuTablo($header){
     
     $this->Ln(5);
     
+    //
     // Boucle for each à faire pour parcourir les différents frais
+    //
+    $this->Cell(10, 20, '', 'L');
+    $this->Cell(169, 35, 'Autres frais','LTRB', 0, 'C');
+    // Noms des colonnes du tableau frais forfaitaires
+    $this->SetY(150);
+    $this->Cell(10, 20, '', 'L');
+    $this->Cell(67,5,"Date","LTRB",0, 'C');
+    $this->Cell(72,5,utf8_decode("Libellé"),"LTRB",0,'C');
+    $this->Cell(30,5,utf8_decode("Montant"),"LTRB",0,'C');
     
+    $this->Ln(25);
+    
+    
+    
+    //Petit tableau total
+    // Couleur Noir et aucun gras/italique
+    $this->SetTextColor(0,0,0);
+    $this->SetFont('times','',11);
+    $this->Cell(113, 0, '');
+    // Placeholder Case total date
+    $this->Cell(36,5,utf8_decode("TOTAL 07/2021"),"LTRB",0,'C');
+    //Placeholder montant total
+    $this->Cell(30,5,utf8_decode("1756.80"),"LTRB",0,'C');
+    $this->Ln(5);
     }
 }
 // Instanciation of inherited class
@@ -79,12 +100,7 @@ $pdf = new PDF();
 $pdf->AddPage();
 
 $headerGrdTablo = array('');
-$headerContenuTablo = array('');
-$headerFraisTablo = array('');
-
 $pdf->GrandTableau($headerGrdTablo);
-$pdf->ContenuTablo($headerContenuTablo);
-$pdf->FraisTablo($headerFraisTablo);
 
 
 $pdf->Output();
