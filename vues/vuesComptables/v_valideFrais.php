@@ -64,13 +64,13 @@
     <form method="post" action="index.php?uc=validerFrais&action=elementForfaitise" role="form">
         <!--les variables sont encore à ajouter pour pouvoir les remplir automatiquement -->
         <p style="margin-left: 10px">Forfait Etape</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="">
+        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $ETP?>">
         <p style="margin-left: 10px">Frais Kilometrique</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
+        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value=" <?php echo $KM?>">
         <p style="margin-left: 10px">Nuitée Hôtel</p>
-        <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
+        <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $NUI?>">
         <p style="margin-left: 10px">Repas Restaurant</p>
-        <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2">
+        <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $REP?>">
         <br>
         <button class="btn btn-success" type="submit" style="background-color: green;color:white;margin-top: 5px;margin-left: 10px">Corriger</button>
         <button class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</button>
