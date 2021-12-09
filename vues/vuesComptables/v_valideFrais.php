@@ -85,7 +85,7 @@
         <br>
         <!-- style="background-color: green;color:white;margin-top: 5px;margin-left: 10px" -->
         <a class="btn btn-info" href="index.php?uc=validerFrais&action=corrigerElement&ETP=<?= $ETP?>&KM=<?= $KM?>&NUI=<?= $NUI?>&REP=<?= $REP?>
-           &id=<?=$idVisiteur?>&mois=<?=$Date?>" type="button" >Corriger</a>
+           &id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>
         <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</a>
         <?php }
         unset($ETP,$KM,$NUI,$REP);

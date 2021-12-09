@@ -100,13 +100,14 @@ switch ($action) {
         $REP = filter_input(INPUT_GET,'REP', FILTER_SANITIZE_STRING);
         $idVisiteur = filter_input(INPUT_GET,'id', FILTER_SANITIZE_STRING);
         $mois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
-        $lesFrais = array(
+        $lesFraises = array(
             'ETP' => $ETP,
             'KM' => $KM,
             'NUI' => $NUI,
-            'REP' => $REP
+            'REP' => $REP,
         );
-        $pdo->majFraisForfait($idVisiteur,$mois, $LesFrais );
+        echo $lesFraises['ETP'];
+        $pdo->majFraisForfait($idVisiteur,$mois, $LesFraises);
         break;
 }
 
