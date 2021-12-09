@@ -77,14 +77,14 @@
         <p style="margin-left: 10px">Forfait Etape</p>
         <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $ETP?>">
         <p style="margin-left: 10px">Frais Kilometrique</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value=" <?php echo $KM?>">
+        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value=" <?php echo $KM?>">2
         <p style="margin-left: 10px">Nuitée Hôtel</p>
         <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $NUI?>">
         <p style="margin-left: 10px">Repas Restaurant</p>
         <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $REP?>">
         <br>
         <!-- style="background-color: green;color:white;margin-top: 5px;margin-left: 10px" -->
-        <a class="btn btn-info" href="index.php?uc=validerFrais&action=corrigerElement&ETP=<?= $ETP?>&KM=<?= $KM?>&NUI=<?= $NUI?>&REP=<?= $REP?>
+        <a class="btn btn-info" href="index.php?u=validerFrais&action=cocrrigerElement&ETP=<?= $ETP?>&KM=<?= $KM?>&NUI=<?= $NUI?>&REP=<?= $REP?>
            &id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>
         <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</a>
         <?php }

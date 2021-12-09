@@ -40,6 +40,9 @@ switch ($action) {
         }
         
         $existe = false;
+        $DateAnne = substr($MoiSelectionner,2);
+        $DateMois = substr($MoiSelectionner, 0,2);
+        $MoiSelectionner = $DateAnne.$DateMois;
         foreach ($lesMois as $unMois) {
             if ($unMois['mois'] == $MoiSelectionner) {
                 $existe = true;
@@ -93,6 +96,7 @@ switch ($action) {
         $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
         include 'vues/vuesComptables/v_valideFrais';
         break;
+    
     case 'corrigerElement':
         $ETP = filter_input(INPUT_GET,'ETP', FILTER_SANITIZE_STRING);
         $KM = filter_input(INPUT_GET,'KM', FILTER_SANITIZE_STRING);
@@ -100,14 +104,14 @@ switch ($action) {
         $REP = filter_input(INPUT_GET,'REP', FILTER_SANITIZE_STRING);
         $idVisiteur = filter_input(INPUT_GET,'id', FILTER_SANITIZE_STRING);
         $mois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
-        $lesFraises = array(
+        $lesFrais = array(
             'ETP' => $ETP,
             'KM' => $KM,
             'NUI' => $NUI,
             'REP' => $REP,
         );
-        echo $lesFraises['ETP'];
-        $pdo->majFraisForfait($idVisiteur,$mois, $LesFraises);
+        $pdo->majFraisForfait($idVisiteur,$mois, $lesFrais);
+        include 'vues/vuesComptables/v_valideFrais.php';
         break;
 }
 
