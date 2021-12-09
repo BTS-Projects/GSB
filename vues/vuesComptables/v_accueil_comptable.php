@@ -28,11 +28,11 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <a href="index.php?uc=validerFrais&action=valideFrais"
-                           class="btn btn-warning btn-lg" role="button">
+                           class="btn btn-warning btn-lg" role="button" name="VficheFrais">
                             <span class="glyphicon glyphicon-pencil"></span>
                             <br>Valider des fiches de frais</a>
                         <a href="index.php?uc=suivrePaiementFrais&action=afficherFichesFrais"
-                           class="btn btn-info btn-lg" role="button">
+                           class="btn btn-info btn-lg" role="button" name="SficheFrais">
                             <span class="glyphicon glyphicon-list-alt"></span>
                             <br>Suivre les paiements de fiche de frais</a>
                     </div>

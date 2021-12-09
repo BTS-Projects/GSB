@@ -23,12 +23,12 @@
                         $prenom = $unVisiteur['prenom'];
                         if ($id == $visiteurASelectionner['id']) {
                             ?>
-                            <option selected value="<?php echo $id ?>">
+                            <option id="<?php echo $id?>" selected value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         } else {
                             ?>
-                            <option value="<?php echo $id ?>">
+                            <option id="<?php echo $id?>" value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         }
@@ -43,12 +43,12 @@
                         $libelleEtat = $unEtat['libelle'];
                         if ($idEtat == $etatASelectionner['id']) {
                             ?>
-                            <option selected value="<?php echo $idEtat ?>">
+                            <option id ="<?php echo $idEtat ?>" selected value="<?php echo $idEtat ?>">
                                 <?php echo $libelleEtat ?> </option>
                             <?php
                         } else {
                             ?>
-                            <option value="<?php echo $idEtat ?>">
+                            <option id="<?php echo $idEtat ?>" value="<?php echo $idEtat ?>">
                                 <?php echo $libelleEtat ?> </option>
                             <?php
                         }
