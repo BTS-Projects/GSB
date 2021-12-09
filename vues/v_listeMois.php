@@ -32,12 +32,12 @@
                         $numMois = $unMois['numMois'];
                         if ($mois == $moisASelectionner) {
                             ?>
-                            <option selected value="<?php echo $mois ?>">
+                            <option id=<?php echo $mois ?> selected value="<?php echo $mois ?>">
                                 <?php echo $numMois . '/' . $numAnnee ?> </option>
                             <?php
                         } else {
                             ?>
-                            <option value="<?php echo $mois ?>">
+                            <option id=<?php echo $mois ?> value="<?php echo $mois ?>">
                                 <?php echo $numMois . '/' . $numAnnee ?> </option>
                             <?php
                         }
