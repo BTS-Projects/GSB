@@ -9,7 +9,7 @@ $numAnnee = substr($mois, 0, 4);
 $numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
-switch ($action) {
+    switch ($action) {
     case 'valideFrais':
         $idVisiteur = $lesNomsvisiteurs[0]['id'];
         $idVisiteurSelectionner = $idVisiteur;
@@ -98,7 +98,7 @@ switch ($action) {
         break;
     
     case 'corrigerElement':
-        $ETP = filter_input(INPUT_GET,'ETP', FILTER_SANITIZE_STRING);
+        $ETP = filter_input(INPUT_POST,'ETP', FILTER_SANITIZE_STRING);
         $KM = filter_input(INPUT_GET,'KM', FILTER_SANITIZE_STRING);
         $NUI = filter_input(INPUT_GET,'NUI', FILTER_SANITIZE_STRING);
         $REP = filter_input(INPUT_GET,'REP', FILTER_SANITIZE_STRING);
@@ -111,8 +111,6 @@ switch ($action) {
             'REP' => $REP,
         );
         $pdo->majFraisForfait($idVisiteur,$mois, $lesFrais);
-        include 'vues/vuesComptables/v_valideFrais.php';
-        break;
 }
 
    
