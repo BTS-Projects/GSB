@@ -99,6 +99,7 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
     
     case 'corrigerElement':
         $ETP = filter_input(INPUT_POST,'ETP', FILTER_SANITIZE_STRING);
+        $ETP=$_POST['ETP'];
         $KM = filter_input(INPUT_GET,'KM', FILTER_SANITIZE_STRING);
         $NUI = filter_input(INPUT_GET,'NUI', FILTER_SANITIZE_STRING);
         $REP = filter_input(INPUT_GET,'REP', FILTER_SANITIZE_STRING);

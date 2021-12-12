@@ -75,7 +75,8 @@
             $REP = $LesFrais[3]['quantite'];
         ?>
         <p style="margin-left: 10px">Forfait Etape</p>
-        <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $ETP?>">
+        <input method="post" type="text" name="ETP" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $ETP?>">
+        <p><?php echo filter_input(INPUT_POST,'ETP', FILTER_SANITIZE_STRING)?></p>
         <p style="margin-left: 10px">Frais Kilometrique</p>
         <input type="text" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value=" <?php echo $KM?>">      
         <p style="margin-left: 10px">Nuitée Hôtel</p>
@@ -84,8 +85,8 @@
         <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $REP?>">
         <br>
         <!-- style="background-color: green;color:white;margin-top: 5px;margin-left: 10px" -->
-        <!--<a class="btn btn-info" action="submit()" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>-->
-        <input type="submit" style="btn btn-class" value="Corriger" />
+        <input type="submit" value="Corriger" class="btn btn-success" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>"> 
+<!--        <a class="btn btn-success" action="submit()" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>-->
         <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</a>
         <?php }
         unset($ETP,$KM,$NUI,$REP);
