@@ -18,7 +18,7 @@
     <h3>Eléments forfaitisés</h3>
     <div class="col-md-4">
         <form method="post" 
-              action="index.php?uc=validerFrais&action=corrigerElementForfaitises&idVisiteur=<?= $leVisiteur['id'] ?>" 
+              action="index.php?uc=validerFrais&action=corrigerElementForfaitises&idVisiteur=<?= $leVisiteur['id'] ?>&mois=<?=$Date?>&numMois=<?= $numMoisActuelle ?>&numAnnee=<?=  $numAnneeActuelle ?>" 
               role="form">
             <fieldset>       
                 <?php
