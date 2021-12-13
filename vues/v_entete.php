@@ -64,7 +64,7 @@
                             <li 
                             <?php if ($uc == 'deconnexion') { ?>class="active"<?php } ?>>
                                 <a href="index.php?uc=deconnexion&action=demandeDeconnexion">
-                                    <span class="glyphicon glyphicon-log-out"></span>
+                                    <span class="glyphicon glyphicon-log-out" id="deconnexion"></span>
                                     Déconnexion
                                 </a>
                             </li>

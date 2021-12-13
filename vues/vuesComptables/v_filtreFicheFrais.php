@@ -1,8 +1,18 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Gestion de la déconnexion
+ *
+ * PHP Version 7
+ *
+ * @category  PPE
+ * @package   GSB
+ * @author    Réseau CERTA <contact@reseaucerta.org>
+ * @author    José GIL <jgil@ac-nice.fr>
+ * @author Valentine SCHALCKENS <v.schalckens@gmail.com>
+ * @copyright 2017 Réseau CERTA
+ * @license   Réseau CERTA
+ * @version   GIT: <0>
+ * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
 
@@ -23,12 +33,12 @@
                         $prenom = $unVisiteur['prenom'];
                         if ($id == $visiteurASelectionner['id']) {
                             ?>
-                            <option selected value="<?php echo $id ?>">
+                            <option id="<?php echo $id?>" selected value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         } else {
                             ?>
-                            <option value="<?php echo $id ?>">
+                            <option id="<?php echo $id?>" value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         }
@@ -43,12 +53,12 @@
                         $libelleEtat = $unEtat['libelle'];
                         if ($idEtat == $etatASelectionner['id']) {
                             ?>
-                            <option selected value="<?php echo $idEtat ?>">
+                            <option id ="<?php echo $idEtat ?>" selected value="<?php echo $idEtat ?>">
                                 <?php echo $libelleEtat ?> </option>
                             <?php
                         } else {
                             ?>
-                            <option value="<?php echo $idEtat ?>">
+                            <option id="<?php echo $idEtat ?>" value="<?php echo $idEtat ?>">
                                 <?php echo $libelleEtat ?> </option>
                             <?php
                         }
