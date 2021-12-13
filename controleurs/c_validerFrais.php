@@ -71,6 +71,7 @@ switch ($action) {
                 include 'vues/vuesComptables/v_choisirLeVisiteur.php';
                 include 'vues/vuesComptables/v_ElementForfaitises.php';
                 include 'vues/vuesComptables/v_descriptifHorsForfait.php';
+                
                 switch ($action2) {
                 case'RenistialiserElementForfaitises':
                 $leVisiteur = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
@@ -79,7 +80,7 @@ switch ($action) {
                 include 'vues/vuesComptables/v_choisirLeVisiteur.php';
                 header("Refresh:0; url='vues/vuesComptables/v_ElementForfaitises.php'");
                 include 'vues/vuesComptables/v_descriptifHorsForfait.php';
-                break;
+                
         break;
         }
         
