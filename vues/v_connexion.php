@@ -49,8 +49,10 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="choix" id="visiteur" value="visiteur" checked>
+                            <!-- Choix de la connexion visiteur -->
                             <label class="form-check-input" for="visiteur"> Visiteur </label>
                             <input class="form-check-input" type="radio" name="choix" id="comptable" value="comptable">
+                            <!-- Choix de la connexion Comptable -->
                             <label class="form-check-input" for="comptable"> Comptable </label>
                         </div>
                         <input class="btn btn-lg btn-success btn-block"
