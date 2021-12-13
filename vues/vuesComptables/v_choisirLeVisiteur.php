@@ -1,5 +1,5 @@
 <div>
-    <form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo&action2=generale" onchange="submit()">
+    <form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo" onchange="submit()">
     <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
     <div class="form-inline">

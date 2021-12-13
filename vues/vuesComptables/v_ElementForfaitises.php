@@ -27,10 +27,9 @@
         <input type="decimal" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $REP?>">
         <br>
         <!-- style="background-color: green;color:white;margin-top: 5px;margin-left: 10px" -->
-        <input type="submit" value="Corriger" class="btn btn-success" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>"> 
-<!--        <a class="btn btn-success" action="submit()" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>-->
-        <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px" 
-           href="index.php?uc=validerFrais&action=MoisDispo&action2=RenistialiserElementForfaitises&visiteur=<?=$idVisiteurSelectionner?>&lstMmois=<?=$Date?>">Réinitialiser</a>
+<!--        <input type="submit" value="Corriger" class="btn btn-success" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>"> -->
+        <a class="btn btn-success" action="submit()" href="index.php?uc=validerFrais&action=corrigerElementForfaitises&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>
+        <a class="btn btn-danger" type="reset" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle?>">Réinitialiser</a>
         <?php }
         unset($ETP,$KM,$NUI,$REP);
         ?>
