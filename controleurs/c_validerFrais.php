@@ -22,6 +22,8 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
         $NUI = $LesFrais[2]['quantite'];
         $REP = $LesFrais[3]['quantite'];
         $lesMois = $lesMoisVisiteur;
+        $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner,$moisASelectionner['mois']);
+
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
 
@@ -54,6 +56,7 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
         }
 
         $LesFrais = $pdo->getLesFraisForfait($idVisiteurSelectionner, $MoiSelectionner);
+        $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner,$MoiSelectionner);
 //        if($LesFrais == null){
 //            $ETP="Vide";
 //            $KM ="Vide";
@@ -65,6 +68,7 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 //        $NUI = $LesFrais[2]['quantite'];
 //        $REP = $LesFrais[3]['quantite'];
 //        }
+        
         include 'vues/vuesComptables/v_valideFrais.php';
         break;
 
@@ -97,7 +101,7 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
         include 'vues/vuesComptables/v_valideFrais';
         break;
     
-    case 'corrigerElement':
+    case 'corrigerElementForfaitises':
         $ETP = filter_input(INPUT_POST,'ETP', FILTER_SANITIZE_STRING);
         $ETP=$_POST['ETP'];
         $KM = filter_input(INPUT_GET,'KM', FILTER_SANITIZE_STRING);
@@ -112,6 +116,13 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
             'REP' => $REP,
         );
         $pdo->majFraisForfait($idVisiteur,$mois, $lesFrais);
+        
+        case'RenistialiserElementForfaitises':
+        $idVisiteur = filter_input(INPUT_GET,'id', FILTER_SANITIZE_STRING);
+        $mois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
+        $LesFrais = $pdo->getLesFraisForfait($idVisiteur, $mois);
+        include 'vues/vuesComptables/v_valideFrais.php';
+
 }
 
    

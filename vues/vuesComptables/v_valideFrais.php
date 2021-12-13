@@ -87,7 +87,8 @@
         <!-- style="background-color: green;color:white;margin-top: 5px;margin-left: 10px" -->
         <input type="submit" value="Corriger" class="btn btn-success" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>"> 
 <!--        <a class="btn btn-success" action="submit()" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>-->
-        <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px">Réinitialiser</a>
+        <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px" 
+           href="index.php?uc=validerFrais&action=RenistialiserElementForfaitises&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>">Réinitialiser</a>
         <?php }
         unset($ETP,$KM,$NUI,$REP);
         ?>
@@ -110,15 +111,15 @@
                 foreach ($lesFraisForfait as $unFrais) {
                     $Mois = $unFrais['mois'];
                     $libelle = htmlspecialchars($unFrais['libelle']);
-                    $quantite = $unFrais['quantite'];
+                    $montant = $unFrais['montant'];
                     ?>
                     <!-- les lignes d'instrucitions suivante servent à créer les lignes pour chaque frais-->
                     <tr style="border: 1px solid orange">
-                        <td style="width: 25%;border: 1px solid orange"><input type="decimal" style="border-radius: 5px" maxlength="5,2" value="<?php echo $idFrais ?>"></td>
-                        <td style="width: 25%;border: 1px solid orange"><?php echo $libelle ?></td>
-                        <td style="width: 25%;border: 1px solid orange"><?php echo $unFrais ?></td>
+                        <td style="width: 25%;border: 1px solid orange"><input  type="decimal" style="border-radius: 5px" maxlength="5,2" value="<?php echo $Mois ?>"></td>
+                        <td style="width: 25%;border: 1px solid orange"><input type="decimal" style="border-radius: 5px" maxlength="5,2" value="<?php echo $libelle ?>"></td>
+                        <td style="width: 25%;border: 1px solid orange"><input type="decimal" style="border-radius: 5px" maxlength="5,2" value="<?php echo $montant ?>"></td>
                         <td style="width: 25%;border: 1px solid orange"><button class="btn btn-success" type="submit" style="background-color: red;color:white;border-radius: 5px">Corriger</button>
-                            <button class="btn btn-danger" type="reset" style="background-color: green;color:white;border-radius: 5px">Réinitialiser</button></td>
+                            <button class="btn btn-danger" type="reset" style="background-color: green;color:white;border-radius: 5px">Rénitialiser</button></td>
                     </tr>
                     <?php
                 }
