@@ -1,4 +1,4 @@
-<div style="position: relative">
+<div >
 <fieldset>
             <table style="border: 1px solid orange ">
                 <thead style="background-color:orange;border: 1px solid orange">

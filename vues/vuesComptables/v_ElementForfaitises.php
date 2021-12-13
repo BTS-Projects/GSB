@@ -30,7 +30,7 @@
         <input type="submit" value="Corriger" class="btn btn-success" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>"> 
 <!--        <a class="btn btn-success" action="submit()" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>-->
         <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px" 
-           href="index.php?uc=validerFrais&action=MoisDispo&action2=reinitialise&visiteur=<?=$idVisiteurSelectionner?>&lstMmois=<?=$Date?>">Réinitialiser</a>
+           href="index.php?uc=validerFrais&action=MoisDispo&action2=RenistialiserElementForfaitises&visiteur=<?=$idVisiteurSelectionner?>&lstMmois=<?=$Date?>">Réinitialiser</a>
         <?php }
         unset($ETP,$KM,$NUI,$REP);
         ?>
