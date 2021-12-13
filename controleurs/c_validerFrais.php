@@ -80,7 +80,6 @@ switch ($action) {
                 include 'vues/vuesComptables/v_choisirLeVisiteur.php';
                 header("Refresh:0; url='vues/vuesComptables/v_ElementForfaitises.php'");
                 include 'vues/vuesComptables/v_descriptifHorsForfait.php';
-                
         break;
         }
         
