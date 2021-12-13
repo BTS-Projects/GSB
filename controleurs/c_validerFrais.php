@@ -23,29 +23,24 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
         $REP = $LesFrais[3]['quantite'];
         $lesMois = $lesMoisVisiteur;
         $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner,$moisASelectionner['mois']);
-
-        include 'vues/vuesComptables/v_valideFrais.php';
+        include 'vues/vuesComptables/v_choisirLeVisiteur.php';
+        include 'vues/vuesComptables/v_ElementForfaitises.php';
+        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
         break;
 
     case 'MoisDispo':
+        
         $MoiSelectionner = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
         $idVisiteurSelectionner = filter_input(INPUT_POST, 'visiteur', FILTER_SANITIZE_STRING);
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
         $nomVisiteur = $lesNomsvisiteurs;
         $lesCles = array_keys($lesMois);
         $moisASelectionner = $lesCles[0];
-        switch ($salut){
-            
-            
-        }
-        
-        
         foreach ($lesNomsvisiteurs as $visiteurs) {
             if ($visiteurs['id'] == $idVisiteurSelectionner) {
                 $leVisiteur = $visiteurs;
             }
         }
-        
         $existe = false;
         $DateAnne = substr($MoiSelectionner,2);
         $DateMois = substr($MoiSelectionner, 0,2);
@@ -62,19 +57,10 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
         $LesFrais = $pdo->getLesFraisForfait($idVisiteurSelectionner, $MoiSelectionner);
         $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner,$MoiSelectionner);
-//        if($LesFrais == null){
-//            $ETP="Vide";
-//            $KM ="Vide";
-//            $NUI ="Vide";
-//            $REP ="Vide";
-//        }else{
-//        $ETP=$LesFrais[0]['quantite'];
-//        $KM = $LesFrais[1]['quantite'];
-//        $NUI = $LesFrais[2]['quantite'];
-//        $REP = $LesFrais[3]['quantite'];
-//        }
-        
-        include 'vues/vuesComptables/v_valideFrais.php';
+      
+        include 'vues/vuesComptables/v_choisirLeVisiteur.php';
+        include 'vues/vuesComptables/v_ElementForfaitises.php';
+        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
         break;
 
     case 'selectionnerMois':
