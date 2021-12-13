@@ -34,6 +34,11 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
         $nomVisiteur = $lesNomsvisiteurs;
         $lesCles = array_keys($lesMois);
         $moisASelectionner = $lesCles[0];
+        switch ($salut){
+            
+            
+        }
+        
         
         foreach ($lesNomsvisiteurs as $visiteurs) {
             if ($visiteurs['id'] == $idVisiteurSelectionner) {
@@ -118,10 +123,10 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
         $pdo->majFraisForfait($idVisiteur,$mois, $lesFrais);
         
         case'RenistialiserElementForfaitises':
-        $idVisiteur = filter_input(INPUT_GET,'id', FILTER_SANITIZE_STRING);
+        $leVisiteur = filter_input(INPUT_GET,'id', FILTER_SANITIZE_STRING);
         $mois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
         $LesFrais = $pdo->getLesFraisForfait($idVisiteur, $mois);
-
+        include 'vues/vuesComptables/v_valideFrais.php';
 }
 
    
