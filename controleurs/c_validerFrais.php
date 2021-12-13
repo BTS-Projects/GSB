@@ -62,7 +62,6 @@ switch ($action) {
             }
         }
         if (!$existe) {
-
             $MoiSelectionner = $lesMois[0]['mois'];
         }
 //Recupère tous les FraisForfait du visiteur choisi
@@ -83,6 +82,7 @@ switch ($action) {
 //                include 'vues/vuesComptables/v_descriptifHorsForfait.php';
 //                break;
 //        }
+
         break;
     case 'Reinitialise':
 //recupère le mois choisit par l'utilisateur
