@@ -8,6 +8,7 @@
  * @package   GSB
  * @author    Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
+ * @author Valentine SCHALCKENS <v.schalckens@gmail.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -47,9 +48,10 @@ switch ($action) {
         $leMois = filter_input(INPUT_GET, "mois", FILTER_SANITIZE_STRING);
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
         $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
+        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
         $nomVisiteur = $pdo->getVisiteurById($idVisiteur)['nom'] . " " . $pdo->getVisiteurById($idVisiteur)['prenom'];
         $pdf= new PDF();
         $pdf->AddPage();
-        $pdf->Contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait);
-        $pdf->Output('F', './pdf/pdf.php');
+        $pdf->contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais);
+        $pdf->Output('F', './pdf/', $idVisiteur . $leMois . '.pdf');
 }
