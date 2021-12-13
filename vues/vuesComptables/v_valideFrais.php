@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 ?>
-<form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo" onchange="submit()">
+<form role="form" method="post" action="index.php?uc=validerFrais&action=MoisDispo&action2=generale" onchange="submit()">
     <script language='javascript' id="cible" src="js/j_validerFrais.js"></script>
     <label for="lstemp" accesskey="l">choisir le visiteur :</label>
     <div class="form-inline">
@@ -38,8 +38,12 @@
                 $numAnnee = $unMois['numAnnee'];
                 $numMois = $unMois['numMois'];
                 $Date=$numMois.$numAnnee;
+                 $numMoisActuelle;
                 if ($Date == $_POST['lstMois']) {
+                    $numMoisActuelle=$numMois;
+                    $numAnneeActuelle=$numAnnee;
                     ?>
+                    
                     <option selected value="<?php echo $numMois.$numAnnee ?>">
                         <?php echo $numMois . '/' . $numAnnee ?> </option>
                     <?php
@@ -49,6 +53,10 @@
                         <?php echo $numMois . '/' . $numAnnee ?> </option>
                     <?php
                 }
+                if(empty($numMoisActuelle)){
+                    $numMoisActuelle=$numMois;
+                    $numAnneeActuelle=$numAnnee;
+                }
             }
             ?>    
         </select>
@@ -56,7 +64,7 @@
     <br>
 </form>
 <h2>Valider la fiche de frais
-    <?php echo $numMois . '-' . $numAnnee ?>
+    <?php echo $numMoisActuelle . '-' . $numAnneeActuelle ?>
 </h2>
 <h3>Eléments forfaitisés</h3>
 <div class="col-md-4">
@@ -73,6 +81,7 @@
             $KM = $LesFrais[1]['quantite'];
             $NUI = $LesFrais[2]['quantite'];
             $REP = $LesFrais[3]['quantite'];
+            $Nouv=$LesFrais;
         ?>
         <p style="margin-left: 10px">Forfait Etape</p>
         <input method="post" type="text" name="ETP" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $ETP?>">
@@ -88,7 +97,7 @@
         <input type="submit" value="Corriger" class="btn btn-success" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>"> 
 <!--        <a class="btn btn-success" action="submit()" href="index.php?uc=validerFrais&action=corrigerElement&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>" type="button" >Corriger</a>-->
         <a class="btn btn-danger" type="reset" style="background-color: red;color:white;margin-top: 5px" 
-           href="index.php?uc=validerFrais&action=RenistialiserElementForfaitises&id=<?=$idVisiteurSelectionner?>&mois=<?=$Date?>">Réinitialiser</a>
+           href="index.php?uc=validerFrais&action=MoisDispo&action2=reinitialise&visiteur=<?=$idVisiteurSelectionner?>&lstMmois=<?=$Date?>">Réinitialiser</a>
         <?php }
         unset($ETP,$KM,$NUI,$REP);
         ?>
@@ -109,7 +118,7 @@
                 <?php
                 //on recupere les frais hors forfait pour pouvoir les mettre dans un tableaux
                 foreach ($lesFraisForfait as $unFrais) {
-                    $Mois = $unFrais['mois'];
+                    $Mois = $unFrais['date'];
                     $libelle = htmlspecialchars($unFrais['libelle']);
                     $montant = $unFrais['montant'];
                     ?>
