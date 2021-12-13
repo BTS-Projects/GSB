@@ -8,6 +8,7 @@
  * @package   GSB
  * @author    Cheri Bibi - Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
+ * @author John Doe <john.doe@example.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -23,6 +24,11 @@ function estConnecte()
 {
     return isset($_SESSION['idVisiteur']) && isset($_SESSION['code']) && isset($_SESSION['choix']);
 }
+/**
+ * Teste si un quelconque comptable est connecté
+ * 
+ * @return vrai ou faux
+ */
 function estConnecteComptable()
 {
     return isset($_SESSION['idComptable']) && isset($_SESSION['code']) && isset($_SESSION['choix']);
@@ -43,12 +49,23 @@ function connecter($idVisiteur, $nom, $prenom, $choix)
     $_SESSION['prenom'] = $prenom;
     $_SESSION['choix'] = $choix;
 }
-
+/**
+ * Verifie  si le code fournie correspond à celui enregistrer dans la session
+ * @param type $code
+ */
 function connecterAuthentification($code) 
 {
     $_SESSION['code'] = $code;
 }
 
+/**
+ * Enregistre dans une variable de session les infos du comptables
+ * 
+ * @param type $idComptable id du comptable connecter
+ * @param type $nom nom du comptable connecter
+ * @param type $prenom prenom du comptable connecter
+ * @param type $choix choix du comptable connecter
+ */
 function connecterComptable($idComptable, $nom, $prenom, $choix)
 {
     $_SESSION['idComptable'] = $idComptable;
@@ -57,6 +74,12 @@ function connecterComptable($idComptable, $nom, $prenom, $choix)
     $_SESSION['choix'] = $choix;
 }
 
+/**
+ * 
+ * @param type $idVisiteur id du visiteur
+ * @param type $mois 
+ * @param type $etat
+ */
 function traitementVisiteurComptable($idVisiteur, $mois, $etat) {
     $_SESSION['idVisiteurCourant'] = $idVisiteur;
     $_SESSION['moisCourant'] = $mois;
