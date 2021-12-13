@@ -9,6 +9,10 @@
  * @package   GSB
  * @author    Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
+ * @author    Valentine SCHALCKENS <v.schalckens@gmail.com> 
+ * @author    Julien Lempereur <lempereur.julien83@gmail.com>
+ * @author Bastien Kerebel <john.doe@example.com>
+ * @author Dorian Dubois<john.doe@example.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
