@@ -198,6 +198,7 @@ switch ($action) {
         include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
         break;
     case 'corrigerFraisHorsForfait' :
+        
         break;
     case 'reinitialiserFraisHorsforfait' :
         break;

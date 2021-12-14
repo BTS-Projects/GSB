@@ -8,7 +8,7 @@
  * @package   GSB
  * @author    Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
- * @author Valentine SCHALCKENS <v.schalckens@gmail.com>
+ * @author    Valentine SCHALCKENS <v.schalckens@gmail.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -18,7 +18,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h3>Filtrer la recherche : </h3>
+        <h2>Filtrer la recherche : </h2>
     </div>
     <div class="col-md-4">
         <form action="index.php?uc=suivrePaiementFrais&action=choixFiltre" 
