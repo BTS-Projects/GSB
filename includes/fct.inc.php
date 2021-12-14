@@ -186,7 +186,23 @@ function dateAnneeMoisVersMoisAnneeEcrit($maDate)
 function dateAnglaisVersFrançaisMoisAnnee($maDate){
     return substr($maDate, 4) . "/" . substr($maDate, 0, 4);
 }
-
+/**
+ *  Retourne le dernier jour du mois entré en paramètre
+ * 
+ * @param string $mois
+ * @return string
+ */
+function dernierJourMois($mois){
+    $moisPhalange = array ('01', '03', '05', '07', '08', '10', '12');
+    $moisCreux = array('04', '06', '09', '11');
+    if(in_array($mois, $moisPhalange)){
+        return '31';
+    } else if (in_array($mois, $moisCreux)){
+        return '30';
+    } else {
+        return '28';
+    }
+}
 /**
  * Retourne le mois au format aaaamm selon le jour dans le mois
  *
