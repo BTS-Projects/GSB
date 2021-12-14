@@ -166,7 +166,7 @@ switch ($action) {
         include 'vues/vuesComptables/v_choisirLeVisiteur.php';
         include 'vues/vuesComptables/v_listeFraisForfaitComp.php';
         include 'vues/vuesComptables/v_descriptifHorsForfait.php';
-        
+        break;
 }
 
    
