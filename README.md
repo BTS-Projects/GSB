@@ -30,3 +30,7 @@ Le travail à réaliser porte sur le développement d'une application de gestion
 de restauration et d'hébergement générés par l'activité de visite médicale.
 L'application va permettre d'établir une gestion plus précise et uniforme entre les entités du laboratoire. Elle devra permettre aux visiteurs d'inscrire leurs dépenses, de visualiser la prise en charge des
 remboursements (enregistré, validé, remboursé).
+<br><br>
+<strong>L'application</strong> doit permettre d'enregistrer tout frais engagé, aussi bien pour l'activité directe (déplacement, restauration et hébergement) que pour les activités annexes (événementiel, conférences,
+autres), et de présenter un suivi daté des opérations menées par le service comptable (réception des
+pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué).
