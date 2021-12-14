@@ -48,12 +48,14 @@ switch ($action) {
         break;
     case 'afficherPdf':
         $leMois = filter_input(INPUT_GET, "mois", FILTER_SANITIZE_STRING);
+        include 'vues/v_listeMois.php';
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
         $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
         $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
+        $montantValide = $lesInfosFicheFrais['montantValide'];
         $nomVisiteur = $pdo->getVisiteurById($idVisiteur)['nom'] . " " . $pdo->getVisiteurById($idVisiteur)['prenom'];
         $pdf= new PDF();
         $pdf->AddPage();
-        $pdf->contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais);
+        $pdf->contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide);
         $pdf->Output('F', './pdf/', $idVisiteur . $leMois . '.pdf');
 }

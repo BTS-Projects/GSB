@@ -13,7 +13,7 @@ function Header()
     $this->Ln(50);
 }
 
-function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais)
+function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide)
 {
     $moisEcrit = dateAnneeMoisVersMoisAnneeEcrit($leMois);
     $moisTotal = dateAnglaisVersFrançaisMoisAnnee($leMois);
@@ -155,11 +155,10 @@ function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesF
     $this->Cell(113, 0, '');
     // Placeholder Case total date
     $this->Cell(36,5,utf8_decode('TOTAL' . $moisTotal),"LTRB",0,'C');
-    //Placeholder montant total
-    $this->Cell(30,5,$lesInfosFicheFrais['montantValide'],"LTRB",0,'C');
+    $this->Cell(30,5,$montantValide,"LTRB",0,'C');
     
     $this->Ln(20);
     $this->Cell($this->w - 20, 5);
-    $this->Cell(0, 5, iconv("UTF-8", "CP1252//TRANSLIT", 'Fait à Paris, le ' . dernierJourMois(substr($mois, 4)) . ' ' . $moisEcrit));
+    $this->Cell(0, 5, iconv("UTF-8", "CP1252//TRANSLIT", 'Fait à Paris, le ' . 'date' . ' ' . $moisEcrit));
     }
 }

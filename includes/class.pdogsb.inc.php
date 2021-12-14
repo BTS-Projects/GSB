@@ -728,6 +728,7 @@ class PdoGsb {
         $laLigne = $requetePrepare->fetch();
         return $laLigne;
     }
+    
 
     /**
      * Modifie l'état et la date de modification d'une fiche de frais.
