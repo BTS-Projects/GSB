@@ -8,9 +8,9 @@
  * @package   GSB
  * @author    Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
- * @author Julien Lempereur <lempereur.julien83@gmail.com>
- * @author Valentine SCHALCKENS <v.schalckens@gmail.com>
- * @author Dorian Dubois<john.doe@example.com>
+ * @author    Julien Lempereur <lempereur.julien83@gmail.com>
+ * @author    Valentine SCHALCKENS <v.schalckens@gmail.com>
+ * @author    Dorian Dubois<john.doe@example.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -42,8 +42,8 @@
 
                 </fieldset>
             <br>
-                <button class="btn btn-success" type="submit" >Corriger</button>
-                <a class="btn btn-danger" role="button" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>">Réinitialiser</a>
+                <button id="BtnCorriger" class="btn btn-success" type="submit" >Corriger</button>
+                <a id="BtnReset"  class="btn btn-danger" role="button" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>">Réinitialiser</a>
                 <?php
             }
             ?>

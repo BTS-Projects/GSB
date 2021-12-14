@@ -464,6 +464,34 @@ class PdoGsb {
     }
 
     /**
+     * Met à jour la table ligneFraisHorsForfait
+     * Met à jour la table ligneFraisHorsForfait pour un visiteur et
+     * un mois donné en enregistrant le nouveau montant
+     *
+     * @param String  $idVisiteur id du visiteur
+     * @param String  $mois       mois sous la forme aaaamm
+     * @param Decimal $leMontant  montant à mettre dans la base de donnée
+     * @param Integer $ifFraisHF  id frais hors forfait
+     *
+     * @return null
+     */
+    public function majFraisHorsForfait($idVisiteur, $mois, $leMontant, $idFraisHF) {
+
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+                'UPDATE lignefraishorsforfait '
+                . 'SET lignefraishorsforfait.montant = :montant '
+                . 'WHERE lignefraisforfait.idvisiteur = :unIdVisiteur '
+                . 'AND lignefraisforfait.mois = :unMois '
+                . 'AND lignefraisforfait.id = :idFraisHF'
+        );
+        $requetePrepare->bindParam(':montant', $leMontant, PDO::PARAM_INT);
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idFraisHF', $idFraisHF, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    /**
      * Met à jour le nombre de justificatifs de la table ficheFrais
      * pour le mois et le visiteur concerné
      *
@@ -687,14 +715,14 @@ class PdoGsb {
         return $laLigne;
     }
 
-       /**
-        * Retoune les informations des fiches de Frais 
-        * 
-        * @param type $idVisiteur id du visiteur
-        * @param type $mois mois de la fiche de frais
-        * @return fiche frais(idetat, datemodif, nbjustificatif, montantValide)
-        *         etat(idEtat) 
-        */
+    /**
+     * Retoune les informations des fiches de Frais 
+     * 
+     * @param type $idVisiteur id du visiteur
+     * @param type $mois mois de la fiche de frais
+     * @return fiche frais(idetat, datemodif, nbjustificatif, montantValide)
+     *         etat(idEtat) 
+     */
     public function getLesInfosFicheFraisPaiement($idVisiteur, $mois) {
         $requetePrepare = PdoGSB::$monPdo->prepare(
                 'SELECT fichefrais.idetat as idEtat, '
@@ -715,7 +743,7 @@ class PdoGsb {
         $laLigne = $requetePrepare->fetch();
         return $laLigne;
     }
-    
+
     /**
      * Retourne les infos d'une fiche de frais par l'état
      * 
@@ -745,7 +773,6 @@ class PdoGsb {
         $laLigne = $requetePrepare->fetch();
         return $laLigne;
     }
-    
 
     /**
      * Modifie l'état et la date de modification d'une fiche de frais.

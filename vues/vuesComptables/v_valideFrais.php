@@ -8,7 +8,7 @@
  * @package   GSB
  * @author    Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
- * @author Dorian Dubois<john.doe@example.com>
+ * @author Dorian Dubois<dorian.dubois.dd@gmail.com>
  * @author Julien Lempereur <lempereur.julien83@gmail.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
@@ -29,13 +29,13 @@
                 $id = $visiteurs['id'];
                 if ($id == $idVisiteurSelectionner) {
                             ?>
-                            <option id="<?php echo $id ?>" selected value="<?php echo $id ?>">
+                            <option selected value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         } else {
                             ?>
                     <!--on utilise l'id des visiteurs pour pouvoir en suite les afficher avec leur nom/prenom -->
-                            <option id="<?php echo $id ?> value="<?php echo $id ?>" >
+                            <option value="<?php echo $id ?>" >
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         }
@@ -55,12 +55,12 @@
                     $numAnneeActuelle=$numAnnee;
                     ?>
                     
-                    <option id="<?php echo $numMois.$numAnnee ?>" selected value="<?php echo $numMois.$numAnnee ?>">
+                    <option selected value="<?php echo $numMois.$numAnnee ?>">
                         <?php echo $numMois . '/' . $numAnnee ?> </option>
                     <?php
                 } else {
                     ?>
-                    <option id="<?php echo $numMois.$numAnnee ?>" value="<?php echo $numMois.$numAnnee ?>">
+                    <option value="<?php echo $numMois.$numAnnee ?>">
                         <?php echo $numMois . '/' . $numAnnee ?> </option>
                     <?php
                 }
