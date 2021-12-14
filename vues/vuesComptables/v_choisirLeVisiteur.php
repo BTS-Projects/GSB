@@ -45,7 +45,7 @@
         ?>
     </select>
         <label for="lstMois" accesskey="n">Mois : </label>
-        <select id="lstMois" name="lstMois" class="form-control" style="width:100px" action="index.php?uc=validerFrais&action=afficherElement">
+        <select id="lstMois" name="lstMois" class="form-control" style="width:100px" >
             <?php
             //on recuperer les mois du visiteur sélectionner pour les pouvoir les afficher
             foreach ($lesMois as $unMois) {
@@ -77,7 +77,5 @@
     </div>
     <br>
 </form>
-<h2>Valider la fiche de frais
-    <?php echo $numMoisActuelle . '-' . $numAnneeActuelle ?>
-</h2>
+<h2>Valider la fiche de frais du <?php echo $numMoisActuelle . '-' . $numAnneeActuelle ?> : </h2>
 </div>

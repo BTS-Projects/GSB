@@ -29,28 +29,24 @@
                     <h2 style="color: red">Le visiteur <strong><?php echo $leVisiteur['nom'] . " " . $leVisiteur['prenom'] ?></strong> ne possède pas de fiche de frais ce mois là</h2>
                     <?php
                 } else {
-                    $ETP = $LesFrais[0]['quantite'];
-                    $KM = $LesFrais[1]['quantite'];
-                    $NUI = $LesFrais[2]['quantite'];
-                    $REP = $LesFrais[3]['quantite'];
-                    $Nouv = $LesFrais;
                     ?>
                     <p style="margin-left: 10px">Forfait Etape</p>
-                    <input method="post" type="text" name="ETP" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $ETP ?>">
+                    <input type="text" name="ETP" style="margin-left: 10px;border-radius: 5px" maxlength="5" value="<?php echo $ETP ?>">
                     <p style="margin-left: 10px">Frais Kilometrique</p>
-                    <input method="post" type="text" name="KM" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value=" <?php echo $KM ?>">      
+                    <input type="text" name="KM" style="margin-left: 10px;border-radius: 5px" maxlength="5" value=" <?php echo $KM ?>">      
                     <p style="margin-left: 10px">Nuitée Hôtel</p>
-                    <input method="post" type="decimal" name="NUI" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $NUI ?>">
+                    <input type="text" name="NUI" style="margin-left: 10px;border-radius: 5px" maxlength="5" value="<?php echo $NUI ?>">
                     <p style="margin-left: 10px">Repas Restaurant</p>
-                    <input method="post" type="decimal" name="REP" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $REP ?>">
-                    <br>
-                    <button class="btn btn-success" type="submit" >Corriger</button>
-                    <a class="btn btn-danger" type="button" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>">Réinitialiser</a>
-                    <?php
-                    }
-                    //        unset($ETP,$KM,$NUI,$REP);
-                    ?>
-            </fieldset>
+                    <input type="text" name="REP" style="margin-left: 10px;border-radius: 5px" maxlength="5" value="<?php echo $REP ?>">
+
+
+                </fieldset>
+            <br>
+                <button class="btn btn-success" type="submit" >Corriger</button>
+                <a class="btn btn-danger" role="button" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>">Réinitialiser</a>
+                <?php
+            }
+            ?>
         </form>
     </div>
 </div>
