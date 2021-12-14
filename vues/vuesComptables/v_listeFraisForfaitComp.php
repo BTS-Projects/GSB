@@ -15,18 +15,15 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
-<div class="row">    
-    <h2>Renseigner ma fiche de frais du mois 
-        <?php echo $numMois . '-' . $numAnnee ?>
-    </h2>
+<div class="row">
     <h3>Eléments forfaitisés</h3>
     <div class="col-md-4">
         <form method="post" 
-              action="index.php?uc=gererFrais&action=validerMajFraisForfait" 
+              action="index.php?uc=validerFrais&action=corrigerElementForfaitises&idVisiteur=<?= $leVisiteur['id'] ?>&mois=<?=$Date?>&numMois=<?= $numMoisActuelle ?>&numAnnee=<?=  $numAnneeActuelle ?>" 
               role="form">
             <fieldset>       
                 <?php
-                foreach ($lesFraisForfait as $unFrais) {
+                foreach ($LesFrais as $unFrais) {
                     $idFrais = $unFrais['idfrais'];
                     $libelle = htmlspecialchars($unFrais['libelle']);
                     $quantite = $unFrais['quantite']; ?>

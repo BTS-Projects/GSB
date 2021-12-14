@@ -10,7 +10,9 @@
  * @author    Cheri Bibi - Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL - CNED <jgil@ac-nice.fr>
  * @author    Valentine SCHALCKENS <v.schalckens@gmail.com>
- * @author     Valentine <v.schalckens@gmail.com>
+ * @author    Julien Lempereur <lempereur.julien83@gmail.com>
+ * @author    Bastien Kerebel <john.doe@example.com>
+ * @author    Dorian Dubois<john.doe@example.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -42,6 +44,7 @@ class PdoGsb {
     /*
      * Paramètres pour la base de données
      */
+
     private static $serveur = 'mysql:host=localhost';
     private static $bdd = 'dbname=gsb_frais';
     private static $user = 'userGsb';
@@ -74,7 +77,7 @@ class PdoGsb {
      */
     public function __destruct() {
         PdoGsb::$monPdo = null;
-     }
+    }
 
     /**
      * Fonction statique qui crée l'unique instance de la classe
@@ -113,51 +116,80 @@ class PdoGsb {
       return $requetePrepare->fetch();
 
       }* */
-    
+
     /*
      * Retoutne sous forme de tableau une partie des états possibles pour une fiche de frais correspondant
      * aux critères suivant : Validée, Mise en Paiement ou Remboursée.
      * 
-     * return l'id et le libellé de l'état de la fiche de frais.
+     * @return l'id et le libellé de l'état de la fiche de frais.
      */
-    public function getTableauEtat(){
+    public function getTableauEtat() {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT * FROM etat WHERE id IN ("VA","MP","RB")'
         );
         $requetePrepare->execute();
-       return $requetePrepare->fetchAll();
+        return $requetePrepare->fetchAll();
     }
-    
+
+    /**
+     * Retourne l'état d'un frais 
+     * 
+     * @param type $id id de la fiche de frais
+     * 
+     * @return type * d'une fiche de frais
+     */
     public function getEtatById($id) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT *'
                 . 'FROM etat '
-                . 'WHERE etat.id = :id' 
+                . 'WHERE etat.id = :id'
         );
         $requetePrepare->bindParam(':id', $id, PDO::PARAM_STR);
         $requetePrepare->execute();
-       return $requetePrepare->fetch();
+        return $requetePrepare->fetch();
     }
-    
-    /* Fonction permettant d'avoir tous les noms de visiteurs*/
-    public function getTableauVisiteur(){
-        $requetePrepare = PdoGsb::$monPdo->prepare(
-                'SELECT visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
-                . 'FROM visiteur ' 
-        );
-        $requetePrepare->execute();
-       return $requetePrepare->fetchAll();
-    }
-    public function getVisiteurById($id){
+
+    /**
+     * 
+     *  Fonction permettant d'avoir tous les noms de visiteurs
+     * 
+     * @return tableau de nom, prenom, id des visiteurs
+     */
+    public function getTableauVisiteur() {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
                 . 'FROM visiteur '
-                . 'WHERE visiteur.id = :id' 
+        );
+        $requetePrepare->execute();
+        return $requetePrepare->fetchAll();
+    }
+
+    /*
+     * Retourne le nom, prénom et id du visiteur en passant en paramètre son Id
+     * 
+     * @param type $id id du visiteur
+     * 
+     * @return nom, prénom, id du visiteur
+     */
+
+    public function getVisiteurById($id) {
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+                'SELECT visiteur.nom as nom, visiteur.prenom as prenom, visiteur.id as id '
+                . 'FROM visiteur '
+                . 'WHERE visiteur.id = :id'
         );
         $requetePrepare->bindParam(':id', $id, PDO::PARAM_STR);
         $requetePrepare->execute();
-       return $requetePrepare->fetch();
+        return $requetePrepare->fetch();
     }
+
+    /**
+     * Retourne le id, nom, prénom, email du visiteur en passant en paramètre son Login
+     * 
+     * @param type $login login du visiteur connecté
+     * 
+     * @return id, nom, prenom, email du visiteur
+     */
     public function getInfosVisiteur($login) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT visiteur.id AS id, visiteur.nom AS nom, '
@@ -170,7 +202,7 @@ class PdoGsb {
 
         return $requetePrepare->fetch();
     }
-    
+
     /**
      * Retourne le mot de passe d'un visiteur
      * 
@@ -188,16 +220,21 @@ class PdoGsb {
         $requetePrepare->execute();
         return $requetePrepare->fetch()['mdp'];
     }
-    
+
+    /**
+     * Retourne un tableau des id,nom, prenom, de tous les visiteurs
+     * 
+     * @return type id, nom, prenom,
+     */
     public function getLesIdsNomsPrenomsVisiteurs() {
-        $requestPrepare = PdoGsb::$monPdo->prepare (
+        $requestPrepare = PdoGsb::$monPdo->prepare(
                 'SELECT visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom'
                 . 'FROM visiteur'
         );
         $requestPrepare->execute();
         return $requestPrepare->fetchAll();
     }
-    
+
     /**
      * Met à jour le code d'authentification du visiteur
      * 
@@ -205,7 +242,7 @@ class PdoGsb {
      * 
      * @param type $code Code à quatre chiffres du visiteur
      */
-    public function setCodeVisiteur($id,$code) {
+    public function setCodeVisiteur($id, $code) {
         $requestPrepare = PdoGsb::$monPdo->prepare(
                 'UPDATE visiteur SET code = :code WHERE id = :id; '
         );
@@ -213,7 +250,7 @@ class PdoGsb {
         $requestPrepare->bindParam(':code', $code, PDO::PARAM_STR);
         $requestPrepare->execute();
     }
-    
+
     /**
      * Retourne le code d'authentification du visiteur
      * 
@@ -221,7 +258,7 @@ class PdoGsb {
      * 
      * @return le code à quatre chiffres du visiteur
      */
-    public function getCodeVisiteur($id) {    
+    public function getCodeVisiteur($id) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT code as codeAuth '
                 . 'FROM visiteur '
@@ -231,8 +268,14 @@ class PdoGsb {
         $requetePrepare->execute();
         return $requetePrepare->fetch()['codeAuth'];
     }
-    
-    public function setCodeComptable($id,$code) {
+
+    /**
+     * 
+     * @param type $id id du comptable  
+     * @param type $code code remplie dans le champs
+     * 
+     */
+    public function setCodeComptable($id, $code) {
         $requestPrepare = PdoGsb::$monPdo->prepare(
                 'UPDATE comptable SET code = :code WHERE id = :id; '
         );
@@ -240,7 +283,7 @@ class PdoGsb {
         $requestPrepare->bindParam(':code', $code, PDO::PARAM_STR);
         $requestPrepare->execute();
     }
-    
+
     /**
      * Retourne le code d'authentification du visiteur
      * 
@@ -248,7 +291,7 @@ class PdoGsb {
      * 
      * @return le code à quatre chiffres du visiteur
      */
-    public function getCodeComptable($id) {    
+    public function getCodeComptable($id) {
         $requetePrepare = PdoGsb::$monPdo->prepare(
                 'SELECT code as codeAuth '
                 . 'FROM comptable '
@@ -258,7 +301,7 @@ class PdoGsb {
         $requetePrepare->execute();
         return $requetePrepare->fetch()['codeAuth'];
     }
-    
+
     /**
      * Retourne les informations du comptable
      * 
@@ -277,7 +320,7 @@ class PdoGsb {
         $requetePrepare->execute();
         return $requetePrepare->fetch();
     }
-    
+
     /**
      * Retourne le mot de passe du comptable
      * 
@@ -294,7 +337,6 @@ class PdoGsb {
         $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
         $requetePrepare->execute();
         return $requetePrepare->fetch()['mdp'];
-        
     }
 
     /**
@@ -360,6 +402,7 @@ class PdoGsb {
     public function getLesFraisForfait($idVisiteur, $mois) {
         $requetePrepare = PdoGSB::$monPdo->prepare(
                 'SELECT fraisforfait.id as idfrais, '
+                . 'fraisforfait.montant as montant, '
                 . 'fraisforfait.libelle as libelle, '
                 . 'lignefraisforfait.quantite as quantite '
                 . 'FROM lignefraisforfait '
@@ -643,7 +686,7 @@ class PdoGsb {
         $laLigne = $requetePrepare->fetch();
         return $laLigne;
     }
-    
+
     public function getLesInfosFicheFraisPaiement($idVisiteur, $mois) {
         $requetePrepare = PdoGSB::$monPdo->prepare(
                 'SELECT fichefrais.idetat as idEtat, '
@@ -664,7 +707,7 @@ class PdoGsb {
         $laLigne = $requetePrepare->fetch();
         return $laLigne;
     }
-    
+
     public function getLesInfosFicheFraisParEtat($idVisiteur, $mois, $etat) {
         $requetePrepare = PdoGSB::$monPdo->prepare(
                 'SELECT fichefrais.idetat as idEtat, '
@@ -686,6 +729,7 @@ class PdoGsb {
         return $laLigne;
     }
     
+
     /**
      * Modifie l'état et la date de modification d'une fiche de frais.
      * Modifie le champ idEtat et met la date de modif à aujourd'hui.
