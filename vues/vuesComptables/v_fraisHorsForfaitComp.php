@@ -40,7 +40,7 @@
                         <tr>
                             <td> <input type="text" disabled="disabled" style="border-radius: 5px" maxlength="5" value="<?= $date ?>"></td>
                             <td> <input type="text" disabled="disabled" style="border-radius: 5px" maxlength="5" value="<?= $libelle ?>"></td>
-                            <td> <input type="text" style="border-radius: 5px" maxlength="5" value="<?= $montant ?>"></td>
+                            <td> <input type="text" name="montant" style="border-radius: 5px" maxlength="5" value="<?= $montant ?>"></td>
                             <td>
                                 <a class="btn btn-success" href="index.php?uc=validerFrais&action=corrigerFraisHorsForfait&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>&idFrais=<?= $id ?>" 
                                    onclick="return confirm('Voulez-vous vraiment corriger ce frais?');" name="btnCorrigerFrais" role="button">Corriger</a>

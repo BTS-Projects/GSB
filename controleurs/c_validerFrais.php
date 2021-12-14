@@ -198,6 +198,11 @@ switch ($action) {
         include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
         break;
     case 'corrigerFraisHorsForfait' :
+        $idVisiteurSelectionner = filter_input(INPUT_GET, 'visiteur', FILTER_SANITIZE_STRING);
+        $MoiSelectionner = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
+        $idFraisHF = filter_input(INPUT_GET, 'idFrais', FILTER_SANITIZE_STRING);
+        $montant = filter_input(INPUT_POST, 'montant', FILTER_SANITIZE_STRING);
+        
         
         break;
     case 'reinitialiserFraisHorsforfait' :
