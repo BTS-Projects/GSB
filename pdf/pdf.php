@@ -13,7 +13,15 @@ function Header()
     // Line break
     $this->Ln(50);
 }
-
+/**
+ * 
+ * @param type $idVisiteur
+ * @param type $nomVisiteur
+ * @param type $leMois
+ * @param type $lesFraisHorsForfait
+ * @param type $lesFraisForfait
+ * @param type $montantValide
+ */
 function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide)
 {
     $moisEcrit = dateAnneeMoisVersMoisAnneeEcrit($leMois);

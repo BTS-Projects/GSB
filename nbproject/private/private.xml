@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/pdf/pdf.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_etatFrais.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/includes/fct.inc.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/includes/class.pdogsb.inc.php</file>
+            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/vues/v_listeMois.php</file>
+            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/vues/v_entete.php</file>
             <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/vues/vuesVisiteurs/v_etatFrais.php</file>
+            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_etatFrais.php</file>
+            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/index.php</file>
+            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/pdf/pdf.php</file>
         </group>
     </open-files>
 </project-private>
