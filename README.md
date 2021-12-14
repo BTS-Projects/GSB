@@ -39,7 +39,9 @@ remboursements (enregistré, validé, remboursé).
 autres), et de présenter un suivi daté des opérations menées par le service comptable (réception des
 pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué).
 
-Présentation de partie du projet:  
+---
+<h3 align=center><strong>Présentation de certaine partie du projet:</strong></h3>
+  
 <img src=accueilPNG.PNG>
 <img src=accueilVisiteur.PNG>
 <img src=accueilComptable.PNG>
