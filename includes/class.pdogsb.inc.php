@@ -402,6 +402,7 @@ class PdoGsb {
     public function getLesFraisForfait($idVisiteur, $mois) {
         $requetePrepare = PdoGSB::$monPdo->prepare(
                 'SELECT fraisforfait.id as idfrais, '
+                . 'fraisforfait.montant as montant'
                 . 'fraisforfait.libelle as libelle, '
                 . 'lignefraisforfait.quantite as quantite '
                 . 'FROM lignefraisforfait '
