@@ -57,5 +57,5 @@ switch ($action) {
         $pdf= new PDF();
         $pdf->AddPage();
         $pdf->contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide);
-        $pdf->Output('F', './pdf/', $idVisiteur . $leMois . '.pdf');
+        $pdf->Output('F', 'pdf/' . $idVisiteur . $leMois . '.pdf');
 }
