@@ -219,7 +219,12 @@ function getMois($date)
     }
     return $annee . $mois;
 }
-
+/**
+ * Retourne le mois précédent au format aaaamm selon le jour dans le mois
+ * 
+ * @param type $date au format jj/mm/aaaa
+ * @return type Mois au format aaaamm
+ */
 function getMoisPrecedent($date) {
     @list($jour, $mois, $annee) = explode('/', $data);
     unset($jour);
@@ -374,6 +379,12 @@ function ajouterErreur($msg)
     $_REQUEST['erreurs'][] = $msg;
 }
 
+/**
+ * Ajoute le libellé d'un succès au tableau des succès
+ * @param type $msg Libellé des succès
+ * 
+ * @return null
+ */
 function ajouterSucces($msg)
 {
     if (!isset($_REQUEST['succes'])) {

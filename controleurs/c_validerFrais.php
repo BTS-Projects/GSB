@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Gestion de l'affichage des frais
  *
@@ -15,7 +16,6 @@
  * @version   GIT: <0>
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
-
 //recupère tous les visireurs avec leurs attributs
 $lesNomsvisiteurs = $pdo->getTableauVisiteur();
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
@@ -47,7 +47,7 @@ switch ($action) {
         $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $moisASelectionner['mois']);
         include 'vues/vuesComptables/v_choisirLeVisiteur.php';
         include 'vues/vuesComptables/v_ElementForfaitises.php';
-        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
+        include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
         break;
 
     case 'MoisDispo':
@@ -78,13 +78,19 @@ switch ($action) {
         if (!$existe) {
             $MoiSelectionner = $lesMois[0]['mois'];
         }
+
         //Recupère tous les FraisForfait du visiteur choisi
         $LesFrais = $pdo->getLesFraisForfait($idVisiteurSelectionner, $MoiSelectionner);
+        $ETP = $LesFrais[0]['quantite'];
+        $KM = $LesFrais[1]['quantite'];
+        $NUI = $LesFrais[2]['quantite'];
+        $REP = $LesFrais[3]['quantite'];
+
         //Recupère tous les FraisHorsForfait du visiteur choisi
         $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
         include 'vues/vuesComptables/v_choisirLeVisiteur.php';
         include 'vues/vuesComptables/v_ElementForfaitises.php';
-        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
+        include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
 
         //        switch ($action2) {
         //            case'RenistialiserElementForfaitises':
@@ -129,43 +135,71 @@ switch ($action) {
         }
         //Recupère tous les FraisForfait du visiteur choisi
         $LesFrais = $pdo->getLesFraisForfait($idVisiteurSelectionner, $MoiSelectionner);
+        $ETP = $LesFrais[0]['quantite'];
+        $KM = $LesFrais[1]['quantite'];
+        $NUI = $LesFrais[2]['quantite'];
+        $REP = $LesFrais[3]['quantite'];
         //Recupère tous les FraisHorsForfait du visiteur choisi
         $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
         include 'vues/vuesComptables/v_choisirLeVisiteur.php';
         include 'vues/vuesComptables/v_ElementForfaitises.php';
-        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
+        include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
 
         break;
 
     case 'corrigerElementForfaitises':
         $ETP = filter_input(INPUT_POST, 'ETP', FILTER_SANITIZE_STRING);
-        //$ETP = $_POST['ETP'];
         $KM = filter_input(INPUT_POST, 'KM', FILTER_SANITIZE_STRING);
         $NUI = filter_input(INPUT_POST, 'NUI', FILTER_SANITIZE_STRING);
         $REP = filter_input(INPUT_POST, 'REP', FILTER_SANITIZE_STRING);
         $idVisiteurSelectionner = filter_input(INPUT_GET, 'visiteur', FILTER_SANITIZE_STRING);
-        $mois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
-        $lesFrais = array(
+        $MoiSelectionner = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
+
+        $numAnneeActuelle = substr($MoiSelectionner, 0, 4);
+        $numMoisActuelle = substr($MoiSelectionner, 4, 2);
+
+        $lesMois = $pdo->getLesMoisDisponibles($idVisiteurSelectionner);
+        foreach ($lesNomsvisiteurs as $visiteurs) {
+            if ($visiteurs['id'] == $idVisiteurSelectionner) {
+                $leVisiteur = $visiteurs;
+            }
+        }
+        $existe = false;
+        foreach ($lesMois as $unMois) {
+            if ($unMois['mois'] == $MoiSelectionner) {
+                $existe = true;
+            }
+        }
+        if (!$existe) {
+            $MoiSelectionner = $lesMois[0]['mois'];
+        }
+        
+        
+        
+        $lesNouveauxFrais = array(
             'ETP' => $ETP,
             'KM' => $KM,
             'NUI' => $NUI,
             'REP' => $REP,
         );
-        $pdo->majFraisForfait($idVisiteurSelectionner, $mois, $lesFrais);
-//        $idVisiteur = filter_input(INPUT_POST, 'idVisiteur', FILTER_SANITIZE_STRING);
-//        $mois = filter_input(INPUT_POST, 'mois', FILTER_SANITIZE_STRING);
-//        $numMoisActuelle = filter_input(INPUT_POST, 'numMois', FILTER_SANITIZE_STRING);
-//        $numAnneeActuelle = filter_input(INPUT_POST, 'numAnnee', FILTER_SANITIZE_STRING);
-//        $lesFrais = filter_input(INPUT_POST, 'lesFrais', FILTER_DEFAULT, FILTER_FORCE_ARRAY);
-//        if (lesQteFraisValides($lesFrais)) {
-//            $pdo->majFraisForfait($idVisiteur, $mois, $lesFrais);
-//        } else {
-//            ajouterErreur('Les valeurs des frais doivent être numériques');
-//            include 'vues/v_erreurs.php';
-//        }
+        $pdo->majFraisForfait($idVisiteurSelectionner, $MoiSelectionner, $lesNouveauxFrais);
+
+        //Recupère tous les FraisForfait du visiteur choisi
+        $LesFrais = $pdo->getLesFraisForfait($idVisiteurSelectionner, $MoiSelectionner);
+        $ETP = $LesFrais[0]['quantite'];
+        $KM = $LesFrais[1]['quantite'];
+        $NUI = $LesFrais[2]['quantite'];
+        $REP = $LesFrais[3]['quantite'];
+        //Recupère tous les FraisHorsForfait du visiteur choisi
+        $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
+
         include 'vues/vuesComptables/v_choisirLeVisiteur.php';
-        include 'vues/vuesComptables/v_listeFraisForfaitComp.php';
-        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
+        include 'vues/vuesComptables/v_ElementForfaitises.php';
+        include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+        break;
+    case 'corrigerFraisHorsForfait' :
+        break;
+    case 'reinitialiserFraisHorsforfait' :
         break;
 }
 
