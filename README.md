@@ -40,6 +40,6 @@ autres), et de présenter un suivi daté des opérations menées par le service 
 pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué).
 
 Présentation de partie du projet:  
-<img src=accueil.PNG>
+<img src=accueilPNG.PNG>
 <img src=accueilVisiteur.PNG>
 <img src=accueilComptable.PNG>
