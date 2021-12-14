@@ -42,8 +42,8 @@
 
                 </fieldset>
             <br>
-                <button class="btn btn-success" type="submit" >Corriger</button>
-                <a class="btn btn-danger" role="button" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>">Réinitialiser</a>
+                <button id="BtnCorriger" class="btn btn-success" type="submit" >Corriger</button>
+                <a id="BtnReset"  class="btn btn-danger" role="button" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>">Réinitialiser</a>
                 <?php
             }
             ?>
