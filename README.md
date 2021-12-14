@@ -38,3 +38,6 @@ remboursements (enregistré, validé, remboursé).
 <strong>L'application</strong> doit permettre d'enregistrer tout frais engagé, aussi bien pour l'activité directe (déplacement, restauration et hébergement) que pour les activités annexes (événementiel, conférences,
 autres), et de présenter un suivi daté des opérations menées par le service comptable (réception des
 pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué).
+
+Présentation de partie du projet:  
+<img src=accueil.PNG>
