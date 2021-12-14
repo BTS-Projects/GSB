@@ -49,6 +49,7 @@ switch ($action) {
     case 'afficherPdf':
         $leMois = filter_input(INPUT_GET, "mois", FILTER_SANITIZE_STRING);
         $nomVisiteur = $pdo->getVisiteurById($idVisiteur)['nom'] . " " . $pdo->getVisiteurById($idVisiteur)['prenom'];
+        // En vérifiant si le pdf existe déjà on évite de le regénérer inutilement
         if (!file_exists('pdf/' . $idVisiteur . $leMois . '.pdf')){
             $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
             $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
