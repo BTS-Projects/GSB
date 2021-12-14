@@ -23,3 +23,10 @@ En 2009, les deux géants pharmaceutiques ont uni leurs forces pour créer un le
 industriel.<br>
 Une conséquence de cette fusion, est la recherche d'une optimisation de l’activité du groupe ainsi
 constitué en réalisant des économies d’échelle dans la production et la distribution des médicaments.
+<br>
+Sur le site parisien, toutes les fonctions administratives sont présentes.
+<br>
+Le travail à réaliser porte sur le développement d'une application de gestion des frais de déplacement,
+de restauration et d'hébergement générés par l'activité de visite médicale.
+L'application va permettre d'établir une gestion plus précise et uniforme entre les entités du laboratoire. Elle devra permettre aux visiteurs d'inscrire leurs dépenses, de visualiser la prise en charge des
+remboursements (enregistré, validé, remboursé).
