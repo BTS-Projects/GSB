@@ -11,15 +11,6 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_valideFrais.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/controleurs/c_etatFrais.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/controleurs/c_validerFrais.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/controleurs/c_suivrePaiementFrais.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/includes/class.pdogsb.inc.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/index.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/includes/fct.inc.php</file>
-        </group>
-
+        <group/>
     </open-files>
 </project-private>
