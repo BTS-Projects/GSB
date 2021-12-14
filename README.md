@@ -17,3 +17,9 @@ Des déboires divers récents autour de médicaments ou molécules ayant entraî
 médicales ont fait s'élever des voix contre une partie de l'activité des laboratoires : la visite médicale,
 réputée être le lieu d'arrangements entre l'industrie et les praticiens, et tout du moins un terrain 
 d'influence opaque
+<br>
+<br>
+En 2009, les deux géants pharmaceutiques ont uni leurs forces pour créer un leader de ce secteur
+industriel.<br>
+Une conséquence de cette fusion, est la recherche d'une optimisation de l’activité du groupe ainsi
+constitué en réalisant des économies d’échelle dans la production et la distribution des médicaments.
