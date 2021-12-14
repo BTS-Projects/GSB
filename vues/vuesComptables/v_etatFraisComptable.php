@@ -20,6 +20,7 @@
 
 <div class="panel panel-primary" style="border-color : #ff9933">
     <div class="panel-heading" style="background-color: #ff9933">Fiche de frais du mois 
+        <!-- Affiche le mois au format mm/aaaa sélectionners-->
         <?php echo $numMois . '-' . $numAnnee ?> : </div>
     <div class="panel-body">
         <div>
