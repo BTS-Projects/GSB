@@ -3,7 +3,9 @@ require('fpdf.php');
 
 class PDF extends FPDF
 {
-// Page header
+/**
+ * Header du PDF avec le logo GSB
+ */
 function Header()
 {
     // Logo
@@ -14,7 +16,7 @@ function Header()
     $this->Ln(50);
 }
 /**
- * 
+ * Permet de remplir le contenu du PDF avec les informations entrées en paramètre
  * @param type $idVisiteur
  * @param type $nomVisiteur
  * @param type $leMois
@@ -24,16 +26,20 @@ function Header()
  */
 function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide)
 {
+    //Transforme une date au format aaaamm au format mois année 
     $moisEcrit = dateAnneeMoisVersMoisAnneeEcrit($leMois);
+    // Transforme une date au format aaaamm vers le format mm/aaaa
     $moisTotal = dateAnglaisVersFrançaisMoisAnnee($leMois);
     
     $font = 'Times';
     $marge = 10;
     
+    //Epaisseur des bords du tableau
     $this->SetLineWidth(0.2);
             
-    //Titre
+    // Case du titre de la fiche
     $this->SetFont($font,'B',13.5);
+    //Couleur bleu pour le texte
     $this->SetTextColor(25,65,115);
     $this->Cell(0,6,"REMBOURSEMENT DE FRAIS ENGAGES",1,1,'C');
     $this->SetFont($font, '', 11);
@@ -46,6 +52,7 @@ function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesF
     $this->Cell(50,20,$idVisiteur);
     $this->Cell(0,20,$nomVisiteur, 'R');
     
+    //Saut de 3 lignes
     $this->Ln(15);
     
     //Ligne Mois
@@ -60,12 +67,12 @@ function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesF
     
     $this->ln(10);
     
-    //Tableau frais forfaitaires
+    //Début Tableau frais forfaitaires
     $largeurLigne = $this->w - 40;
     $largeurColonne = $largeurLigne / 4;
     
     $this->Cell($marge, 0);
-    
+    // Couleur des bordures de cellules, lignes... en bleu
     $this->SetDrawColor(25,65,115);
     
     //Ligne du haut du tableau
@@ -75,6 +82,7 @@ function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesF
     $this->SetTextColor(25,65,115);
     
     $this->Ln(0);
+    //Couleur noir pour les cellules,lignes... en noir
     $this->SetDrawColor(0, 0, 0);
     
     $this->Cell($marge, 10, '', 'L');
@@ -101,6 +109,7 @@ function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesF
     
     $this->SetTextColor(0, 0, 0);
     
+    //Permet de remplir les cases du tableau frais forfaitaires
     foreach ($lesFraisForfait as $fraisForfait) {
             $libelle = iconv("UTF-8", "CP1252//TRANSLIT", $fraisForfait['libelle']);
             $quantite = $fraisForfait['quantite'];
@@ -137,6 +146,7 @@ function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesF
             $this->Ln(0);
         }
     
+    // Case Intermédiaire Autre frais
     $this->ln(0);
     
     $this->SetDrawColor(0, 0, 0);
@@ -214,6 +224,7 @@ function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesF
 
     $this->SetTextColor(0, 0, 0);
     
+    // Permet de remplir les cases du tableau frais hors forfaits
     foreach ($lesFraisHorsForfait as $unFraisHorsForfait) {
             $date = $unFraisHorsForfait['date'];
             $libelle = iconv("UTF-8", "CP1252//TRANSLIT", $unFraisHorsForfait['libelle']);
@@ -292,18 +303,17 @@ function contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesF
     $this->Ln(20);
 
     $this->SetFont($font, '', 12);
-    
+    // Date du PDF
     $this->Cell(20 + $largeurColonne * 2, 5);
     $this->Cell(0, 5, iconv("UTF-8", "CP1252//TRANSLIT", 'Fait à Paris, le ' . dernierJourMois(substr($leMois, 4)) . ' ' . $moisEcrit));
     
     $this->Ln(10);
 
-        //Marge
     $this->Cell(20 + $largeurColonne * 2, 5);
     $this->Cell(0, 5, 'Vu l\'agent comptable');
 
     $this->Ln(10);
-
+    // Signature Comptable
     $this->Cell(20 + $largeurColonne * 2);
 
     $this->Image('images/signatureComptable.png', 120, 250);
