@@ -687,6 +687,14 @@ class PdoGsb {
         return $laLigne;
     }
 
+       /**
+        * Retoune les informations des fiches de Frais 
+        * 
+        * @param type $idVisiteur id du visiteur
+        * @param type $mois mois de la fiche de frais
+        * @return fiche frais(idetat, datemodif, nbjustificatif, montantValide)
+        *         etat(idEtat) 
+        */
     public function getLesInfosFicheFraisPaiement($idVisiteur, $mois) {
         $requetePrepare = PdoGSB::$monPdo->prepare(
                 'SELECT fichefrais.idetat as idEtat, '
@@ -707,7 +715,16 @@ class PdoGsb {
         $laLigne = $requetePrepare->fetch();
         return $laLigne;
     }
-
+    
+    /**
+     * Retourne les infos d'une fiche de frais par l'état
+     * 
+     * @param type $idVisiteur Id du visiteur
+     * @param type $mois Mois coresspondant à la fiche de frais
+     * @param type $etat etat de la fiche de frais voulant etre recupérer
+     * @return type ficheFrais(idEtat, datemodif, nbjustificatifs, montantvalide), 
+     *              etat (libelle)
+     */
     public function getLesInfosFicheFraisParEtat($idVisiteur, $mois, $etat) {
         $requetePrepare = PdoGSB::$monPdo->prepare(
                 'SELECT fichefrais.idetat as idEtat, '
