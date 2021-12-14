@@ -41,4 +41,5 @@ pièces, validation de la demande de remboursement, mise en paiement, remboursem
 
 Présentation de partie du projet:  
 <img src=accueil.PNG>
+<img src=accueilVisiteur.PNG>
 <img src=accueilComptable.PNG>
