@@ -10,6 +10,9 @@
 
 Cet Atelier de professionnalisation a pour but de mettre en oeuvre les savoirs abordés dans les différents cours afin d'acquérir des compétences techniques globales mais aussi spécifiques à la spécialisation SLAM.
 
+Outils utiliser:
+ [Notre trello](https://trello.com/b/MQB4QiYp)
+
 ##### Description du laboratoire GSB :
 L’industrie pharmaceutique est un secteur très lucratif dans lequel le mouvement de fusion acquisition 
 est très fort. Les regroupements de laboratoires ces dernières années ont donné naissance à des entités gigantesques au sein desquelles le travail est longtemps resté organisé selon les anciennes structures. 
