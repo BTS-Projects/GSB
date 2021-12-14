@@ -20,7 +20,7 @@
 <div>
     <h3>Eléments forfaitisés</h3>
     <div class="col-md-4">
-        <form method="post" action="index.php?uc=validerFrais&action=corrigerElementForfaitises&visiteur<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>" role="form">
+        <form method="post" action="index.php?uc=validerFrais&action=corrigerElementForfaitises&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numAnneeActuelle . $numMoisActuelle ?>" role="form">
             <fieldset>
                 <!--les variables sont encore à ajouter pour pouvoir les remplir automatiquement -->
                 <?php
@@ -44,8 +44,8 @@
                     <p style="margin-left: 10px">Repas Restaurant</p>
                     <input method="post" type="decimal" name="REP" style="margin-left: 10px;border-radius: 5px" maxlength="5,2" value="<?php echo $REP ?>">
                     <br>
-                    <button class="btn btn-success" type="submit" >Corriger</a>
-                        <a class="btn btn-danger" type="button" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>">Réinitialiser</a>
+                    <button class="btn btn-success" type="submit" >Corriger</button>
+                    <a class="btn btn-danger" type="button" href="index.php?uc=validerFrais&action=Reinitialise&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>">Réinitialiser</a>
                     <?php
                     }
                     //        unset($ETP,$KM,$NUI,$REP);

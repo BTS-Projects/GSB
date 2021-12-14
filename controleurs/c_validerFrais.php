@@ -47,7 +47,7 @@ switch ($action) {
         $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $moisASelectionner['mois']);
         include 'vues/vuesComptables/v_choisirLeVisiteur.php';
         include 'vues/vuesComptables/v_ElementForfaitises.php';
-        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
+        include 'vues/vuesComptables/v_fraisHorsForfait.php';
         break;
 
     case 'MoisDispo':
@@ -84,7 +84,7 @@ switch ($action) {
         $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
         include 'vues/vuesComptables/v_choisirLeVisiteur.php';
         include 'vues/vuesComptables/v_ElementForfaitises.php';
-        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
+        include 'vues/vuesComptables/v_fraisHorsForfait.php';
 
         //        switch ($action2) {
         //            case'RenistialiserElementForfaitises':
@@ -165,7 +165,11 @@ switch ($action) {
 //        }
         include 'vues/vuesComptables/v_choisirLeVisiteur.php';
         include 'vues/vuesComptables/v_listeFraisForfaitComp.php';
-        include 'vues/vuesComptables/v_descriptifHorsForfait.php';
+        include 'vues/vuesComptables/v_fraisHorsForfait.php';
+        break;
+    case 'corrigerFraisHorsForfait' :
+        break;
+    case 'reinitialiserFraisHorsforfait' :
         break;
 }
 
