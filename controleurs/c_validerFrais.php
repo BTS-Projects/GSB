@@ -92,17 +92,6 @@ switch ($action) {
         include 'vues/vuesComptables/v_ElementForfaitises.php';
         include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
 
-        //        switch ($action2) {
-        //            case'RenistialiserElementForfaitises':
-        //                $leVisiteur = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
-        //                $mois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
-        ////$LesFrais = $pdo->getLesFraisForfait($idVisiteur, $mois);
-        //                include 'vues/vuesComptables/v_choisirLeVisiteur.php';
-        //                header("Refresh:0; url='vues/vuesComptables/v_ElementForfaitises.php'");
-        //                include 'vues/vuesComptables/v_descriptifHorsForfait.php';
-        //                break;
-        //        }
-
         break;
     case 'Reinitialise':
         //recupère le mois choisit par l'utilisateur
@@ -173,8 +162,6 @@ switch ($action) {
         if (!$existe) {
             $MoiSelectionner = $lesMois[0]['mois'];
         }
-        
-        
         
         $lesNouveauxFrais = array(
             'ETP' => $ETP,
