@@ -8,6 +8,10 @@
  * @package   GSB
  * @author    Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
+ * @author Valentine SCHALCKENS <v.schalckens@gmail.com>
+ * @author Julien Lempereur <lempereur.julien83@gmail.com>
+ * @author Bastien Kerebel <john.doe@example.com>
+ * @author Dorian Dubois<john.doe@example.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -45,8 +49,10 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="choix" id="visiteur" value="visiteur" checked>
+                            <!-- Choix de la connexion visiteur -->
                             <label class="form-check-input" for="visiteur"> Visiteur </label>
                             <input class="form-check-input" type="radio" name="choix" id="comptable" value="comptable">
+                            <!-- Choix de la connexion Comptable -->
                             <label class="form-check-input" for="comptable"> Comptable </label>
                         </div>
                         <input class="btn btn-lg btn-success btn-block"
