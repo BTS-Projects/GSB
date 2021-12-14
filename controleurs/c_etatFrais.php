@@ -32,13 +32,14 @@ switch ($action) {
     case 'voirEtatFrais':
         $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+        $numAnnee = substr($leMois, 0, 4);
+        $numMois = substr($leMois, 4, 2);
+        $leMois = $numAnnee.$numMois;
         $moisASelectionner = $leMois;
         include 'vues/v_listeMois.php';
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
         $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
         $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
-        $numAnnee = substr($leMois, 0, 4);
-        $numMois = substr($leMois, 4, 2);
         $libEtat = $lesInfosFicheFrais['libEtat'];
         $montantValide = $lesInfosFicheFrais['montantValide'];
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
