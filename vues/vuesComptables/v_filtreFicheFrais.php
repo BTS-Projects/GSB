@@ -26,6 +26,7 @@
             <div class="form-group">
                 <label for="lstVisiteurs" accesskey="n">Visiteurs : </label>
                 <select id="lstVisiteurs" name="lstVisiteurs" class="form-control">
+                    <!-- selectionne le visiteur choisi, si aucun visiteur est sélectionner le 1er visiteur de la liste sera choisi  -->
                     <?php
                     foreach ($lesVisiteurs as $unVisiteur) {
                         $id = $unVisiteur['id'];
@@ -33,12 +34,12 @@
                         $prenom = $unVisiteur['prenom'];
                         if ($id == $visiteurASelectionner['id']) {
                             ?>
-                            <option id="<?php echo $id?>" selected value="<?php echo $id ?>">
+                            <option id="<?php echo $id ?>" selected value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         } else {
                             ?>
-                            <option id="<?php echo $id?>" value="<?php echo $id ?>">
+                            <option id="<?php echo $id ?>" value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         }

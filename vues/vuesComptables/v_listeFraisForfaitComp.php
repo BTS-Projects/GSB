@@ -34,7 +34,7 @@
                                size="10" maxlength="5" 
                                value="<?php echo $quantite ?>" 
                                class="form-control">
-                    </div>
+                    </div>       
                     <?php
                 }
                 ?>
