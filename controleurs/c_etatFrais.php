@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Gestion de l'affichage des frais
  *
@@ -15,8 +16,7 @@
  * @version   GIT: <0>
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
-
-include('./pdf/pdf.php') ;
+include('./pdf/pdf.php');
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $idVisiteur = $_SESSION['idVisiteur'];
@@ -35,7 +35,7 @@ switch ($action) {
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
         $numAnnee = substr($leMois, 0, 4);
         $numMois = substr($leMois, 4, 2);
-        $leMois = $numAnnee.$numMois;
+        $leMois = $numAnnee . $numMois;
         $moisASelectionner = $leMois;
         include 'vues/v_listeMois.php';
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
@@ -51,18 +51,22 @@ switch ($action) {
         $leMois = filter_input(INPUT_GET, "mois", FILTER_SANITIZE_STRING);
         $nomVisiteur = $pdo->getVisiteurById($idVisiteur)['nom'] . " " . $pdo->getVisiteurById($idVisiteur)['prenom'];
         // En vérifiant si le pdf existe déjà on évite de le regénérer inutilement
-        if (!file_exists('pdf/' . $idVisiteur . $leMois . '.pdf')){
+        if (!file_exists('pdf/' . $idVisiteur . $leMois . '.pdf')) {
             $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
             $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
             $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
             $montantValide = $lesInfosFicheFrais['montantValide'];
-            $pdf= new PDF();
-            $pdf->AddPage();
-            $pdf->contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide);
-            $pdf->Output('F', 'pdf/' . $idVisiteur . $leMois . '.pdf');  
+            if ($lesInfosFicheFrais['idEtat'] != "VA") {
+                ajouterErreur("Le pdf ne peut pas être généré, la fiche de frais n'est pas validée par un comptable.");
+                include 'vues/v_erreurs.php';
+            } else {
+                $pdf = new PDF();
+                $pdf->AddPage();
+                $pdf->contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide);
+                $pdf->Output('F', 'pdf/' . $idVisiteur . $leMois . '.pdf');
+            }
         }
         header("Refresh: 0;URL=../pdf/" . $idVisiteur . $leMois . '.pdf');
-        
+
         break;
-        
 }
