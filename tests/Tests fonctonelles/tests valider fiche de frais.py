@@ -31,6 +31,7 @@ try:
     driver.find_element(By.ID,"BtnReset").click()
     log('reussite du tests de la modification')
 except Exception as ex:
+    log('echec de la modification des frais forfaitaires')
     print(ex)
 
 #tests de modification de frais hors forfait
@@ -42,7 +43,6 @@ try:
     sleep(5)
     setValeurInput('input[name="montant40"]', 269.00)
     driver.find_element(By.NAME,"btnCorrigerFrais").click()
-    driver.find_element.click()
     sleep(5)
     driver.find_element(By.NAME,"btnRefuserFrais").click()
     driver.find_element.click()
