@@ -11,7 +11,8 @@
 Cet Atelier de professionnalisation a pour but de mettre en oeuvre les savoirs abordés dans les différents cours afin d'acquérir des compétences techniques globales mais aussi spécifiques à la spécialisation SLAM.
 
 Outils utilisés:<br>
- [Notre trello](https://trello.com/b/MQB4QiYp)
+ [Notre trello](https://trello.com/b/MQB4QiYp)  
+ [Manuel PHP](https://www.php.net/manual/fr/index.php)
 
 
 ##### Description du laboratoire GSB :
