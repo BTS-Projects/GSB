@@ -50,6 +50,7 @@
         </form>
     </div>
 </div>
+<hr>
 <div class="row">
     <h3> Eléments Hors Forfait :</h3>
 </div>

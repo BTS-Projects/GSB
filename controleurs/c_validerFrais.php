@@ -48,18 +48,21 @@ switch ($action) {
             $lesMois = $lesMoisVisiteur;
             $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $moisASelectionner['mois']);
             $MoiSelectionner = $moisASelectionner['mois'];
-            
-             
-            
+
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
             include 'vues/vuesComptables/v_ElementForfaitises.php';
-            foreach ($lesFraisForfait as $unFraisHorsForfait) {
-                $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
-                $date = $unFraisHorsForfait['date'];
-                $montant = $unFraisHorsForfait['montant'];
-                $idFraisHF = $unFraisHorsForfait['id'];
-                $nameMontant = 'montant' . $idFraisHF;
-                include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+            if ($lesFraisForfait) {
+                foreach ($lesFraisForfait as $unFraisHorsForfait) {
+                    $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
+                    $date = $unFraisHorsForfait['date'];
+                    $montant = $unFraisHorsForfait['montant'];
+                    $idFraisHF = $unFraisHorsForfait['id'];
+                    $nameMontant = 'montant' . $idFraisHF;
+                    include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+                }
+            } else {
+                ajouterErreur("Aucun frais hors forfait pour ce visiteur ce mois-ci !");
+                include 'vues/v_erreurs.php';
             }
         } else {
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
@@ -107,19 +110,22 @@ switch ($action) {
 
             //Recupère tous les FraisHorsForfait du visiteur choisi
             $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
-            
-             
-            
+
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
             include 'vues/vuesComptables/v_ElementForfaitises.php';
-            foreach ($lesFraisForfait as $unFraisHorsForfait) {
-                $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
-                $date = $unFraisHorsForfait['date'];
-                $montant = $unFraisHorsForfait['montant'];
-                $idFraisHF = $unFraisHorsForfait['id'];
-                $nameMontant = 'montant' . $idFraisHF;
-                $nameLibelle = 'libelle' . $idFraisHF;
-                include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+            if ($lesFraisForfait) {
+                foreach ($lesFraisForfait as $unFraisHorsForfait) {
+                    $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
+                    $date = $unFraisHorsForfait['date'];
+                    $montant = $unFraisHorsForfait['montant'];
+                    $idFraisHF = $unFraisHorsForfait['id'];
+                    $nameMontant = 'montant' . $idFraisHF;
+                    $nameLibelle = 'libelle' . $idFraisHF;
+                    include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+                }
+            } else {
+                ajouterErreur("Aucun frais hors forfait pour ce visiteur ce mois-ci !");
+                include 'vues/v_erreurs.php';
             }
         } else {
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
@@ -171,19 +177,23 @@ switch ($action) {
             $REP = $LesFrais[3]['quantite'];
             //Recupère tous les FraisHorsForfait du visiteur choisi
             $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
-            
-             
-            
+
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
             include 'vues/vuesComptables/v_ElementForfaitises.php';
-            foreach ($lesFraisForfait as $unFraisHorsForfait) {
-                $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
-                $date = $unFraisHorsForfait['date'];
-                $montant = $unFraisHorsForfait['montant'];
-                $idFraisHF = $unFraisHorsForfait['id'];
-                $nameMontant = 'montant' . $idFraisHF;
-                $nameLibelle = 'libelle' . $idFraisHF;
-                include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+
+            if ($lesFraisForfait) {
+                foreach ($lesFraisForfait as $unFraisHorsForfait) {
+                    $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
+                    $date = $unFraisHorsForfait['date'];
+                    $montant = $unFraisHorsForfait['montant'];
+                    $idFraisHF = $unFraisHorsForfait['id'];
+                    $nameMontant = 'montant' . $idFraisHF;
+                    $nameLibelle = 'libelle' . $idFraisHF;
+                    include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+                }
+            } else {
+                ajouterErreur("Aucun frais hors forfait pour ce visiteur ce mois-ci !");
+                include 'vues/v_erreurs.php';
             }
         } else {
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
@@ -243,22 +253,26 @@ switch ($action) {
             $REP = $LesFrais[3]['quantite'];
             //Recupère tous les FraisHorsForfait du visiteur choisi
             $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
-            
-             
-            
+
             ajouterSucces("Les frais forfait ont bien été mis à jour");
             include 'vues/v_succes.php';
 
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
             include 'vues/vuesComptables/v_ElementForfaitises.php';
-            foreach ($lesFraisForfait as $unFraisHorsForfait) {
-                $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
-                $date = $unFraisHorsForfait['date'];
-                $montant = $unFraisHorsForfait['montant'];
-                $idFraisHF = $unFraisHorsForfait['id'];
-                $nameMontant = 'montant' . $idFraisHF;
-                $nameLibelle = 'libelle' . $idFraisHF;
-                include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+
+            if ($lesFraisForfait) {
+                foreach ($lesFraisForfait as $unFraisHorsForfait) {
+                    $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
+                    $date = $unFraisHorsForfait['date'];
+                    $montant = $unFraisHorsForfait['montant'];
+                    $idFraisHF = $unFraisHorsForfait['id'];
+                    $nameMontant = 'montant' . $idFraisHF;
+                    $nameLibelle = 'libelle' . $idFraisHF;
+                    include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+                }
+            } else {
+                ajouterErreur("Aucun frais hors forfait pour ce visiteur ce mois-ci !");
+                include 'vues/v_erreurs.php';
             }
         } else {
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
@@ -305,22 +319,26 @@ switch ($action) {
             $REP = $LesFrais[3]['quantite'];
             //Recupère tous les FraisHorsForfait du visiteur choisi
             $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
-            
-             
-            
+
             ajouterSucces("Les frais hors forfait ont bien été mis à jour");
             include 'vues/v_succes.php';
 
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
             include 'vues/vuesComptables/v_ElementForfaitises.php';
-            foreach ($lesFraisForfait as $unFraisHorsForfait) {
-                $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
-                $date = $unFraisHorsForfait['date'];
-                $montant = $unFraisHorsForfait['montant'];
-                $idFraisHF = $unFraisHorsForfait['id'];
-                $nameMontant = 'montant' . $idFraisHF;
-                $nameLibelle = 'libelle' . $idFraisHF;
-                include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+
+            if ($lesFraisForfait) {
+                foreach ($lesFraisForfait as $unFraisHorsForfait) {
+                    $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
+                    $date = $unFraisHorsForfait['date'];
+                    $montant = $unFraisHorsForfait['montant'];
+                    $idFraisHF = $unFraisHorsForfait['id'];
+                    $nameMontant = 'montant' . $idFraisHF;
+                    $nameLibelle = 'libelle' . $idFraisHF;
+                    include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+                }
+            } else {
+                ajouterErreur("Aucun frais hors forfait pour ce visiteur ce mois-ci !");
+                include 'vues/v_erreurs.php';
             }
         } else {
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
@@ -337,7 +355,7 @@ switch ($action) {
         $numAnneeActuelle = substr($MoiSelectionner, 2);
         $numMoisActuelle = substr($MoiSelectionner, 0, 2);
         $MoiSelectionner = $numAnneeActuelle . $numMoisActuelle;
-        
+
         $pdo->refusFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner, $idFraisHF);
         $lesMoisVisiteur = $pdo->getLesMoisDisponiblesCL($idVisiteurSelectionner);
         if ($lesMoisVisiteur) {
@@ -364,18 +382,23 @@ switch ($action) {
             $REP = $LesFrais[3]['quantite'];
             //Recupère tous les FraisHorsForfait du visiteur choisi
             $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $MoiSelectionner);
-            
 
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
             include 'vues/vuesComptables/v_ElementForfaitises.php';
-            foreach ($lesFraisForfait as $unFraisHorsForfait) {
-                $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
-                $date = $unFraisHorsForfait['date'];
-                $montant = $unFraisHorsForfait['montant'];
-                $idFraisHF = $unFraisHorsForfait['id'];
-                $nameMontant = 'montant' . $idFraisHF;
-                $nameLibelle = 'libelle' . $idFraisHF;
-                include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+
+            if ($lesFraisForfait) {
+                foreach ($lesFraisForfait as $unFraisHorsForfait) {
+                    $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
+                    $date = $unFraisHorsForfait['date'];
+                    $montant = $unFraisHorsForfait['montant'];
+                    $idFraisHF = $unFraisHorsForfait['id'];
+                    $nameMontant = 'montant' . $idFraisHF;
+                    $nameLibelle = 'libelle' . $idFraisHF;
+                    include 'vues/vuesComptables/v_fraisHorsForfaitComp.php';
+                }
+            } else {
+                ajouterErreur("Aucun frais hors forfait pour ce visiteur ce mois-ci !");
+                include 'vues/v_erreurs.php';
             }
         } else {
             include 'vues/vuesComptables/v_choisirLeVisiteur.php';
@@ -386,13 +409,12 @@ switch ($action) {
     case 'validerFicheFrais' :
         $idVisiteurSelectionner = filter_input(INPUT_GET, 'visiteur', FILTER_SANITIZE_STRING);
         $MoiSelectionner = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
-        
-        $pdo->majEtatFicheFrais($idVisiteurSelectionner,$MoiSelectionner,"VA");
-        
-        
+
+        $pdo->majEtatFicheFrais($idVisiteurSelectionner, $MoiSelectionner, "VA");
+
         ajouterSucces(" La fiche est validé ! ");
         include 'vues/v_succes.php';
-        
+
         break;
 }
 
