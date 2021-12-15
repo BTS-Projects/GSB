@@ -37,7 +37,7 @@
                             <?php
                         } else {
                             ?>
-                            <option id=<?php echo $mois ?> value="<?php echo $mois ?>">
+                            <option id=<?php echo $mois ?> notselected value="<?php echo $mois ?>">
                                 <?php echo $numMois . '/' . $numAnnee ?> </option>
                             <?php
                         }
