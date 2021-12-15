@@ -38,8 +38,6 @@
                     <input type="text" name="NUI" style="margin-left: 10px;border-radius: 5px" maxlength="5" value="<?php echo $NUI ?>">
                     <p style="margin-left: 10px">Repas Restaurant</p>
                     <input type="text" name="REP" style="margin-left: 10px;border-radius: 5px" maxlength="5" value="<?php echo $REP ?>">
-
-
                 </fieldset>
             <br>
                 <button id="BtnCorriger" class="btn btn-success" type="submit" >Corriger</button>

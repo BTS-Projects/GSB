@@ -34,12 +34,12 @@
                         $prenom = $unVisiteur['prenom'];
                         if ($id == $visiteurASelectionner['id']) {
                             ?>
-                            <option id="<?php echo $id ?>" selected value="<?php echo $id ?>">
+                            <option id=<?php echo $id ?> selected value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         } else {
                             ?>
-                            <option id="<?php echo $id ?>" value="<?php echo $id ?>">
+                            <option id=<?php echo $id ?> notselected value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         }
