@@ -17,7 +17,7 @@
  */
 ?>
 
-<div>
+<div class="row">
     <div class="col-md-4">
         <h2>Filtrer la recherche : </h2>
     </div>
@@ -51,12 +51,11 @@
                 <select id="lstMois" name="lstMois" class="form-control" style="width:100px" >
                     <?php
                     //on recuperer les mois du visiteur sélectionner pour les pouvoir les afficher
-                    foreach ($lesMois as $unMois) {
+                    foreach ($lesMoisVisiteur as $unMois) {
                         $numAnnee = $unMois['numAnnee'];
                         $numMois = $unMois['numMois'];
-                        $Date = $numMois . $numAnnee;
-                        $numMoisActuelle;
-                        if ($Date == $_POST['lstMois']) {
+                        $Date = $numAnnee . $numMois;
+                        if ($Date == $MoiSelectionner) {
                             $numMoisActuelle = $numMois;
                             $numAnneeActuelle = $numAnnee;
                             ?>
@@ -80,6 +79,15 @@
             </div>
         </form>
     </div>
-    <hr>
-    <h2>Valider la fiche de frais du <?php echo $numMoisActuelle . '-' . $numAnneeActuelle ?> : </h2>
 </div>
+<hr>
+<?php if ($lesMoisVisiteur) { ?>
+    <div class="row">
+        <h2>
+            Valider la fiche de frais du <?php echo $numMoisActuelle . '-' . $numAnneeActuelle ?> : 
+            <a class="btn btn-success" onclick="return confirm('Voulez-vous vraiment valider cette fiche de frais?');" role="button" href="index.php?uc=validerFrais&action=validerFicheFrais&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $MoiSelectionner ?>"> Valider ?<span class="fa fa-check"/></a>
+        </h2>
+    </div>
+    <?php
+}
+?>    
