@@ -45,6 +45,8 @@ switch ($action) {
         $montantValide = $lesInfosFicheFrais['montantValide'];
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
         $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
+        $numAnnee = substr($leMois, 0, 4);
+        $numMois = substr($leMois, 4, 2);
         include 'vues/vuesVisiteurs/v_etatFrais.php';
         break;
     case 'afficherPdf':
