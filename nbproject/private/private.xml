@@ -12,9 +12,16 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/controleurs/c_etatFrais.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/vues/vuesVisiteurs/v_etatFrais.php</file>
-            <file>file:/E:/BTS%20SIO%202/AP/CONTEXTE1/GSB_AppliMVC/includes/class.pdogsb.inc.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/vues/v_listeMois.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/index.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/controleurs/c_etatFrais.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/vues/vuesComptables/v_ElementForfaitises.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/vues/v_succes.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/vues/vuesComptables/v_etatFraisComptable.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/controleurs/c_suivrePaiementFrais.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/vues/vuesVisiteurs/v_etatFrais.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/includes/class.pdogsb.inc.php</file>
+            <file>file:/D:/Projet_2021_2022/GSB/controleurs/c_validerFrais.php</file>
         </group>
     </open-files>
 </project-private>
