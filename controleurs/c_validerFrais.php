@@ -47,6 +47,7 @@ switch ($action) {
             $REP = $LesFrais[3]['quantite'];
             $lesMois = $lesMoisVisiteur;
             $lesFraisForfait = $pdo->getLesFraisHorsForfait($idVisiteurSelectionner, $moisASelectionner['mois']);
+            $MoiSelectionner = $moisASelectionner['mois'];
             
              
             
