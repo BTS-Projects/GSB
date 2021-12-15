@@ -10,7 +10,7 @@ except Exception as ex:
 
 # modification des valeur des éléments forfaitisés
 try:
-    sleep(1000)
+
     setValeurInput('input[name="lesFrais[ETP]"]', 2000)
     setValeurInput('input[name="lesFrais[KM]"]', 2000)
     setValeurInput('input[name="lesFrais[NUI]"]', 2000)
