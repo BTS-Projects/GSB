@@ -56,15 +56,10 @@ switch ($action) {
             $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
             $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
             $montantValide = $lesInfosFicheFrais['montantValide'];
-            if ($lesInfosFicheFrais['idEtat'] != "VA") {
-                ajouterErreur("Le pdf ne peut pas être généré, la fiche de frais n'est pas validée par un comptable.");
-                include 'vues/v_erreurs.php';
-            } else {
-                $pdf = new PDF();
-                $pdf->AddPage();
-                $pdf->contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide);
-                $pdf->Output('F', 'pdf/' . $idVisiteur . $leMois . '.pdf');
-            }
+            $pdf = new PDF();
+            $pdf->AddPage();
+            $pdf->contenu($idVisiteur, $nomVisiteur, $leMois, $lesFraisHorsForfait, $lesFraisForfait, $montantValide);
+            $pdf->Output('F', 'pdf/' . $idVisiteur . $leMois . '.pdf');
         }
         header("Refresh: 0;URL=../pdf/" . $idVisiteur . $leMois . '.pdf');
 
