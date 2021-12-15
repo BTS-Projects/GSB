@@ -24,7 +24,7 @@
         <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
     </div>
     <div>
-        <a class="btn btn-primary" href="index.php?uc=etatFrais&action=afficherPdf&mois=<?= $leMois?>" role="button" target="_blank">Télécharger PDF</a>
+        <a class="btn btn-primary"  href="index.php?uc=etatFrais&action=afficherPdf&mois=<?= $leMois?>" role="button" target="_blank">Télécharger PDF</a>
     </div>
 </div>
 <div class="panel panel-info">

@@ -1,2 +1,2 @@
 @rd /s /q "doc"
-php phpDocumentor.phar -d C:\Users\dorian.dubois\Documents\GitHub\gsb -t C:\Users\dorian.dubois\Documents\GitHub\gsb\tests\phpDoc\doc
+php phpDocumentor.phar -d E:\BTS SIO 2\AP\CONTEXTE1\GSB_AppliMVC -t E:\BTS SIO 2\AP\CONTEXTE1\GSB_AppliMVC\tests\phpDocdoc
