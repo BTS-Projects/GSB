@@ -12,21 +12,16 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/v_connexion.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/v_deconnexion.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_filtreFicheFrais.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/v_authentificationMail.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_accueil_comptable.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_listeFraisForfaitComp.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/v_erreurs.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/v_entete.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_etatFraisComptable.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_ElementForfaitises.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_valideFrais.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_choisirLeVisiteur.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/vuesComptables/v_fraisHorsForfaitComp.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/v_listeMois.php</file>
-            <file>file:/C:/wamp64/www/MVC/GSB/vues/v_pied.php</file>
+
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/index.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/controleurs/c_validerFrais.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_etatFraisComptable.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_accueil_comptable.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_ElementForfaitises.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_choisirLeVisiteur.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_fraisHorsForfaitComp.php</file>
+            <file>file:/C:/Users/valentine.schalckens/Documents/GSB_AppliMVC/vues/vuesComptables/v_filtreFicheFrais.php</file>
+
         </group>
     </open-files>
 </project-private>

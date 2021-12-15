@@ -14,6 +14,7 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
+<br>
 <div class="alert alert-success" role="alert">
     <?php
     foreach ($_REQUEST['succes'] as $unSucces) {

@@ -11,7 +11,7 @@
  * @author    José GIL - CNED <jgil@ac-nice.fr>
  * @author    Valentine SCHALCKENS <v.schalckens@gmail.com>
  * @author    Julien Lempereur <lempereur.julien83@gmail.com>
- * @author    Bastien Kerebel <john.doe@example.com>
+ * @author    Bastien Kerebel <bastienkerebel@gmail.com>
  * @author    Dorian Dubois<john.doe@example.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
@@ -464,6 +464,59 @@ class PdoGsb {
     }
 
     /**
+     * Met à jour la table ligneFraisHorsForfait
+     * Met à jour la table ligneFraisHorsForfait pour un visiteur et
+     * un mois donné en enregistrant le nouveau montant
+     *
+     * @param String  $idVisiteur id du visiteur
+     * @param String  $mois       mois sous la forme aaaamm
+     * @param Decimal $leMontant  montant à mettre dans la base de donnée
+     * @param Integer $ifFraisHF  id frais hors forfait
+     *
+     * @return null
+     */
+    public function majFraisHorsForfait($idVisiteur, $mois, $leMontant, $idFraisHF) {
+
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+                'UPDATE lignefraishorsforfait '
+                . 'SET lignefraishorsforfait.montant = :montant '
+                . 'WHERE lignefraishorsforfait.idvisiteur = :unIdVisiteur '
+                . 'AND lignefraishorsforfait.mois = :unMois '
+                . 'AND lignefraishorsforfait.id = :idFraisHF '
+        );
+        $requetePrepare->bindParam(':montant', $leMontant, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idFraisHF', $idFraisHF, PDO::PARAM_INT);
+        $requetePrepare->execute();
+    }
+    /**
+     * Met à jour la table ligneFraisHorsForfait
+     * Met à jour la table ligneFraisHorsForfait pour un visiteur et
+     * un mois donné en rajoutant REFUSE au début du libelle
+     *
+     * @param String  $idVisiteur id du visiteur
+     * @param String  $mois       mois sous la forme aaaamm
+     * @param String  $libelle    libelle à mettre dans la base de donnée
+     * @param Integer $ifFraisHF  id frais hors forfait
+     *
+     * @return null
+     */
+    public function refusFraisHorsForfait($idVisiteur, $mois, $idFraisHF) {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+                'UPDATE lignefraishorsforfait '
+                . 'SET lignefraishorsforfait.libelle = CONCAT("REFUSE", " ", lignefraishorsforfait.libelle) '
+                . 'WHERE lignefraishorsforfait.idvisiteur = :unIdVisiteur '
+                . 'AND lignefraishorsforfait.mois = :unMois '
+                . 'AND lignefraishorsforfait.id = :idFraisHF '
+        );
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idFraisHF', $idFraisHF, PDO::PARAM_INT);
+        $requetePrepare->execute();
+    }
+
+    /**
      * Met à jour le nombre de justificatifs de la table ficheFrais
      * pour le mois et le visiteur concerné
      *
@@ -657,6 +710,39 @@ class PdoGsb {
         }
         return $lesMois;
     }
+    
+    /**
+     * Retourne les mois pour lesquel un visiteur a une fiche de frais cloturé
+     * et donc à faire validé par un comptable
+     *
+     * @param String $idVisiteur ID du visiteur
+     *
+     * @return un tableau associatif de clé un mois -aaaamm- et de valeurs
+     *         l'année et le mois correspondant
+     */
+    public function getLesMoisDisponiblesCL($idVisiteur) {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+                'SELECT fichefrais.mois AS mois FROM fichefrais '
+                . 'WHERE fichefrais.idvisiteur = :unIdVisiteur '
+                . 'AND fichefrais.idetat = "CL" '
+                . 'ORDER BY fichefrais.mois desc'
+        );
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $lesMois = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+            $mois = $laLigne['mois'];
+            $numAnnee = substr($mois, 0, 4);
+            $numMois = substr($mois, 4, 2);
+            $lesMois[] = array(
+                'mois' => $mois,
+                'numAnnee' => $numAnnee,
+                'numMois' => $numMois
+            );
+        }
+        return $lesMois;
+    }
+    
 
     /**
      * Retourne les informations d'une fiche de frais d'un visiteur pour un
@@ -687,14 +773,14 @@ class PdoGsb {
         return $laLigne;
     }
 
-       /**
-        * Retoune les informations des fiches de Frais 
-        * 
-        * @param type $idVisiteur id du visiteur
-        * @param type $mois mois de la fiche de frais
-        * @return fiche frais(idetat, datemodif, nbjustificatif, montantValide)
-        *         etat(idEtat) 
-        */
+    /**
+     * Retoune les informations des fiches de Frais 
+     * 
+     * @param type $idVisiteur id du visiteur
+     * @param type $mois mois de la fiche de frais
+     * @return fiche frais(idetat, datemodif, nbjustificatif, montantValide)
+     *         etat(idEtat) 
+     */
     public function getLesInfosFicheFraisPaiement($idVisiteur, $mois) {
         $requetePrepare = PdoGSB::$monPdo->prepare(
                 'SELECT fichefrais.idetat as idEtat, '
@@ -715,7 +801,7 @@ class PdoGsb {
         $laLigne = $requetePrepare->fetch();
         return $laLigne;
     }
-    
+
     /**
      * Retourne les infos d'une fiche de frais par l'état
      * 
@@ -745,7 +831,6 @@ class PdoGsb {
         $laLigne = $requetePrepare->fetch();
         return $laLigne;
     }
-    
 
     /**
      * Modifie l'état et la date de modification d'une fiche de frais.
