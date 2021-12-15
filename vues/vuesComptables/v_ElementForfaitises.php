@@ -17,7 +17,7 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
-<div>
+<div class="row">
     <h3>Eléments forfaitisés</h3>
     <div class="col-md-4">
         <form method="post" action="index.php?uc=validerFrais&action=corrigerElementForfaitises&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numAnneeActuelle . $numMoisActuelle ?>" role="form">
@@ -49,4 +49,8 @@
             ?>
         </form>
     </div>
+</div>
+<hr>
+<div class="row">
+    <h3> Eléments Hors Forfait :</h3>
 </div>

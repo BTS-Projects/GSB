@@ -23,5 +23,25 @@ try:
     driver.find_element(By.ID,"ok").click()
     log("verification des fiches mise en paiement reussie")
 except Exception as ex:
-    log('echec de la verification de la vue des diches mise en paiements")
+    log("echec de la verification de la vue des fiches mise en paiements")
+    print(ex)
+
+#tests de l'état remboursée
+try:
+    driver.find_element(By.NAME,"lstEtats").click()
+    driver.find_element(By.ID,"RB").click()
+    driver.find_element(By.ID,"ok").click()
+    log("verification des fiches mise en remboursemnt reussie")
+except Exception as ex:
+    log("echec de la verification de la vue des fiches mise en rembousement")
+    print(ex)
+
+#tests de l'état validée
+try:
+    driver.find_element(By.NAME,"lstEtats").click()
+    driver.find_element(By.ID,"VA").click()
+    driver.find_element(By.ID,"ok").click()
+    log("verification des fiches validée")
+except Exception as ex:
+    log("echec de l'afficheage des diches validée'")
     print(ex)
