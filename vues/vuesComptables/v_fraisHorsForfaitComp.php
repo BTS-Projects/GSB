@@ -14,7 +14,7 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
-<hr>
+
 <div class="row">
         <form method="post" action="index.php?uc=validerFrais&action=corrigerFraisHorsForfait&visiteur=<?= $leVisiteur['id'] ?>&mois=<?= $numMoisActuelle . $numAnneeActuelle ?>&idFrais=<?= $idFraisHF ?>" >
             <div class="panel panel-info" style="border-color : #ff9933">
