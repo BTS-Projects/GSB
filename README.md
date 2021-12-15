@@ -13,6 +13,7 @@ Cet Atelier de professionnalisation a pour but de mettre en oeuvre les savoirs a
 __Outils utilisés:__   
  [Notre trello](https://trello.com/b/MQB4QiYp)  
  [Manuel PHP](https://www.php.net/manual/fr/index.php)  
+ [FPDF Library](http://www.fpdf.org/)
  
 
 
