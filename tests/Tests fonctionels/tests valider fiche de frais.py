@@ -12,6 +12,7 @@ try:
     driver.find_element(By.ID,"f4").click()
     driver.find_element(By.NAME,"lstMois").click()
     driver.find_element(By.ID,"202109").click()
+    sleep(2)
     log('modification du visiteur et du mois reussie')
 except Exception as ex:
     log('echec de la modification du visiteur et du mois')
@@ -27,7 +28,7 @@ try:
     setValeurInput('input[name="KM"]', 2000)
     setValeurInput('input[name="NUI"]', 2000)
     setValeurInput('input[name="REP"]', 2000)
-    sleep(5)
+    sleep(2)
     driver.find_element(By.ID,"BtnReset").click()
     log('reussite du tests de la modification')
 except Exception as ex:
@@ -40,12 +41,19 @@ try:
     driver.find_element(By.ID,"202109").click()
     setValeurInput('input[name="montant40"]', 200)
     driver.find_element(By.NAME,"btnCorrigerFrais").click()
-    sleep(5)
+    sleep(2)
     setValeurInput('input[name="montant40"]', 269.00)
     driver.find_element(By.NAME,"btnCorrigerFrais").click()
-    sleep(5)
+    sleep(2)
     driver.find_element(By.NAME,"btnRefuserFrais").click()
     driver.find_element.click()
     log('tests de modification des frais hors forfait réussie')
 except Exception as ex:
     log('modification des frais hors forfait échouer')
+
+#valider une fiche de frais
+try:
+    driver.find_element(By.CLASS_NAME,"btn btn-succes").click()
+    log('validation de la fiche reussie')
+except Exception as ex:
+    log('echec de la validation de la fiche de frais')
