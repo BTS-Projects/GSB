@@ -12,16 +12,15 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projet_2021_2022/GSB/vues/v_listeMois.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/index.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/controleurs/c_etatFrais.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/vues/vuesComptables/v_ElementForfaitises.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/vues/v_succes.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/vues/vuesComptables/v_etatFraisComptable.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/controleurs/c_suivrePaiementFrais.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/vues/vuesVisiteurs/v_etatFrais.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/includes/class.pdogsb.inc.php</file>
-            <file>file:/D:/Projet_2021_2022/GSB/controleurs/c_validerFrais.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/vues/v_listeMois.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/vues/v_pied.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/vues/v_succes.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/includes/class.pdogsb.inc.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/vues/v_entete.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/index.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/vues/v_erreurs.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/vues/v_deconnexion.php</file>
+            <file>file:/C:/Users/33610/Documents/Julien/BTS/GIL/PHP/GSB/vues/v_connexion.php</file>
         </group>
     </open-files>
 </project-private>
