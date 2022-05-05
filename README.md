@@ -6,12 +6,29 @@
 </p>
 
 <h1 align="center">Galaxy Swiss Bourdin (GSB)</h1>
+
+
+<h1 align="center">Application métier de gestion de frais</h1>
+
+<h3> Données de test pour un visiteur : </h3>
+<strong>Identifiant :</strong> dandre
+<strong>Mot de Passe :</strong> oppg5
+
+<h3> Données de test pour un comptable : </h3>
+<strong>Identifiant :</strong> rsmith
+<strong>Mot de Passe :</strong> rsmith
+
+
 <h1 align="center">Application métier de gestion de frais</h1>
 
 Cet Atelier de professionnalisation a pour but de mettre en oeuvre les savoirs abordés dans les différents cours afin d'acquérir des compétences techniques globales mais aussi spécifiques à la spécialisation SLAM.
 
-Outils utiliser:<br>
- [Notre trello](https://trello.com/b/MQB4QiYp)
+__Outils utilisés:__   
+ [Notre trello](https://trello.com/b/MQB4QiYp)  
+ [Manuel PHP](https://www.php.net/manual/fr/index.php)  
+ [FPDF Library](http://www.fpdf.org/)  
+ [Doc GSB](http://gsb/Documentation/doc/index.html)
+ 
 
 
 ##### Description du laboratoire GSB :
@@ -39,4 +56,12 @@ remboursements (enregistré, validé, remboursé).
 autres), et de présenter un suivi daté des opérations menées par le service comptable (réception des
 pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué).
 
-
+---
+<h3 align=center>Interface du projet:</h3>
+  <p align="center">
+<img src=accueilPNG.PNG>
+  </p>
+  <p align="center">
+<img src=accueilVisiteur.PNG>
+<img src=accueilComptable.PNG>
+</p>
