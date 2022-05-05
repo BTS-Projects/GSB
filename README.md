@@ -30,6 +30,7 @@ __Outils utilisés:__
  [Manuel PHP](https://www.php.net/manual/fr/index.php)  
  [FPDF Library](http://www.fpdf.org/)  
  [Doc GSB - Technique](http://gsb/doc/api/)
+ 
  [Doc GSB - Utilisateurs](http://gsb/docs/mode_operatoire_utilisateur_gsb_2021.pdf)
  
 
