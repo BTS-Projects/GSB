@@ -12,10 +12,12 @@
 
 <h3> Données de test pour un visiteur : </h3>
 <strong>Identifiant :</strong> dandre
+
 <strong>Mot de Passe :</strong> oppg5
 
 <h3> Données de test pour un comptable : </h3>
 <strong>Identifiant :</strong> rsmith
+
 <strong>Mot de Passe :</strong> rsmith
 
 
