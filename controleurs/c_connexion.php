@@ -49,7 +49,7 @@ switch ($action) {
                     $prenom = $visiteur['prenom'];
                     $email = $visiteur['email'];
                     connecter($id, $nom, $prenom, $choix);
-                    $codeRand = 1000;
+                    $codeRand = rand(1000, 1200);
                     $pdo->setCodeVisiteur($id, $codeRand);
                     $subject = 'Connection à GSB';
                     $message = '<html>'
@@ -83,7 +83,7 @@ switch ($action) {
                     $prenom = $comptable['prenom'];
                     $email = $comptable['email'];
                     connecterComptable($id, $nom, $prenom, $choix);
-                    $codeRand = 1000;
+                    $codeRand = rand(1000, 1200);
                     $pdo->setCodeComptable($id, $codeRand);
                     $subject = 'Connection à GSB';
                     $message = '<html>'

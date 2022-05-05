@@ -607,7 +607,7 @@ class PdoGsb {
             $this->majEtatFicheFrais($idVisiteur, $dernierMois, 'CL');
         }
         $requetePrepare = PdoGsb::$monPdo->prepare(
-                'INSERT INTO fichefrais (idvisiteur,mois,nbjustificatifs,'
+                'INSERT INTO fichefrais (idvisiteur,mois,nbjustificatifs, '
                 . 'montantvalide,datemodif,idetat) '
                 . "VALUES (:unIdVisiteur,:unMois,0,0,now(),'CR')"
         );
@@ -853,6 +853,117 @@ class PdoGsb {
         $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
         $requetePrepare->execute();
+    }
+    
+    
+    /**
+     * Retourne le montant remboursé par km en fonction du véhicule pour 
+     * la fiche correspondante
+     * 
+     * @param string $idVisiteur
+     * @param string $mois
+     * 
+     * @return float
+     */
+    public function getMontantFraisKilometrique($idVisiteur, $mois)
+    {
+        $requete = PdoGsb::$monPdo->prepare(
+            "select typevehicule.montant as montant "
+                . "from typevehicule inner join fichefrais "
+                . "on typevehicule.id=fichefrais.idtypevehicule "
+                . "where fichefrais.idvisiteur=:id "
+                . "and fichefrais.mois=:mois"
+        );
+        $requete->bindParam(':id', $idVisiteur, pdo::PARAM_STR);
+        $requete->bindParam(':mois', $mois, pdo::PARAM_STR);
+        $requete->execute();
+        return $requete->fetch()['montant'];
+    }
+    
+    // Gestion frais kilométriques plus fine 
+    
+    /**
+     * Retourne le coup total du remboursement des frais kilométrique de la fiche 
+     * correspondante en fonction de son type de véhicule
+     * 
+     * @param string $idVisiteur
+     * @param string $mois
+     * 
+     * @return float
+     */
+    private function getMontantTotalFraisKilometrique($idVisiteur, $mois)
+    {
+        $requete = PdoGsb::$monPdo->prepare(
+            "select (lignefraisforfait.quantite*typevehicule.montant) "
+                . "as total "
+                . "from lignefraisforfait inner join fichefrais "
+                . "on lignefraisforfait.idvisiteur=fichefrais.idvisiteur "
+                . "and lignefraisforfait.mois = fichefrais.mois "
+                . "inner join typevehicule "
+                . "on fichefrais.idtypevehicule=typevehicule.id "
+                . "where fichefrais.idvisiteur=:id and "
+                . " fichefrais.mois=:mois "
+                . "and lignefraisforfait.idfraisforfait='KM'"
+        );
+        $requete->bindParam(':id', $idVisiteur, pdo::PARAM_STR);
+        $requete->bindParam(':mois', $mois, pdo::PARAM_STR);
+        $requete->execute();
+        return (float) $requete->fetch()['total'];
+    }
+     /**
+     * Retourne tous les types de véhicules rentrés en BDD
+     * 
+     * @return tableau associatif 
+     */
+    public function getLesTypesVehicule()
+    {
+        $req = PdoGSB::$monPdo->prepare(
+            "select * from typevehicule order by montant"
+        );
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Retourne le type de véhicule de la fiche de frais correspondant à 
+     * l'id du visiteur et le mois passé en paramètre
+     * 
+     * @param string $idVisiteur
+     * @param string $mois
+     * 
+     * @return string id du type de véhicule
+     */
+    public function getLeTypeVehicule($idVisiteur, $mois)
+    {
+        $req = PdoGSB::$monPdo->prepare(
+            "select idtypevehicule as id "
+                . "from fichefrais "
+                . "where idvisiteur=:id "
+                . "and mois=:mois"
+        );
+        $req->bindParam(':id', $idVisiteur, pdo::PARAM_STR);
+        $req->bindParam(':mois', $mois, pdo::PARAM_STR);
+        $req->execute();
+        return $req->fetch()['id'];
+    }
+
+    /**
+     * Met à jour le type de véhicule associé à la fiche de frais correspondant 
+     * au id visiteur et au mois passé en paramètre
+     * 
+     * @param string $idVisiteur
+     * @param string $mois
+     * @param string $idVehicule
+     */
+    public function updateTypeVehicule($idVisiteur, $mois, $idVehicule)
+    {
+        $sql = "update fichefrais set idtypevehicule=:idvehicule "
+            . "where idvisiteur=:id and mois=:mois";
+        $req = PdoGsb::$monPdo->prepare($sql);
+        $req->bindParam(':idvehicule', $idVehicule, pdo::PARAM_STR);
+        $req->bindParam(':id', $idVisiteur, pdo::PARAM_STR);
+        $req->bindParam(':mois', $mois, pdo::PARAM_STR);
+        $req->execute();
     }
 
 }
