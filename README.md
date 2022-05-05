@@ -29,7 +29,8 @@ __Outils utilisés:__
  [Notre trello](https://trello.com/b/MQB4QiYp)  
  [Manuel PHP](https://www.php.net/manual/fr/index.php)  
  [FPDF Library](http://www.fpdf.org/)  
- [Doc GSB](http://gsb/Documentation/doc/index.html)
+ [Doc GSB - Technique](http://gsb/doc/api/)
+ [Doc GSB - Utilisateurs](http://gsb/docs/mode_operatoire_utilisateur_gsb_2021.pdf)
  
 
 
