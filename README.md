@@ -7,9 +7,6 @@
 
 <h1 align="center">Galaxy Swiss Bourdin (GSB)</h1>
 
-
-<h1 align="center">Application métier de gestion de frais</h1>
-
 <h3> Données de test pour un visiteur : </h3>
 <strong>Identifiant :</strong> dandre
 
