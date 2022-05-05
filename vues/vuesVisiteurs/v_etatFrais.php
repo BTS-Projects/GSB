@@ -23,9 +23,11 @@
         depuis le <?php echo $dateModif ?> <br> 
         <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
     </div>
+    <?php if($etat == 'VA' || $etat == 'MP' || $etat == 'RB'){?>
     <div>
-        <a class="btn btn-primary" href="index.php?uc=etatFrais&action=afficherPdf&mois=<?= $leMois?>" role="button" target="_blank">Télécharger PDF</a>
+        <a class="btn btn-primary"  href="index.php?uc=etatFrais&action=afficherPdf&mois=<?= $leMois?>" role="button" target="_blank">Télécharger PDF</a>
     </div>
+    <?php }?>
 </div>
 <div class="panel panel-info">
     <div class="panel-heading">Eléments forfaitisés</div>
