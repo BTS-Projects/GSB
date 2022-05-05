@@ -61,9 +61,9 @@ pièces, validation de la demande de remboursement, mise en paiement, remboursem
 ---
 <h3 align=center>Interface du projet:</h3>
   <p align="center">
-<img src=accueilPNG.PNG>
+<img src=accueilPNG.png>
   </p>
   <p align="center">
-<img src=accueilVisiteur.PNG>
-<img src=accueilComptable.PNG>
+<img src=accueilVisiteur.png>
+<img src=accueilComptable.png>
 </p>
