@@ -59,6 +59,8 @@
                                type="submit" value="Se connecter">
                     </fieldset>
                 </form>
+                <p>login visiteur:lvillachane mdp:jux7g</p>
+                <p>login comptable:lui mdp:lui</p>
             </div>
         </div>
     </div>
